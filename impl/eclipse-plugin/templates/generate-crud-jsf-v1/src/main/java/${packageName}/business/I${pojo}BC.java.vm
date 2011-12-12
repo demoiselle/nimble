@@ -1,0 +1,34 @@
+package ${packageName}.business;
+
+#if ($useDemoiselleCRUD)
+import br.gov.component.demoiselle.crud.layer.ICrudBC;
+
+import ${packageName}.bean.${pojo};
+
+public interface I${pojo}BC extends ICrudBC<${pojo}> {
+}
+#else
+import java.util.List;
+
+import br.gov.framework.demoiselle.core.layer.IBusinessController;
+import br.gov.framework.demoiselle.util.page.Page;
+import br.gov.framework.demoiselle.util.page.PagedResult;
+
+import ${packageName}.bean.${pojo};
+
+public interface I${pojo}BC extends IBusinessController {
+
+	${pojo} load(${pojo} ${bean});
+	
+	void insert(${pojo} ${bean});
+
+	void delete(${pojo} ${bean});
+
+	void update(${pojo} ${bean});
+
+	List<${pojo}> listAll();
+
+	PagedResult<${pojo}> listAll(Page page);
+
+}
+#end

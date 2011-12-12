@@ -1,0 +1,2 @@
+	
+		menuNew.addItem(bundle.getString("menu.new.${bean}"), menuCommand);	

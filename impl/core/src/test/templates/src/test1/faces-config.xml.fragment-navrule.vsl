@@ -1,0 +1,5 @@
+
+        <navigation-case>
+            <from-outcome>$mbeanOutcome</from-outcome>
+            <to-view-id>$mbeanToViewId</to-view-id>
+        </navigation-case>## Velocity Template.

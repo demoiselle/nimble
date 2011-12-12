@@ -1,0 +1,4 @@
+
+${bean}_insert_ok = ${pojo} inserido com sucesso
+${bean}_update_ok = ${pojo} alterado com sucesso
+${bean}_delete_ok = ${pojo} exclu\u00EDdo com sucesso

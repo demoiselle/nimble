@@ -1,0 +1,339 @@
+#!/bin/sh
+
+##############################################################################
+##                                                                          ##
+##  Demoiselle Nimble Bootstrap for UN*X                                    ##
+##                                                                          ##
+##############################################################################
+
+PROGNAME=`basename "$0"`
+DIRNAME=`dirname "$0"`
+
+# Use the maximum available, or set MAX_FD != -1 to use that
+MAX_FD="maximum"
+
+warn() {
+	echo "${PROGNAME}: $*"
+}
+
+die() {
+	warn "$*"
+	exit 1
+}
+
+earlyInit() {
+	echo "Demoiselle Nimble - v1.0.1"
+	return
+}
+
+lateInit() {
+	return
+}
+
+DEMOISELLE_STARTUP=~/.demoiselle/startup
+if [ -r "$DEMOISELLE_STARTUP" ]; then
+	. "$DEMOISELLE_STARTUP"
+fi
+
+earlyInit
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false;
+darwin=false;
+case "`uname`" in
+	CYGWIN*)
+		cygwin=true
+	;;
+	Darwin*)
+		darwin=true
+	;;
+esac
+
+if [ "$1" = "-cp" ] || [ "$1" = "-classpath" ]; then
+	CP=$2
+	shift 2
+fi
+
+ARGUMENTS=$@
+
+# Attempt to set JAVA_HOME if it's not already set
+if [ -z "$JAVA_HOME" ]; then
+	
+	# Set JAVA_HOME for Darwin
+	if $darwin; then
+		
+		[ -z "$JAVA_HOME" -a -d "/Library/Java/Home" ] &&
+			export JAVA_HOME="/Library/Java/Home"
+		
+		[ -z "$JAVA_HOME" -a -d "/System/Library/Frameworks/JavaVM.framework/Home" ] &&
+			export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
+
+	fi
+fi
+
+# For Cygwin, ensure paths are in UNIX format before anything is touched
+if $cygwin ; then
+	[ -n "$DEMOISELLE_HOME" ] &&
+		DEMOISELLE_HOME=`cygpath --unix "$DEMOISELLE_HOME"`
+	[ -n "$JAVACMD" ] &&
+		JAVACMD=`cygpath --unix "$JAVACMD"`
+	[ -n "$JAVA_HOME" ] &&
+		JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
+	[ -n "$CP" ] &&
+		CP=`cygpath --path --unix "$CP"`
+fi
+
+# Remove possible trailing slash (after possible cygwin correction)
+DEMOISELLE_HOME=`echo $DEMOISELLE_HOME | sed -e 's|/$||g'`
+
+# Locate DEMOISELLE_HOME if not it is not set
+if [ -z "$DEMOISELLE_HOME" -o ! -d "$DEMOISELLE_HOME" ]; then
+
+	# resolve links - $0 may be a link to Demoiselle's home
+	PRG="$0"
+
+	# need this for relative symlinks
+	while [ -h "$PRG" ] ; do
+		ls=`ls -ld "$PRG"`
+		link=`expr "$ls" : '.*-> \(.*\)$'`
+		if expr "$link" : '/.*' > /dev/null; then
+			PRG="$link"
+		else
+			PRG=`dirname "$PRG"`"/$link"
+		fi
+	done
+
+	SAVED="`pwd`"
+	cd "`dirname \"$PRG\"`/.."
+	DEMOISELLE_HOME="`pwd -P`"
+	cd "$SAVED"
+fi
+
+# Use default demoiselle-conf config
+if [ -z "$DEMOISELLE_CONF" ]; then
+	DEMOISELLE_CONF="$DEMOISELLE_HOME/conf/demoiselle-starter.conf"
+fi
+
+STARTER_CLASSPATH="`echo $DEMOISELLE_HOME/lib/*.jar`"
+
+# Allow access to Cocoa classes on OS X
+if $darwin; then
+	STARTER_CLASSPATH="$STARTER_CLASSPATH:/System/Library/Java"
+fi
+
+# Create the final classpath
+# Setting a classpath using the -cp or -classpath option means not to use
+# the global classpath. Demoiselle behaves then the same as the Java interpreter.
+if [ -n "$CP" ]; then
+	CP="$CP"
+elif [ -n "$CLASSPATH" ]; then
+	CP="$CLASSPATH"
+fi
+
+# Determine the Java command to use to start the JVM
+if [ -z "$JAVACMD" ]; then
+	if [ -n "$JAVA_HOME" ]; then
+		if [ -x "$JAVA_HOME/jre/sh/java" ]; then
+			# IBM's JDK on AIX uses strange locations for the executables
+			JAVACMD="$JAVA_HOME/jre/sh/java"
+		else
+			JAVACMD="$JAVA_HOME/bin/java"
+		fi
+	else
+		JAVACMD="java"
+	fi
+fi
+if [ ! -x "$JAVACMD" ]; then
+	die "JAVA_HOME is not defined correctly; can not execute: $JAVACMD"
+fi
+if [ -z "$JAVA_HOME" ]; then
+	warn "JAVA_HOME environment variable is not set"
+fi
+
+# Increase the maximum file descriptors if we can
+if [ "$cygwin" = "false" ]; then
+	MAX_FD_LIMIT=`ulimit -H -n`
+	if [ "$MAX_FD_LIMIT" != "unlimited" ]; then
+		if [ $? -eq 0 ]; then
+			if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ]; then
+				# use the system max
+				MAX_FD="$MAX_FD_LIMIT"
+			fi
+
+			ulimit -n $MAX_FD
+			if [ $? -ne 0 ]; then
+				warn "Could not set maximum file descriptor limit: $MAX_FD"
+			fi
+		else
+			warn "Could not query system maximum file descriptor limit: $MAX_FD_LIMIT"
+		fi
+	fi
+fi
+
+# Setup Profiler
+useprofiler=false
+if [ "x$PROFILER" != "x" ]; then
+	if [ -r "$PROFILER" ]; then
+		. $PROFILER
+		useprofiler=true
+	else
+		die "Profiler file not found: $PROFILER"
+	fi
+fi
+
+# For Darwin, use classes.jar for TOOLS_JAR
+TOOLS_JAR="$JAVA_HOME/lib/tools.jar"
+#if $darwin; then
+#	TOOLS_JAR="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Classes/classes.jar"
+#fi
+
+# For Cygwin, switch paths to Windows format before running Java
+if $cygwin; then
+
+	DEMOISELLE_HOME=`cygpath --path --mixed "$DEMOISELLE_HOME"`
+	JAVA_HOME=`cygpath --path --mixed "$JAVA_HOME"`
+	DEMOISELLE_CONF=`cygpath --path --mixed "$DEMOISELLE_CONF"`
+	CP=`cygpath --path --mixed "$CP"`    
+	TOOLS_JAR=`cygpath --path --mixed "$TOOLS_JAR"`
+	STARTER_CLASSPATH=`cygpath --path --mixed "$STARTER_CLASSPATH"`
+
+	# We build the pattern for arguments to be converted via cygpath
+	ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
+	SEP=""
+	for dir in $ROOTDIRSRAW; do
+		ROOTDIRS="$ROOTDIRS$SEP$dir"
+		SEP="|"
+	done
+
+	OURCYGPATTERN="(^($ROOTDIRS))"
+
+	# Add a user-defined pattern to the cygpath arguments
+	if [ "$DEMOISELLE_CYGPATTERN" != "" ]; then
+		OURCYGPATTERN="$OURCYGPATTERN|($DEMOISELLE_CYGPATTERN)"
+	fi
+
+	# Now convert the arguments
+	ARGUMENTS=""
+	for arg in "$@"; do
+		CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
+		if [ $CHECK -ne 0 ]; then
+			convArg=`cygpath --path --ignore --mixed "$arg"`
+		else
+			convArg=$arg
+		fi
+		ARGUMENTS="$ARGUMENTS $convArg"
+	done
+fi
+
+# search for available templates directories
+template_name="$1"
+template_dir=""
+gui_option=0
+
+if [ "$template_name" == "" -o "$template_name" == "-h" -o "$template_name" == "--help" ]; then
+	echo
+	echo "Usage: demoiselle <template> [-g|--gui] [-o|--output]"
+	exit 2
+elif [ "$template_name" == "-g" -o "$template_name" == "--gui" ]; then
+	template_name=""
+	gui_option=1
+fi
+
+# 0. GUI as the first option
+if [ $gui_option -eq 1 ]; then
+	echo "Starting graphical interface..."
+# 1. current directory
+elif [ -d "$PWD/$template_name" ]; then
+	template_dir="$PWD"
+# 2. folder DEMOISELLE_HOME/templates/
+elif [ -d "$DEMOISELLE_HOME/templates/$template_name" ]; then
+	template_dir="$DEMOISELLE_HOME/templates"
+# 3. folder ~/demoiselle/templates
+elif [ -d "$HOME/demoiselle/templates/$template_name" ]; then
+	template_dir="$HOME/demoiselle/templates"
+# 4. folder /opt/demoiselle/tool/templates
+elif [ -d "/opt/demoiselle/tool/templates/$template_name" ]; then
+	template_dir="/opt/demoiselle/tool/templates"
+# not found...
+else
+	echo "Template $template_name not found!"
+	echo -e "\nSearched on those directories:\n " \
+		"$PWD/\n  $DEMOISELLE_HOME/templates/\n  $HOME/demoiselle/templates/\n  /opt/demoiselle/tool/templates/"
+	exit 4
+fi
+
+# not required when the class is already defined on a manifest file in the main JAR
+STARTER_MAIN_CLASS="br.gov.frameworkdemoiselle.tools.nimble.Main"
+
+lateInit
+
+startDemoiselle() {
+
+	#CLASS=$1
+	shift
+
+	if [ -n "$DEMOISELLE_OPTS" ]; then
+		DEMOISELLE_OPTS="$DEMOISELLE_OPTS"
+	else
+		DEMOISELLE_OPTS="-server -Xmx512M -XX:MaxPermSize=192m -Dfile.encoding=UTF-8"
+	fi
+
+	JAVA_OPTS="$DEMOISELLE_OPTS $JAVA_OPTS"
+
+	echo
+	if [ "$template_name" != "" ]; then
+		echo "Processing template $template_name (on $template_dir/)..."
+		echo
+	fi
+	echo "Using DEMOISELLE_HOME: $DEMOISELLE_HOME"
+	echo "Using JAVA_HOME:       $JAVA_HOME"
+	#echo "Using JAVA_OPTS:       $JAVA_OPTS"
+	#echo "Using CLASSPATH:       $CLASSPATH"
+	echo
+
+	if [ $gui_option -eq 1 ]; then
+		goal="--gui"
+	else
+		goal="-i \"$template_dir/$template_name\""
+	fi
+
+	exec "$JAVACMD" $JAVA_OPTS \
+		-classpath "$STARTER_CLASSPATH" \
+		-Ddemoiselle.home="$DEMOISELLE_HOME" \
+		-Dtools.jar="$TOOLS_JAR" \
+		$STARTER_MAIN_CLASS \
+		$goal \
+		"$@"
+
+#		--main $CLASS \
+#		--conf "$DEMOISELLE_CONF" \
+#		--classpath "$CP" 
+
+#	# Start the Profiler or the JVM
+#	if $useprofiler; then
+#		runProfiler
+#	else
+#		# no argument given
+#		if [ $# -eq 0 ]; then
+#			exec "$JAVACMD" $JAVA_OPTS \
+#				-classpath "$STARTER_CLASSPATH" \
+#				-Ddemoiselle.home="$DEMOISELLE_HOME" \
+#				-Dtools.jar="$TOOLS_JAR" \
+#				$STARTER_MAIN_CLASS \
+#				--main $CLASS \
+#				--conf "$DEMOISELLE_CONF" \
+#				--classpath "$CP" 
+#		else
+#			exec "$JAVACMD" $JAVA_OPTS \
+#				-classpath "$STARTER_CLASSPATH" \
+#				-Ddemoiselle.home="$DEMOISELLE_HOME" \
+#				-Dtools.jar="$TOOLS_JAR" \
+#				$STARTER_MAIN_CLASS \
+#				--main $CLASS \
+#				--conf "$DEMOISELLE_CONF" \
+#				--classpath "$CP" \
+#				"${ARGUMENTS}"
+#		fi
+#	fi
+
+}

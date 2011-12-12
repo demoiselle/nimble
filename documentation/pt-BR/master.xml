@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<book lang="pt" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+	<xi:include href="bookinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+	<preface>
+		<title>Guia do usuário</title>
+		<para>
+			Apresentamos o guia do usuário do Demoiselle Nimble, que é uma ferramenta de apoio ao Desenvolvimento do <emphasis>Demoiselle Framework</emphasis> a partir da versão <emphasis>2.0</emphasis>.
+		</para>
+		<important>
+			<para>
+				O Demoiselle Nimble está disponível para o usuário final nas seguintes opções:
+				<itemizedlist>
+					<listitem>Desktop</listitem>
+					<listitem>Eclipse Plugin</listitem>
+					<listitem>NetBeans Plugin</listitem>
+				</itemizedlist>
+			</para>
+		</important>
+	</preface>
+
+	<xi:include href="about.xml"/>
+	<xi:include href="setup.xml"/>
+	<xi:include href="quickstart.xml"/>
+	<xi:include href="eclipse.xml"/>
+	<xi:include href="netbeans.xml"/>
+
+</book>

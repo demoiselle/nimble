@@ -1,0 +1,5 @@
+
+	<lifecycle>
+		<phase-listener>br.gov.framework.demoiselle.view.faces.message.MessageContextListener</phase-listener>
+	</lifecycle>
+

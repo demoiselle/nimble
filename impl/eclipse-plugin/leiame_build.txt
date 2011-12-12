@@ -1,0 +1,4 @@
+- O build é gerado através dos projetos Feature e UpdateSite.
+- Verificar se os templates são os mesmos do Nimble.
+- Gerar tag da versão.
+- Os projetos Feature e UpdateSite não precisam ser "tagueados".

@@ -1,0 +1,2 @@
+
+			<class>${packageName}.bean.${pojo}</class>

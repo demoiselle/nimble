@@ -1,0 +1,5 @@
+
+
+	${pojoUpper}_INSERT_OK("${bean}_insert_ok"),
+	${pojoUpper}_UPDATE_OK("${bean}_update_ok"),
+	${pojoUpper}_DELETE_OK("${bean}_delete_ok"),

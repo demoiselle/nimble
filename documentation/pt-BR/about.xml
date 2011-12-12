@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="about">
+	<abstract>Informações básicas sobre a ferramenta</abstract>
+	<title>Sobre Demoiselle Nimble</title>	
+	<section id="sobre">
+		<title>O que é</title>
+		<para>O <emphasis>Demoiselle Nimble</emphasis> é um processador automatizado de templates
+			<footnote><para> Para informações gerais sobre utilitários processadores de template, acesse o site <ulink url="http://en.wikipedia.org/wiki/Template_processor"></ulink> </para> </footnote>, 
+			sendo estes genéricos e podendo inclusive ser criados pelo próprio utilizador.</para>
+		<para>Podemos considerá-lo como uma evolução da ferramenta atual o <ulink url="http://demoiselle.sourceforge.net/wizard/">Demoiselle Wizard Eclipse Plugin</ulink>
+			que como o próprio nome já diz é um especificamente um plugin para a IDE Eclipse </para>
+		<note>
+			<para>Um <foreignphrase>processador de templates</foreignphrase>  (i.e., template processor, também conhecido como template engine ou template parser)
+    		é um software ou um componente de software projetado para combinar um ou mais templates com um modelo de dados 
+    		a fim de produzir um ou mais documentos resultantes, podendo estes serem páginas web, arquivos de texto ou códigos fontes.
+			</para>
+		</note>
+		<para>No caso específico do Demoiselle Nimble, no template são definidas estruturas de arquivos e scripts de transformação utilizando linguagens
+		como Velocity e Groovy. Uma vez iniciado o processamento, este faz uso de variáveis cujos valores foram definidos pelo usuário e que permitem 
+		com que os diretórios e arquivos resultantes possam ser dinamicamente criados e ou modificados.	
+		</para>
+	</section>
+	<section id="templates">
+		<title>Templates Disponíveis</title>
+		<para>São disponibilizados com o Demoiselle Nimble os seguintes templates voltados para a geração automática de código para o Framework Demoiselle:
+		</para>
+		<para>		
+			<itemizedlist>
+				<listitem><para><emphasis> create-app-jsf: </emphasis> cria uma aplicação completa e funcional baseada no Demoiselle Framework v2 com
+  				JSF e JPA (usa internamente um arquétipo Maven)</para></listitem>
+				<listitem><emphasis>create-app-jsf-v1: </emphasis> cria uma aplicação baseada no Demoiselle Framework v1</listitem>
+				<listitem><emphasis>create-app-vaadin: </emphasis> cria uma aplicação baseada na extensão Demoiselle Vaadin (com Demoiselle Framework v2)</listitem>
+				<listitem><emphasis>generate-crud-jsf: </emphasis> cria todos os artefatos necessários para o CRUD de uma dada entidade
+  				baseando-se no Demoiselle Framework v2</listitem>
+  				<listitem><emphasis> generate-crud-jsf-v1: </emphasis> cria os artefatos para o CRUD de uma entidade no Demoiselle Framework v1</listitem>
+				<listitem><emphasis>generate-crud-vaadin: </emphasis> cria os artefatos para o CRUD de uma entidade na extensão Demoiselle Vaadin
+  				(com Demoiselle Framework v2)</listitem> 
+			</itemizedlist>
+		</para>
+	</section>
+</chapter>

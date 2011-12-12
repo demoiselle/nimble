@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:d="http://www.frameworkdemoiselle.gov.br/jsf/facelets"
+	template="/META-INF/public/templates/super/superCrud.xhtml">
+
+	<ui:param name="mbean" value="#{${bean}MB}"/>
+
+</ui:composition>

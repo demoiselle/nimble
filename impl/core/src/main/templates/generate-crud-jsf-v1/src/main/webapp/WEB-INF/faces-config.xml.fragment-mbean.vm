@@ -1,0 +1,7 @@
+
+
+	<managed-bean>
+		<managed-bean-name>${bean}MB</managed-bean-name>
+		<managed-bean-class>${packageName}.view.managedbean.${pojo}MB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>

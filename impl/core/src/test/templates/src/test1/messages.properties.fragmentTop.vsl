@@ -1,0 +1,1 @@
+${pojo.toLowerCase()}.inserted.ok=${pojo} inserted ok!

@@ -1,0 +1,4 @@
+
+		if (MENU_${pojo.toUpperCase()}.equals(selection)) {
+			navigator.navigate(${bean}Presenter.getView());
+		}		

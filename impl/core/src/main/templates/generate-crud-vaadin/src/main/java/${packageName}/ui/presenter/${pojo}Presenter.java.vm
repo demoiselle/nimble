@@ -1,0 +1,57 @@
+package ${packageName}.ui.presenter;
+
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+
+import br.gov.frameworkdemoiselle.event.ProcessClear;
+import br.gov.frameworkdemoiselle.event.ProcessDelete;
+import br.gov.frameworkdemoiselle.event.ProcessItemSelection;
+import br.gov.frameworkdemoiselle.event.BeforeNavigateToView;
+import br.gov.frameworkdemoiselle.event.ProcessSave;
+import br.gov.frameworkdemoiselle.template.AbstractPresenter;
+import br.gov.frameworkdemoiselle.stereotype.Presenter;
+
+import ${packageName}.business.${pojo}BC;
+import ${packageName}.domain.${pojo};
+import ${packageName}.ui.view.${pojo}View;
+
+@Presenter
+public class ${pojo}Presenter extends AbstractPresenter<${pojo}View> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private ${pojo}BC ${bean}BC;
+
+	public void onSave(@Observes @ProcessSave ${pojo} ${bean}) {
+		if (${bean}.getId() != null) {
+			${bean}BC.update(${bean});
+		} else {
+			${bean}BC.insert(${bean});
+		}
+		getView().clear();
+		getView().setDeleteButtonEnabled(false);
+		getView().setList(${bean}BC.findAll());
+	}
+
+	public void onItemSelection(@Observes @ProcessItemSelection ${pojo} ${bean}) {
+		getView().setBean(${bean});
+		getView().setDeleteButtonEnabled(true);
+	}
+
+	public void onDelete(@Observes @ProcessDelete ${pojo} ${bean}) {
+		${bean}BC.delete(${bean}.getId());
+		getView().setDeleteButtonEnabled(false);
+		getView().setList(${bean}BC.findAll());
+	}
+
+	public void onSearch(@Observes @BeforeNavigateToView ${pojo}View view) {
+		view.setList(${bean}BC.findAll());
+	}
+
+	public void onFormClear(@Observes @ProcessClear ${pojo} ${bean}) {
+		getView().clear();
+		getView().setDeleteButtonEnabled(false);
+	}
+	
+}

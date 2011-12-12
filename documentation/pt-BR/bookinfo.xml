@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<bookinfo>
+	<title>Demoiselle Nimble</title>
+	<subtitle>Guia do Usuário</subtitle>
+
+	<abstract>Guia de utilização da Ferramenta Demoiselle Nimble</abstract>
+	<titleabbrev>Demoiselle Nimble - Guia do usuário</titleabbrev>
+
+	<xi:include href="revhistory.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="authorgroup.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+</bookinfo>

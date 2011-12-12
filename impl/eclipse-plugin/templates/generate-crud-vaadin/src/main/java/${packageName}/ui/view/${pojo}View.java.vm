@@ -1,0 +1,28 @@
+package ${packageName}.ui.view;
+
+import br.gov.frameworkdemoiselle.template.AbstractCrudView;
+import br.gov.frameworkdemoiselle.ui.CrudForm;
+
+import ${packageName}.domain.${pojo};
+
+public class ${pojo}View extends AbstractCrudView<${pojo}> {
+
+	private static final long serialVersionUID = 1L;
+
+	public ${pojo}View() {
+		super(new CrudForm<${pojo}>(${pojo}.class));
+	}
+
+	public void init() {
+		super.init();
+		setCaption("${pojo}");
+
+		addComponent(getCrudForm());
+		addComponent(getListTable());
+	}
+
+	public void setDeleteButtonEnabled(boolean enabled) {	
+		getCrudForm().getButtonDelete().setEnabled(enabled);
+	}
+
+}

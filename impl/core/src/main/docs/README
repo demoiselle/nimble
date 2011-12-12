@@ -1,0 +1,24 @@
+GETTING STARTED
+=============================================================================
+
+To get started follow these steps:
+
+- create a DEMOISELLE_HOME environment variable that points to the path of the Demoiselle distribution (the folder contain this file)
+- add the /bin folder in the Demoiselle distribution to the PATH environment variable
+
+On a Windows computer these steps are done as follows:
+
+> set DEMOISELLE_HOME=C:\download\demoiselle
+> set PATH=%PATH%;%DEMOISELLE_HOME%\bin
+
+On a Unix-like computer these steps are done as follows:
+
+> export DEMOISELLE_HOME=~/download/demoiselle
+> chmod +x $DEMOISELLE_HOME/bin/demoiselle
+> export PATH=$PATH:$DEMOISELLE_HOME/bin
+
+You can now run the Demoiselle command, as follows:
+
+> demoiselle create-app br.gov.frameworkdemoiselle.sample school
+> cd school
+> demoiselle generate-crud br.gov.frameworkdemoiselle.sample Student

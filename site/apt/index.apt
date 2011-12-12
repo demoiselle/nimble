@@ -1,0 +1,47 @@
+                                    ------
+                                    Demoiselle Nimble
+
+Sobre Demoiselle Nimble
+
+  O <<Demoiselle Nimble>> é um <processador automatizado de templates>, sendo estes genéricos e
+  podendo inclusive ser criados pelo próprio utilizador.
+  
+  Um processador de templates (i.e., <template processor>, também conhecido como <template engine>
+  ou <template parser>) é um software ou um componente de software projetado para combinar um ou
+  mais templates com um modelo de dados a fim de produzir um ou mais documentos resultantes,
+  podendo estes serem páginas web, arquivos de texto ou códigos fontes.
+  
+[images/template-engine.png] Template Engine
+  
+  No caso específico do <<Demoiselle Nimble>>, no template são definidas estruturas de arquivos e
+  scripts de transformação utilizando linguagens como <<{{{http://velocity.apache.org/}Velocity}}>>
+  e <<{{{http://groovy.codehaus.org/}Groovy}}>>. Uma vez iniciado o processamento, este faz uso de
+  variáveis cujos valores foram definidos pelo usuário e que permitem com que os diretórios e
+  arquivos resultantes possam ser dinamicamente criados e ou modificados.
+  
+  Atualmente são oferecidos dois modos de operação para Demoiselle Nimble: os modos <<console>>
+  (terminal) e <<gráfico>> (GUI), ambos independentes de IDE. 
+  
+  São disponibilizados com o Demoiselle Nimble os seguintes templates voltados para a geração
+  automática de código para o <<Framework Demoiselle>>:
+  
+  * <<create-app-jsf>>: cria uma aplicação completa e funcional baseada no Demoiselle Framework v2 com
+  	JSF e JPA (usa internamente um arquétipo Maven)
+  
+  * <<create-app-jsf-v1>>: cria uma aplicação baseada no Demoiselle Framework v1
+  
+  * <<create-app-vaadin>>: cria uma aplicação baseada na extensão Demoiselle Vaadin (com Demoiselle Framework v2)
+  
+  * <<generate-crud-jsf>>: cria todos os artefatos necessários para o CRUD de uma dada entidade
+  	baseando-se no Demoiselle Framework v2
+  
+  * <<generate-crud-jsf-v1>>: cria os artefatos para o CRUD de uma entidade no Demoiselle Framework v1
+  
+  * <<generate-crud-vaadin>>: cria os artefatos para o CRUD de uma entidade na extensão Demoiselle Vaadin
+  	(com Demoiselle Framework v2)
+  
+  []
+
+  Para informações gerais sobre utilitários processadores de template, acesse o site
+  {{http://en.wikipedia.org/wiki/Template_processor}}.
+  

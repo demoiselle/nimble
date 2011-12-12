@@ -1,0 +1,51 @@
+package ${packageName}.persistence.dao.implementation;
+
+#if ($useDemoiselleCRUD)
+import br.gov.component.demoiselle.crud.supercrud.SuperCrudDAO;
+
+import ${packageName}.bean.${pojo};
+import ${packageName}.persistence.dao.I${pojo}DAO;
+
+public class ${pojo}DAO extends SuperCrudDAO<${pojo}> implements I${pojo}DAO {
+	private static final long serialVersionUID = 1L;
+}
+#else
+import java.util.List;
+
+import br.gov.framework.demoiselle.persistence.JPAGenericDAO;
+import br.gov.framework.demoiselle.util.page.Page;
+import br.gov.framework.demoiselle.util.page.PagedResult;
+
+import ${packageName}.bean.${pojo};
+import ${packageName}.persistence.dao.I${pojo}DAO;
+
+public class ${pojo}DAO extends JPAGenericDAO<${pojo}> implements I${pojo}DAO {
+
+	private static final long serialVersionUID = 1L;
+
+	public ${pojo} load(${pojo} ${bean}) {
+		return findById(${bean}.getId());
+	}
+
+	public ${pojo} insert(${pojo} ${bean}) {
+		return (${pojo}) super.insert(${bean});
+	}
+	
+	public void delete(${pojo} ${bean}) {
+		super.remove(${bean});
+	}
+
+	public void update(${pojo} ${bean}) {
+		super.update(${bean});
+	}
+
+	public List<${pojo}> listAll() {
+		return findAll();
+	}
+
+	public PagedResult<${pojo}> listAll(Page page) {
+		return findAll(page);
+	}
+
+}
+#end

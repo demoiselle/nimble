@@ -1,0 +1,38 @@
+package ${packageName}.message;
+
+import java.util.Locale;
+
+import br.gov.framework.demoiselle.core.message.IMessage;
+import br.gov.framework.demoiselle.core.message.Severity;
+
+public enum FatalMessage implements IMessage {
+	
+	GENERIC_FATAL("generic_fatal");
+	
+	private String label;
+	
+	private FatalMessage(String label) {
+		this.label = label;
+	}
+
+	public String getKey() {
+		return this.name();
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public Locale getLocale() {
+		return new Locale("pt", "BR");
+	}
+
+	public Severity getSeverity() {
+		return Severity.FATAL;
+	}
+	
+	public String getResourceName() {
+		return "errors";
+	}
+
+}

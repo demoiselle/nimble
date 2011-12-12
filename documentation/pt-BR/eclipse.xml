@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="eclipse" >
+	<abstract><para>Guia de uso para o <foreignphrase>Puglin para Eclipse</foreignphrase></para></abstract>
+	<title>Plugin para Eclipse IDE</title>
+	<para>Uma das opções de uso do Demoiselle Nimble é a sua integração à  <ulink url="http://www.eclipse.org/downloads/">IDE Eclipse</ulink> através de um plugin.
+	</para>
+	<para>A vantagem no uso deste plugin é que com a sua integração com a IDE, alguns parâmetros como diretórios
+	de <foreignphrase>Templates</foreignphrase>, diretório de saída, nome do projeto, podem ser fornecidos automaticamente
+	pela própria IDE.
+	</para>
+	<para>Como o Demoiselle-Nimble foi concebido para ser independente de Plataforma, o Eclipse faz apenas
+	a chamada à interface gráfica do Demoiselle-Nimble passando os parâmetros necessários e as atulizações 
+	no ambiente (worspace).</para>
+	<para>Assim, as instruções de uso dos <foreignphrase>templates</foreignphrase> são as mesmas contidas no 
+	 <xref linkend="QS_UI"/>	 
+	</para>
+	<para>Neste capítulo vamos nos ater apenas os detalhes referentes à intalação e uso no Eclipse</para>
+	<section id="eclipse_install">
+	<title>Instalação</title>
+		<para> Aqui, lembramos novamente que para usuários LINUX/DEBIAN existe o projeto Infra <ulink url="http://demoiselle.sourceforge.net/infra/"></ulink>
+		que facilita a instalação das ferramentas que o Demoiselle recomenda para uso em seu desenvolvimento.
+		</para>
+		<para>Os pré-requisitos para o uso da Plugin são os mesmos para o <xref linkend="setup"/> além é claro
+		da IDE Eclipse instalada</para>
+		<para>No Eclipse 3.6 (Helios) ou superior acione o menu <menuchoice><guimenu>Help</guimenu><guimenuitem>Install New Software</guimenuitem></menuchoice> 
+		</para>
+		<para>No Eclipse 3.5 (Helios) ou anterior acione o menu <menuchoice><guimenu>Help</guimenu><guimenuitem>Software Updates</guimenuitem></menuchoice> 
+		</para>
+		<para>A tela seguinte deverá ser apresentada</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallNewSoftware.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallNewSoftware.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela de instalação de Plugins para Eclipse</phrase>
+				</textobject>
+				<caption>
+					<para>Imagem da Tela de instalação de Plugins para Eclipse</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Clique no botão <guibutton>Add...</guibutton> para incluir um novo repositório, conforme a figura abaixo</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/AddRepository.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/AddRepository.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela para inclusão de novo repositório de plugin</phrase>
+				</textobject>
+				<caption>
+					<para>Tela para inclusão de novo repositório de plugin</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Nesta tela preecha as seguintes informações:</para>
+		 <para>
+		 	<itemizedlist>
+		 		<listitem><para><emphasis role="bold">Name:</emphasis><literal>Demoiselle Nimble</literal></para></listitem>
+		 		<listitem><para><emphasis role="bold">Location:</emphasis><literal>http://demoiselle.sourceforge.net/nimble/updatesite</literal></para></listitem>
+		 	</itemizedlist>
+		 </para>
+		 <para>Voltando à tela anterior, que deverá ser atualizada assim:</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallNewSoftware1.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallNewSoftware1.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Imagem da Tela de instalação de Plugins para Eclipse, com novo repositório</phrase>
+				</textobject>
+				<caption>
+					<para>Imagem da Tela de instalação de Plugins para Eclipse, com novo repositório</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>No quadro onde aparecem as opções <foreignphrase>Name</foreignphrase> e <foreignphrase>Version</foreignphrase>
+		 	Procure e marque a versão mais atual.Em seguida clique no botão <guibutton>Next &gt;</guibutton> </para>
+		  <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallNewSoftware2.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallNewSoftware2.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Imagem da Tela de detalhes da instalação do Plugin</phrase>
+				</textobject>
+				<caption>
+					<para>Imagem da Tela de detalhes da instalação do Plugin</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Se não houver erros ou avisos, clique no botão <guibutton>Next &gt;</guibutton> </para>
+		 <para>Na última tela marque a opção de aceite da licença e clique no botão <guibutton>Finish</guibutton> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallNewSoftware3.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallNewSoftware3.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Imagem da Tela de aceite da licença</phrase>
+				</textobject>
+				<caption>
+					<para>Imagem da Tela de aceite da licença</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Aguarde a instalação e reinicie o Eclipse, conforme será sugerido pelo próprio</para>
+	</section>
+	<beginpage/>
+	<section id="eclipse_uso">
+	<title>Instruções de Uso</title>
+		<para>Feita a instalação conforme as opções anteriores, já é possivel executar o Demoiselle Nimble, 
+		os acionadores estão em:
+		</para>
+		<para>
+			<itemizedlist>
+				<listitem>
+					<para> Um ícone na barra de ferramentas:</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Icone do Demoiselle Nimble na barra de ferramentas</phrase>
+							</textobject>
+							<caption>
+								<para>Icone do Demoiselle Nimble na barra de ferramentas</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+				<listitem>
+					<para>Em um Menu Próprio</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/MenuNimbleEclipe.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/MenuNimbleEclipe.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Icone do Demoiselle Nimble na barra de ferramentas</phrase>
+							</textobject>
+							<caption>
+								<para>Icone do Demoiselle Nimble na barra de ferramentas</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+			</itemizedlist>
+		</para>		
+	</section>
+</chapter>

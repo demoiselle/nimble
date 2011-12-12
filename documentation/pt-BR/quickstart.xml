@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="quickstart" >
+	<abstract><para>Guia de uso para o modo <foreignphrase>Desktop</foreignphrase></para></abstract>
+	<title>Guia Rápido</title>
+		<para> Após a instalação e configuração do <emphasis>Demoiselle Nimble</emphasis> no ambiente Desktop
+	 	(Linux ou ms-windows) a ferramenta estará pronta para execução. As formas de execução estão dividas em 2(dois)
+	 	modos: 
+		</para>
+		<section id="QS_UI" xreflabel="Guia - Interface Gráfica">
+			<title> Interface Gráfica</title>
+				<para> O Demoiselle Nimble apresenta uma opção de interface gráfica do tipo 
+				<ulink url="http://java.sun.com/docs/books/tutorial/uiswing/">JAVA-SE SWING</ulink>
+				e seu acionamento é simples, basta abrir um <foreignphrase>prompt</foreignphrase> de comando (no Windows)
+				ou um terminal (no Linux) e digite o comando:
+				
+				<sidebar><para><command>demoiselle -g</command></para></sidebar>
+				</para>
+				<para>Para usuários do ms-windows acostumados a usar o <foreignphrase>windows Explorer</foreignphrase> para encontrar os arquivos instalados no computador,
+				 basta também procurar o arquivo <emphasis>demoiselle.bat</emphasis> localizado na pasta /bin do diretório onde foi "instalado" o Demoiselle Nimble.
+				 Ao acionar este arquivo desta maneira o <foreignphrase>"defaul"</foreignphrase> é a interface gráfica.</para>
+				 <para>
+            		<mediaobject>
+		            	<imageobject role="fo">
+			                <imagedata fileref="images/DemoiselleNimbleTelaInicial.png"  format="PNG" align="center" scalefit="1" width="100%"/> 
+			            </imageobject>
+			            <imageobject role="html">
+		    	            <imagedata fileref="images/DemoiselleNimbleTelaInicial.png"  format="PNG" align="center"/>
+		        	    </imageobject>
+		        	    <textobject>
+    						<phrase>Tela Inicial do Demoiselle Nimble</phrase>
+  						</textobject>
+  						<caption>
+   							<para>Interface Gráfica do Demoiselle Nimble. Tela Principal
+							</para>
+  						</caption>		        	    
+		        	</mediaobject>            		
+				 </para>
+				 <para> Nesta tela Inicial há o botão <foreignphrase>B<emphasis role="underline">r</emphasis>owse...</foreignphrase> que permite que 
+				 seja selecionado o diretório onde estão os <foreignphrase>Templates</foreignphrase> a serem executados. Com a instalação do Demoiselle Nimble o
+				 diretório <emphasis>/templates</emphasis> é criado com os <foreignphrase>"defaults"</foreignphrase> disponibilizados pelo Demoiselle. Lembrando que 
+				 também é possível serem criados novos.				 				 				 
+				 </para>
+				 <para>Nesta tela, além da possibilidade de escolha dos diretórios de templates, deve ser selecionado o <foreignphrase>Template</foreignphrase>
+				 que deseja executar. E clicar no botão <foreignphrase><emphasis role="underline">N</emphasis>ext &gt;</foreignphrase> para prossegir a execução.				  
+				 </para>
+				 <para>As funções dos demais botões, na parte inferior da tela, são:
+				 	<itemizedlist>
+						<listitem><para><foreignphrase>&lt;<emphasis role="underline">B</emphasis>ack</foreignphrase>: 
+										Retorna à tela anterior (Desabilitado na primeira tela)
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">N</emphasis>ext &gt;</foreignphrase>:
+										Segue para a ação seguinte (próxima tela)
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">C</emphasis>ancel</foreignphrase>:
+										Cancela a operação e fecha a interface gráfica.
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">F</emphasis>inish</foreignphrase>
+										Aciona a execução do Template. Só é habilitado quando todas as variáveis (informações) necessárias foram completadas 
+								  </para>
+						</listitem>
+					</itemizedlist>
+				 </para>
+				 <para> Para os <foreignphrase>Templates</foreignphrase> fornecidos pelo Demoiselle serão 
+				 apresentadas as seguintes telas:				 
+				 </para>
+				 <section id="createapp">
+				 <title>Templates de Criação de Aplicações</title>				 
+				 <para>
+            		<mediaobject>
+		            	<imageobject role="fo">
+			                <imagedata fileref="images/createApp.png"  format="PNG" align="center" scalefit="1" width="100%"/> 
+			            </imageobject>
+			            <imageobject role="html">
+		    	            <imagedata fileref="images/createApp.png"  format="PNG" align="center"/>
+		        	    </imageobject>
+		        	    <textobject>
+    						<phrase>Tela dos Templates de Criação de Aplicação</phrase>
+  						</textobject>
+  						<caption>
+   							<para>Tela dos Templates de Criação de Aplicação
+							</para>
+  						</caption>		        	    
+		        	</mediaobject>            		
+				 </para>
+				 <para>As informações solicitadas nas telas são as mesmas para criação de aplicações JSF com Demoiselle v1, JSF com Demoiselle v2 e 
+				 Vaadin com Demoiselle v2, pois o <foreignphrase>Template</foreignphrase> faz somente a chamada ao Maven e aciona o arquétipo 
+				 Demoiselle já disponível no repositório no SourceForge </para>
+				 
+				 <para>Sendo elas:
+				 	<itemizedlist>
+						<listitem><para><foreignphrase><emphasis role="underline">1.</emphasis>Output Folder</foreignphrase>: 
+										Informar ou selecionar (usando botão "Browse...") em qual diretório deseja que o projeto seja criado.
+										A dica aqui é usar o diretório do <foreignphrase>workspace</foreignphrase>, se deseja usar o Eclipse como 
+										<abbrev>IDE</abbrev> de Desenvolvimento  
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">2.</emphasis>Package Name</foreignphrase>:
+										Informar o nome do pacote JAVA padrão da sua aplicação (ex: br.org.frameworkdemoiselle.)
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">3.</emphasis>Project Name</foreignphrase>:
+										O nome da aplicação/Projeto a ser criada.
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">4.</emphasis>Version</foreignphrase>
+										O número da versão inicial. 
+								  </para>
+						</listitem>
+					</itemizedlist>
+				 </para>
+				 </section>
+				 <section id="createcrud">
+				 <title>Templates de Geração de <abbrev>CRUD</abbrev> para JSF e VAADIN com Demoiselle v2.x</title>
+				 <para>Um <abbrev>CRUD</abbrev> acrônimo de Create, Retrieve, Update e Delete em língua Inglesa, são as operações básicas
+				 relacionadas ao uso de bancos de dados em aplicações, assim nestes Templates, os produtos gerados são as classes para 
+				 implementação destas operações</para>
+				  <para>
+            		<mediaobject>
+		            	<imageobject role="fo">
+			                <imagedata fileref="images/generateCRUD.png"  format="PNG" align="center" scalefit="1" width="100%"/> 
+			            </imageobject>
+			            <imageobject role="html">
+		    	            <imagedata fileref="images/generateCRUD.png"  format="PNG" align="center"/>
+		        	    </imageobject>
+		        	    <textobject>
+    						<phrase>Tela dos Templates de Geração de CRUD</phrase>
+  						</textobject>
+  						<caption>
+   							<para>Tela dos Templates de Geração de CRUD para Aplicações JSF e VAADIN com Demoiselle v2.x
+							</para>
+  						</caption>		        	    
+		        	</mediaobject>            		
+				 </para>
+				 <para>São estas as informações necessárias para o processamento destes templates</para>
+				 
+				 <para>
+				 	<itemizedlist>
+						<listitem><para><foreignphrase><emphasis role="underline">1.</emphasis>Output Folder</foreignphrase>: 
+										Informar ou selecionar (usando botão "Browse...") em qual diretório deseja que o projeto seja criado.
+										A dica aqui é usar o diretório do <foreignphrase>workspace</foreignphrase>, se deseja usar o Eclipse como 
+										<abbrev>IDE</abbrev> de Desenvolvimento  
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">2.</emphasis>Package Name</foreignphrase>:
+										Informar o nome do pacote JAVA padrão da sua aplicação (ex: br.org.frameworkdemoiselle.)
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">3.</emphasis>Entity Name</foreignphrase>:
+										O nome da Entidade para qual será gerado o CRUD
+								  </para>
+						</listitem>						
+					</itemizedlist>
+				 </para>
+				 </section>
+				 <section id="createcrudv1">
+				 <title>Template de Geração de <abbrev>CRUD</abbrev> para JSF com Demoiselle v1.x</title>
+				 <para>Para versão 1.x do Demoiselle Framework a apresentação da tela apresenta uma pequena diferença</para>
+				  <para>
+            		<mediaobject>
+		            	<imageobject role="fo">
+			                <imagedata fileref="images/generateCRUDJSFv1.png"  format="PNG" align="center" scalefit="1" width="100%"/> 
+			            </imageobject>
+			            <imageobject role="html">
+		    	            <imagedata fileref="images/generateCRUDJSFv1.png"  format="PNG" align="center"/>
+		        	    </imageobject>
+		        	    <textobject>
+    						<phrase>Tela do Template de Geração de CRUD para Demoiselle v1.x</phrase>
+  						</textobject>
+  						<caption>
+   							<para>Tela do Templates de Geração de CRUD para Aplicações JSF com Demoiselle v1.x
+							</para>
+  						</caption>		        	    
+		        	</mediaobject>            		
+				 </para>
+				 <para>São estas as informações necessárias para o processamento deste template</para>
+				 
+				 <para>
+				 	<itemizedlist>
+						<listitem><para><foreignphrase><emphasis role="underline">1.</emphasis>Output Folder</foreignphrase>: 
+										Informar ou selecionar (usando botão "Browse...") em qual diretório deseja que o projeto seja criado.
+										A dica aqui é usar o diretório do <foreignphrase>workspace</foreignphrase>, se deseja usar o Eclipse como 
+										<abbrev>IDE</abbrev> de Desenvolvimento  
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">2.</emphasis>Package Name</foreignphrase>:
+										Informar o nome do pacote JAVA padrão da sua aplicação (ex: br.org.frameworkdemoiselle.)
+								  </para>
+						</listitem>
+						<listitem><para><foreignphrase><emphasis role="underline">3.</emphasis>Entity Name</foreignphrase>:
+										O nome da Entidade para qual será gerado o CRUD
+								  </para>
+						</listitem>						
+						<listitem><para><foreignphrase><emphasis role="underline">4.</emphasis>Use CRUD component</foreignphrase>:
+										Esta opção deve ser marcada quando a aplicação alvo utiliza o componente Demoiselle-CRUD.
+								  </para>
+						</listitem>
+					</itemizedlist>
+				 </para>
+				 </section>				 
+		</section>
+		<section id="QS_CL">
+			<title>Linhas de comando</title>
+			<para> A outra opção para uso do Demoiselle Nimble para <foreignphrase>Desktop</foreignphrase>
+			é através de linhas de comando. E neste caso haverão algumas diferença conforme o Sistema Operacional
+			que estiver sendo utilizado. Assim neste guia dividermos os exemplos seções para cada um.			
+			</para>
+			<para>Um dos motivos para se usar linha de comando é a possibilidade passagem de parâmetros para o aplicativo, 
+			os parâmetros do Demoiselle Nimble são estes: 
+			</para>
+			<para>
+				 <itemizedlist>
+					<listitem><para><emphasis role="bold">-h</emphasis>: apresenta um texto de ajuda.</para></listitem>
+					<listitem><para><emphasis role="bold">-g</emphasis>: aciona a inteface gráfica.</para></listitem>
+					<listitem><para><emphasis role="bold">-i</emphasis>: informa o diretório de templates</para></listitem>
+					<listitem><para><emphasis role="bold">-o</emphasis>: especifica o diretório de saida, onde serão gerados os artefatos</para></listitem>
+					<listitem><para><emphasis role="bold">&lt;&lt;Nome do Template&gt;&gt;</emphasis>: Nome do template a ser processado</para></listitem>
+					<listitem><para><emphasis role="bold">-v []lista de variáveis=valor</emphasis>: lista com variáveis que serão usadas pelo template</para></listitem>
+				</itemizedlist>
+			</para>
+			
+			<section id="cl_linux">
+			<title>Executando em ambiente LINUX</title>
+				<para>Boa parte dos usuários LINUX estão habituados a utilizar os terminais de linhas de comando para
+				executar operações com aplicativos, assim o Demoiselle Nimble também oferece esta opção. 
+				</para>
+				<para>Tendo sido configuradas corretamente as variáveis de ambiente, as seguintes operações podem ser executadas:</para>
+				 <para>
+				 	<itemizedlist>
+						<listitem><para>demoiselle &lt;&lt;Nome do Template&gt;&gt;</para>
+									<para>Exemplo</para>
+									<para><sidebar><cmdsynopsis><command>demoiselle create-app-jsf</command></cmdsynopsis></sidebar></para>
+						</listitem>
+						<listitem><para>demoiselle &lt;&lt;Nome do Template&gt;&gt; &lt;&lt;Parâmetros&gt;&gt;</para>
+									<para>Exemplo</para>
+									<para><sidebar><cmdsynopsis><command>demoiselle create-app-jsf -i /templates/ -o /temp/</command></cmdsynopsis></sidebar></para>
+									<para><sidebar><cmdsynopsis><command>demoiselle create-app-jsf -i /templates/ -o /temp/ br.gov.frameworkdemoiselle.sample myApp 1.0.0</command></cmdsynopsis></sidebar></para>									
+						</listitem>
+						<listitem><para>Também é possível passar parâmetros para a interface Gráfica</para>
+									<para>Exemplo</para>
+									<para><sidebar><cmdsynopsis><command>demoiselle create-app-jsf -g -i ../templates/ -o /temp/</command></cmdsynopsis></sidebar></para>
+									<para><sidebar><cmdsynopsis><command>demoiselle create-app-jsf -g -i ../templates/ -o /temp/ br.gov.frameworkdemoiselle.sample myApp 1.0.0</command></cmdsynopsis></sidebar></para>									
+						</listitem>
+					</itemizedlist>			 
+				 </para>				
+			</section>
+			<section id="cl_windows">
+			<title> Executando em ambiente MS-Windows <footnote><para>MS-Windos é marca registrada da Microsoft</para></footnote> </title>
+				<para>Embora os usuário de sistemas operacionais MS-windows não costumem utilizar terminais de linhas de comandos, o Demoiselle-Nimble
+				 também oferece este opção. Atualmente com algumas diferenças no uso, por ser a primeira versão do <foreignphrase>script (.bat)</foreignphrase>				 
+				</para>
+				<para>Novamente, é preciso que tenham sido configuradas corretamente as variáveis de ambiente, e abrir um 
+				<foreignphrase>"Prompt de Comando"</foreignphrase> para que as seguintes operações possam ser executadas:</para>
+				 <para>
+				 	<itemizedlist>
+						<listitem><para>demoiselle &lt;&lt;Parâmetros&gt;&gt;</para>
+									<para>Exemplo</para>
+									<para><sidebar><cmdsynopsis><command>demoiselle -i c:\temp\templates\create-app-jsf -o c:\temp\</command></cmdsynopsis></sidebar></para>
+									<para><sidebar><cmdsynopsis><command>demoiselle -i c:\temp\templates\crate-app-jsf -o c:\temp -v projectName=ProjetoNovo</command></cmdsynopsis></sidebar></para>									
+						</listitem>
+						<listitem><para>Também é possível passar parâmetros para a interface Gráfica</para>
+									<para>Exemplo</para>
+									<para><sidebar><cmdsynopsis><command>demoiselle -g -i c:\temp\templates\create-app-jsf -o c:\temp</command></cmdsynopsis></sidebar></para>
+						</listitem>
+					</itemizedlist>			 
+				 </para>				
+			</section>
+		</section>		
+</chapter>
+

@@ -1,0 +1,72 @@
+Quick Start
+
+The following makes it simple to start a grails project. There is also a series of screencasts that will take you from the basics to a full working Grails application.
+
+    * Quick Start
+          o Create a Grails project
+          o Configure a Data Source (Optional)
+          o Create a Domain Class
+          o Create a controller
+          o Start Grails
+    * What's Next
+
+Create a Grails project
+
+Once you have installed Grails you can use the built-in target for creating new projects:
+
+grails create-app my-project
+
+This creates a new directory named after your application and containing the project structure below:
+
+%PROJECT_HOME%
+    + grails-app
+       + conf                 ---> location of configuration artifacts 
+           + hibernate        ---> optional hibernate config
+           + spring           ---> optional spring config
+       + controllers          ---> location of controller artifacts
+       + domain               ---> location of domain classes
+       + i18n                 ---> location of message bundles for i18n
+       + services             ---> location of services
+       + taglib               ---> location of tag libraries
+       + util                 ---> location of special utility classes 
+       + views                ---> location of views
+           + layouts          ---> location of layouts
+   + lib
+   + scripts                  ---> scripts
+   + src
+       + groovy               ---> optional; location for Groovy source files
+                                   (of types other than those in grails-app/*)
+       + java                 ---> optional; location for Java source files
+   + test                     ---> generated test classes
+   + web-app
+       + WEB-INF
+
+Create a controller
+
+Controllers are central to generating your user interface or providing a programmatic REST interface. They typically handle the web requests that come from a browser or some other client and you'll find that each URL of your application is usually handled by one controller.
+
+Grails provides a feature called scaffolding that automatically creates a user interface for a domain class that allows you create new instances, modify them, and delete them. Enabling scaffolding is very straightforward. We start by creating a controller for our domain class:
+
+grails create-controller org.example.Book // Note the capital B
+
+Note how we specify the full class name of the domain class, including the package. This commands creates us the file grails-app/controllers/org/example/BookController.groovy that contains our controller code. Notice how it is named after the domain class but with a 'Controller' suffix? The suffix is important as it identifies the class as a controller.
+
+So now that we have the controller class, open it up and modify it to make the content look like
+
+package org.example
+
+class BookController { def scaffold = Book // Note the capital "B" }
+
+This will mean removing the def index = { } line, but that's fine. You're now ready to test out your first Grails application!
+
+What's Next
+
+So, you've written your first Grails application. What should your next steps be? Let's start by looking at some enhancements you can make to the application.
+
+And then…
+
+    * Check out the Tutorials available
+    * Browse the User Guide
+    * See Checking Projects into SVN on how to add your new grails application into source control.
+    * Import your grails application into an IDE
+    * Browse the many grails plugins and try some out

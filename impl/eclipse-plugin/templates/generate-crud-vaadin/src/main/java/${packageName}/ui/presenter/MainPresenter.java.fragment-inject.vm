@@ -1,0 +1,4 @@
+	@Inject
+	private ${pojo}Presenter ${bean}Presenter;
+
+	

@@ -1,0 +1,115 @@
+                                    ------
+                                    Templates
+                                    
+Templates
+
+%{toc|section=1|fromDepth=1|toDepth=3}
+
+* {create-app-jsf}
+
+  O template <<Demoiselle v2 Create JSF Application>> cria uma aplicação completa usando o
+  <<Framework Demoiselle 2.x>> com tecnologias e especificações JSF 2 e JPA 2.
+  
+  Internamente é feito uso de um arquétipo do Maven, sendo que o <<Apache Maven>> precisa
+  estar devidamente instalado na máquina.
+  
+  * Variáveis
+    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    
+    * <<Project Name>>: o nome do projeto a ser criado (ex: <<<escola>>>)
+    
+    * <<Version>>: a versão do artefato a ser produzido (ex: <<<1.0.0-SNAPSHOT>>>)
+    
+    []
+
+  []
+
+* {generate-crud-jsf}
+
+  O template <<Demoiselle v2 Generate JSF CRUD>> gera todos os artefatos envolvidos em um CRUD da
+  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>>.
+  
+  * Variáveis
+    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    
+    * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
+    
+    []
+
+  []
+
+* {create-app-jsf-v1}
+
+  O template <<Demoiselle v1 Create JSF Application>> cria uma aplicação completa usando o
+  <<Framework Demoiselle 1.x>> com tecnologias e especificações JSF 1 e JPA 1.
+  
+  Internamente é feito uso de um arquétipo do Maven, sendo que o <<Apache Maven>> precisa
+  estar devidamente instalado na máquina.
+  
+  * Variáveis
+    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    
+    * <<Project Name>>: o nome do projeto a ser criado (ex: <<<escola>>>)
+    
+    * <<Version>>: a versão do artefato a ser produzido (ex: <<<1.0.0-SNAPSHOT>>>)
+    
+    []
+
+  []
+
+* {generate-crud-jsf-v1}
+
+  O template <<Demoiselle v1 Generate JSF CRUD>> gera todos os artefatos envolvidos em um CRUD da
+  entidade especificada. Basea-se no <<Framework Demoiselle 1.x>>.
+  
+  * Variáveis
+    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    
+    * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
+    
+    * <<Use CRUD Component>>: define se o componente Demoiselle CRUD será usado (default: <<<yes>>>)
+    
+    []
+
+  []
+
+* {create-app-vaadin}
+
+  O template <<Demoiselle v2 Create Vaadin Application>> cria uma aplicação completa usando o
+  <<Framework Demoiselle 2.x>> com tecnologias e especificações Vaadin e JPA 2.
+  
+  Internamente é feito uso de um arquétipo do Maven, sendo que o <<Apache Maven>> precisa
+  estar devidamente instalado na máquina.
+  
+  * Variáveis
+    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    
+    * <<Project Name>>: o nome do projeto a ser criado (ex: <<<escola>>>)
+    
+    * <<Version>>: a versão do artefato a ser produzido (ex: <<<1.0.0-SNAPSHOT>>>)
+    
+    []
+
+  []
+
+* {generate-crud-vaadin}
+
+  O template <<Demoiselle v2 Generate Vaadin CRUD>> gera todos os artefatos envolvidos em um CRUD da
+  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>> e na extensão <<Demoiselle Vaadin>>.
+  
+  * Variáveis
+    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    
+    * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
+    
+    []
+
+  []
+  
+[]

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
+	<artifactId>demoiselle-nimble</artifactId>
+	<version>1.0.3</version>
+	<packaging>jar</packaging>
+
+	<name>Demoiselle Nimble</name>
+	<description>Demoiselle Tools</description>
+	<url>http://demoiselle.sourceforge.net/wizard/demoiselle-nimble/${project.version}/</url>
+	
+	<organization>
+		<name>SERPRO</name>
+		<url>http://www.serpro.gov.br</url>
+	</organization>
+
+	<properties>
+		<encoding.default>UTF-8</encoding.default>
+		<htdocs.url>scp://shell.sourceforge.net/home/project-web/demoiselle/htdocs</htdocs.url>
+		<site.url>${htdocs.url}/tools/nimble</site.url>
+		<repository.url>${htdocs.url}/repository/release</repository.url>
+		<snapshot.url>${htdocs.url}/repository/snapshot</snapshot.url>
+		<java-version>1.6</java-version>
+		<groovy-version>1.7.8</groovy-version>
+		<gmaven-version>1.2</gmaven-version>
+		<junit-version>4.8.1</junit-version>
+		<velocity-version>1.6.4</velocity-version>
+		<freemarker-version>2.3.9</freemarker-version>
+		<commons-io-version>1.3.2</commons-io-version>
+		<commons-cli-version>1.2</commons-cli-version>
+		<miglayout-version>3.7.3</miglayout-version>
+		<slf4j.version>1.5.10</slf4j.version>
+	</properties>
+
+	<licenses>
+		<license>
+			<name>LGPL</name>
+			<url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+		</license>
+	</licenses>
+
+	<mailingLists>
+		<mailingList>
+			<name>Demoiselle Users</name>
+			<archive>https://sourceforge.net/mailarchive/forum.php?forum_name=demoiselle-users</archive>
+			<post>demoiselle-users@lists.sourceforge.net</post>
+			<subscribe>https://lists.sourceforge.net/lists/listinfo/demoiselle-users</subscribe>
+			<unsubscribe>https://lists.sourceforge.net/lists/listinfo/demoiselle-users</unsubscribe>
+		</mailingList>
+	</mailingLists>	
+
+	<distributionManagement>
+		<site>
+			<id>demoiselle.sourceforge.net</id>
+			<url>${site.url}/${project.version}</url>
+		</site>
+		<repository>
+			<id>demoiselle.sourceforge.net</id>
+			<url>${repository.url}</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>demoiselle.sourceforge.net</id>
+			<url>${snapshot.url}</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:svn:http://demoiselle.svn.sourceforge.net/svnroot/demoiselle/wizard/tags</connection>
+		<developerConnection>scm:svn:https://demoiselle.svn.sourceforge.net/svnroot/demoiselle/wizard/tags</developerConnection>
+		<url>scm:svn:http://demoiselle.svn.sourceforge.net/viewvc/demoiselle/wizard/tags</url>
+	</scm>
+
+	<repositories>
+		<repository>
+			<id>demoiselle.sourceforge.net-snapshot</id>
+			<url>http://demoiselle.sourceforge.net/repository/snapshot</url>
+		</repository>
+		<repository>
+			<id>demoiselle.sourceforge.net-release</id>
+			<url>http://demoiselle.sourceforge.net/repository/release</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!-- <dependency> -->
+		<!-- <groupId>org.codehaus.groovy.maven.runtime</groupId> -->
+		<!-- <artifactId>gmaven-runtime-default</artifactId> -->
+		<!-- <version>1.0-rc-3</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>1.7.8</version>
+			<!-- <version>${groovy-version}</version> -->
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>${commons-cli-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout</artifactId>
+			<version>${miglayout-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jaxme</groupId>
+			<artifactId>jaxmejs</artifactId>
+			<version>0.5.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<version>2.7.5</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- BEGIN GMAVEN RESOURCES -->
+		<!-- These resources are needed to integrate the gmaven plugin with the source plugin -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>src/main/groovy</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/java</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/groovy</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<!-- END GMAVEN RESOURCES -->
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>br.gov.frameworkdemoiselle.tools.nimble.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ComponentsXmlResourceTransformer" />
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>compressed-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+						<configuration>
+							<descriptor>${project.basedir}/src/main/assembly/compressed-assembly.xml</descriptor>
+							<finalName>demoiselle-tools-${project.version}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.groovy.maven</groupId> -->
+			<!-- <artifactId>gmaven-plugin</artifactId> -->
+			<!-- <version>1.0</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <goals> -->
+			<!-- <goal>generateStubs</goal> -->
+			<!-- <goal>compile</goal> -->
+			<!-- <goal>generateTestStubs</goal> -->
+			<!-- <goal>testCompile</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.gmaven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<version>1.3</version>
+				<!-- <version>${gmaven-version}</version> -->
+				<configuration>
+					<providerSelection>1.7</providerSelection>
+					<source />
+					<targetBytecode>${java-version}</targetBytecode>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.gmaven.runtime</groupId>
+						<artifactId>gmaven-runtime-1.7</artifactId>
+						<version>1.3</version>
+						<!-- <version>${gmaven-version}</version> -->
+						<exclusions>
+							<exclusion>
+								<groupId>org.codehaus.groovy</groupId>
+								<artifactId>groovy-all</artifactId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-all</artifactId>
+						<version>1.7.8</version>
+						<!-- <version>${groovy-version}</version> -->
+					</dependency>
+				</dependencies>
+				<executions>
+					<!-- <execution> -->
+					<!-- <phase>groovy</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>generateStubs</goal> -->
+					<!-- <goal>compile</goal> -->
+					<!-- <goal>generateTestStubs</goal> -->
+					<!-- <goal>testCompile</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+					<execution>
+						<id>prepare-groovy</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>generateStubs</goal>
+							<goal>compile</goal>
+							<goal>generateTestStubs</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.0.1</version>
+				<configuration>
+					<inputEncoding>${encoding.default}</inputEncoding>
+					<outputEncoding>${encoding.default}</outputEncoding>
+					<locales>pt_BR</locales>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.1.2</version>
+				<configuration>
+					<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+				<!-- 
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>summary</report>
+							<report>dependencies</report>
+							<report>license</report>
+							<report>scm</report>
+							<report>mailing-list</report>
+							<report>issue-tracking</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+				 -->
+			</plugin>
+			 <!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<links>
+						<link>http://download.oracle.com/javase/6/docs/api/</link>
+					</links>
+					<encoding>${encoding.default}</encoding>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			 -->
+			<!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<inputEncoding>${encoding.default}</inputEncoding>
+					<outputEncoding>${encoding.default}</outputEncoding>
+				</configuration>
+			</plugin>
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+		</plugins>
+	</reporting>
+	
+</project>

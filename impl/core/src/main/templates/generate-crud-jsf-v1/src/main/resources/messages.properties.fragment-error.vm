@@ -1,0 +1,4 @@
+
+${bean}_insert_nok = ${pojo} Erro ao tentar inserir!
+${bean}_update_nok = ${pojo} Erro ao tentar Altera\u00E7\u00E3o!
+${bean}_delete_nok = ${pojo} Erro ao tentar exclus\u00E3o! 

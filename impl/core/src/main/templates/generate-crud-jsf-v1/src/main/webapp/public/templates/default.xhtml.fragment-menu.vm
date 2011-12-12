@@ -1,0 +1,9 @@
+#if ($useDemoiselleCRUD)
+							<rich:toolBarGroup>
+								<h:commandLink value="${pojo}" title="${pojo}" action="${bean}_crud" />
+							</rich:toolBarGroup>
+#else
+							<rich:toolBarGroup>
+								<h:commandLink value="${pojo}" title="${pojo}" action="#{${bean}MB.list}" />
+							</rich:toolBarGroup>
+#end

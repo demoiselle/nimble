@@ -1,0 +1,4 @@
+
+    <managed-bean>
+        $mbeanName
+    </managed-bean>

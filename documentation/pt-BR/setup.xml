@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="setup" xreflabel="Modo Desktop">
+	<abstract>Orientações de instalação e configuração para o modo Desktop</abstract>
+	<title>Instalação</title>
+	<para>Atualmente há dois modos para fazer a instalação do Demoiselle Nimble, que são:</para>
+	<section id="pacote">
+		<title>Via pacotes Debian GNU/Linux</title>
+			<para> Foi disponibilizado um pacote Debian chamado demoiselle-nimble para o 
+			Demoiselle Nimble no repositório do projeto Demoiselle Infra.
+			Para instalá-lo nesta plataforma, basta executar o comando a seguir em um terminal do Linux:
+			</para>
+			<para><sidebar><cmdsynopsis><command># apt-get install demoiselle-nimble</command></cmdsynopsis></sidebar></para>
+			<para>
+			Para maiores informações sobre a configuração e o modo de utilização dos pacotes de software do 
+			projeto Demoiselle Infra para Linux, acesse o site <ulink url="http://demoiselle.sourceforge.net/infra/"></ulink>
+			</para>
+		<note><para>Recomendamos utilizar a solução Demoiselle Infra, que irá resolver as outras questões de ambiente de desenvolvimento para o Demoiselle</para></note>
+	</section>
+	<section>
+		<title>Instalação a partir do download</title>
+		<para> 
+		<itemizedlist>
+			<listitem>Pré-requisitos
+				<para>Antes de começar a usar o Demoiselle Nimble, você precisa ter instalado ou instalar 
+				uma <emphasis>JDK </emphasis>- Java Development Kit. <ulink url="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Site de Download da SUN-JDK </ulink> 
+				Veja que não basta ter simplesmente uma JRE - Java Runtime Environment, é necessária uma JDK pois o Nimble executa operações que necessitam
+				de bibliotecas que não estão disponíveis numa JRE.
+				Além disso, é preciso definir a variável de ambiente JAVA_HOME apontando para o caminho onde se localiza a JDK (ex: /usr/lib/jvm/java-6-openjdk/).
+				
+				<example label="SO LINUX">
+					<sidebar><cmdsynopsis><command>export JAVA_HOME=/usr/lib/jvm/java-6-sun/ </command></cmdsynopsis></sidebar>
+				</example>
+				No LINUX, o mais prático é incluir no arquivo /etc/profile 
+				<example label="SO ms-windows">
+					<sidebar><cmdsynopsis><command>set JAVA_HOME=C:\Arquivos de programas\Java\jdk1.6.0_17\</command></cmdsynopsis></sidebar>
+				</example>
+				Para ms-windows, o indicado é abrir as configurações de ambiente (Icone Meu Computador) e incluir uma nova variável de ambiente.
+				<note>Recomenda-se utilizar a versão 1.5 ou superior da JDK. Porém se seu objetivo é utilizar a versão 2.0 do Demoiselle a versão 
+				recomendada é a 1.6</note>				
+				</para>
+				<para> Para utilizar alguns dos templates de criação de aplicações (create-app-*), também é preciso ter instalado e configurado
+				o  <ulink url="http://maven.apache.org">APACHE MAVEN</ulink></para>
+				<para> No ambiente LINUX Ubuntu/Debian o pacote Demoiselle Infra também já fornece um pacote para esta ferramenta:
+				<sidebar><cmdsynopsis><command># apt-get install demoiselle-maven2</command></cmdsynopsis></sidebar>
+				</para>
+				<para> Na página de <ulink url="http://maven.apache.org/download.html">Download</ulink> há uma seção chamada <foreignphrase>Installation Instructions</foreignphrase>
+				que orienta a instalação e configuração desta ferramenta.				
+				</para>
+			</listitem>
+			<listitem>Passo a passo
+				<itemizedlist>
+				    <listitem> <para>Faça o <ulink url="http://sourceforge.net/projects/demoiselle/files/tools/nimble">Download</ulink> da última release do Demoiselle Nimble (disponível nos formatos ZIP e TGZ)</para></listitem>
+    				<listitem>Extraia os arquivos em uma localização conveniente (ex: C:\Demoiselle no Windows ou ~/demoiselle no Linux)</listitem>
+    				<listitem><para>Crie uma variável chamada DEMOISELLE_HOME que aponte para o caminho definido no passo anterior
+    					<example label="SO LINUX">
+							<sidebar>
+								<para>
+									<cmdsynopsis>
+											<command>export DEMOISELLE_HOME=~/demoiselle</command>
+									</cmdsynopsis> 
+									<cmdsynopsis>
+											<command>export PATH=$PATH:$DEMOISELLE_HOME/bin</command>
+									</cmdsynopsis>
+								</para>
+									
+							</sidebar>
+						</example>
+						No LINUX, o mais prático é incluir no arquivo /etc/profile
+						Altere os direitos dos arquivos em "/bin" para permissão de execução <command>chmod +x $DEMOISELLE_HOME/bin/demoiselle</command>
+						<example label="SO ms-windows">
+							<sidebar>
+								<para>
+									<cmdsynopsis>
+											<command>set DEMOISELLE_HOME=C:\Demoiselle</command>
+									</cmdsynopsis>
+									<cmdsynopsis>
+											<command>set DEMOISELLE=%DEMOISELLE_HOME%\bin</command>
+									</cmdsynopsis>
+									<cmdsynopsis>
+											<command>set PATH=%PATH%;%DEMOISELLE%</command>											
+									</cmdsynopsis>
+								</para>
+							</sidebar>
+						</example>
+							Para ms-windows, o indicado é abrir as configurações de ambiente (Icone Meu Computador) e incluir novas variáveis de ambiente.
+						</para>
+					</listitem>    				
+    				<listitem> 
+    					<para>Abra um <foreignphrase>prompt</foreignphrase> de comando (no Windows) ou um terminal (no Linux) e digite o comando <emphasis>"demoiselle"</emphasis> a fim de verificar o sucesso da instalação</para>
+    				 </listitem>			
+					</itemizedlist>			
+			</listitem>			
+		</itemizedlist>
+		</para>
+	</section>	
+</chapter>

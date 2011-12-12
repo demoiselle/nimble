@@ -1,0 +1,3 @@
+import ${packageName};
+class MyBeanMB {
+}

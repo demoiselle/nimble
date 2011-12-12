@@ -1,0 +1,20 @@
+
+#if ($useDemoiselleCRUD)
+		<navigation-case>
+			<from-outcome>${bean}_crud</from-outcome>
+			<to-view-id>/private/pages/${bean}_crud.xhtml</to-view-id>
+		</navigation-case>
+#else
+		<navigation-case>
+			<from-outcome>${bean}_edit</from-outcome>
+			<to-view-id>/private/pages/${bean}_edit.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>${bean}_list</from-outcome>
+			<to-view-id>/private/pages/${bean}_list.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>${bean}_view</from-outcome>
+			<to-view-id>/private/pages/${bean}_view.xhtml</to-view-id>
+		</navigation-case>
+#end

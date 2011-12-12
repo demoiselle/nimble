@@ -1,0 +1,6 @@
+
+		<dependency>
+			<groupId>br.gov.component.demoiselle</groupId>
+			<artifactId>demoiselle-crud</artifactId>
+			<version>1.0.0</version>
+		</dependency>

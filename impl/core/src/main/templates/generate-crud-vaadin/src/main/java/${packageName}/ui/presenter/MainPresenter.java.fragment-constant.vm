@@ -1,0 +1,3 @@
+	public static final String MENU_${pojo.toUpperCase()} = "${pojo}";
+	
+	

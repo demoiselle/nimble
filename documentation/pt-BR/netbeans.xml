@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="netbeans" >
+	<abstract><para>Guia de uso para o <foreignphrase>Puglin para NetBeansIDE</foreignphrase></para></abstract>
+	<title>Plugin para NetBeans IDE</title>	
+	<para>Assim como no Eclipse o Demoiselle Nimble também tem a sua integração à  <ulink url="http://netbeans.org/downloads/">IDE NetBeans</ulink> através de um plugin.
+	</para>
+	<para>Como o Demoiselle-Nimble foi concebido para ser independente de Plataforma, o Netbeans faz apenas uma
+	a chamada à interface gráfica do Demoiselle-Nimble.</para>
+	<para>Assim, as instruções de uso dos <foreignphrase>templates</foreignphrase> são as mesmas contidas no 
+	 <xref linkend="QS_UI"/>	 
+	</para>
+	<para>Neste capítulo vamos nos ater apenas os detalhes referentes à intalação e uso no NetBeans</para>
+	<section id="netbeans_install">
+	<title>Instalação</title>
+		<para>Os pré-requisitos para o uso da Plugin são os mesmos para o <xref linkend="setup"/> além é claro
+		da IDE NetBeans instalada (Testada com v 7.0)
+		</para>
+		<para>Baixe o arquivo de instalação do pluguin do endereço: <ulink url="http://demoiselle.sourceforge.net/nimble/netbeans/br-gov-frameworkdemoiselle-tools-nimble-netbeans.nbm"></ulink>
+		</para>
+		<para>No ambiente de desenvolvimento do NetBeans acione o menu <menuchoice><guimenu>Ferramentas</guimenu><guimenuitem>Plugins</guimenuitem></menuchoice> 
+		</para>
+		<para>A tela seguinte deverá ser apresentada</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NetBeans01.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NetBeans01.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela de instalação de Plugins para NetBeans</phrase>
+				</textobject>
+				<caption>
+					<para>Tela de instalação de Plugins para NetBeans</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Selecione a aba <emphasis role="bold">Baixados</emphasis> e clique no botão <guibutton> <para><emphasis role="underline">A</emphasis>dicionar Plug-ins...</para> </guibutton> para incluir um novo repositório, conforme a figura abaixo</para>
+		 <para>Na tela abaixo selecione o arquivo<emphasis>br-gov-frameworkdemoiselle-tools-nimble-netbeans.nbm</emphasis> no diretório onde foi baixado o Plugin</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NetBeans02.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NetBeans02.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela para inclusão de novo repositório de plugin</phrase>
+				</textobject>
+				<caption>
+					<para>Tela para inclusão de novo repositório de plugin</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Voltando à tela anterior, que deverá ser atualizada assim:</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NetBeans03.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NetBeans03.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela de instalação de Plugins para NetBeans, com novo plugin</phrase>
+				</textobject>
+				<caption>
+					<para>Tela de instalação de Plugins para NetBeans, com novo plugin</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>No quadro onde aparecem as colunas <emphasis role="bold">Instalar</emphasis> e <emphasis role="bold">Nome</emphasis>
+		 	Marque a coluna Instalar.Em seguida clique no botão com o mesmo nome <guibutton> <para><emphasis role="underline">I</emphasis>nstalar</para> </guibutton> 
+		 	no canto inferior esquerdo da tela</para>
+		  <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NetBeans04.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NetBeans04.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Imagem da Tela de detalhes da instalação do Plugin</phrase>
+				</textobject>
+				<caption>
+					<para>Imagem da Tela de detalhes da instalação do Plugin</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Se não houver erros ou avisos, clique no botão <guibutton><para><emphasis role="underline">P</emphasis>róximo &gt;</para></guibutton> </para>
+		 <para>Na próxima tela marque a opção de aceite da licença e clique no botão <guibutton> <para><emphasis role="underline">I</emphasis>nstalar</para> </guibutton> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NetBeans05.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NetBeans05.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Imagem da Tela de aceite da licença</phrase>
+				</textobject>
+				<caption>
+					<para>Imagem da Tela de aceite da licença</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na tela seguinte clique no botão <guibutton> <para><emphasis role="underline">C</emphasis>ontinuar</para> </guibutton> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NetBeans06.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NetBeans06.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela de sequência de instalação</phrase>
+				</textobject>
+				<caption>
+					<para>Tela de sequência de instalação</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Aguarde a instalação</para>
+	</section>
+	<beginpage/>
+	<section id="netbeans_uso">
+	<title>Instruções de Uso</title>
+		<para>Feita a instalação conforme as opções anteriores, já é possivel executar o Demoiselle Nimble</para>
+		<para>Nesta versão do plugin é preciso que seja criado um projeto para que o plugin seja habilitado</para>
+		<para>Recomendamos usar o arquétipo Maven do Demoiselle <ulink url="http://demoiselle.sourceforge.net/repository/archetype-catalog.xml"></ulink></para>
+		<para>Depois de criado, selecione o projeto e veja onde estão os acionadores do Plugin Demoiselle Nimble</para>
+		<para>
+			<itemizedlist>
+				<listitem>
+					<para> Um ícone na barra de ferramentas:</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/iconeNimbleNetbeans.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/iconeNimbleNetbeans.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Icone do Demoiselle Nimble na barra de ferramentas</phrase>
+							</textobject>
+							<caption>
+								<para>Icone do Demoiselle Nimble na barra de ferramentas</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+				<listitem>
+					<para>Sub-item no Menu Ferramentas</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/MenuNimbleNetBeans.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/MenuNimbleNetBeans.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Sub-item Demoiselle Nimble</phrase>
+							</textobject>
+							<caption>
+								<para>Sub-item Demoiselle Nimble</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+			</itemizedlist>
+		</para>		
+	</section>
+</chapter>

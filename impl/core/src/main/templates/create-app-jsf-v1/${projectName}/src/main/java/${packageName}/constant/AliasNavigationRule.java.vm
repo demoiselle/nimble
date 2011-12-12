@@ -1,0 +1,9 @@
+package ${packageName}.constant;
+
+public interface AliasNavigationRule {
+
+	final String ${projectUpper}_MENU = "${projectName}_menu";
+	final String ${projectUpper}_LOGIN = "${projectName}_login";
+	final String ${projectUpper}_SKIN = "${projectName}_skin";
+
+}
