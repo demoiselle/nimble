@@ -45,8 +45,7 @@ Sobre o Demoiselle Nimble
   No caso específico do Demoiselle Nimble, no template são definidas estruturas de arquivos e scripts de transformação utilizando linguagens como Velocity
   (http://velocity.apache.org/) e Groovy (http://groovy.codehaus.org/).
   Uma vez iniciado o processamento, este faz uso de variáveis cujos valores foram definidos pelo usuário e que permitem com que os diretórios e arquivos 
-  resultantes possam ser dinamicamente criados e ou modificados.
-  Para os desenvolvedores que utilizam o Eclipse, recomendamos o plugin: http://groovy.codehaus.org/Eclipse+Plugin.
+  resultantes possam ser dinamicamente criados e ou modificados.  
   
 
 Informações para o Desenvolvedor.
@@ -69,4 +68,8 @@ Configuração do Ambiente de Desenvolvimento:
   
   Os outros projetos (Eclipse Plugin, Eclipse Feature e Eclipse Update Site) deverão ser importados um a um usando a opção Import -> General -> 
   Existing Projects into Workspace.
+  
+  Groovy: 
+   O Demoiselle Nimble é desenvolvido utilizando a linguagem Groovy (http://groovy.codehaus.org/Portuguese+Home), para os desenvolvedores 
+  que utilizam o Eclipse, recomendamos o plugin: http://groovy.codehaus.org/Eclipse+Plugin.   
   
