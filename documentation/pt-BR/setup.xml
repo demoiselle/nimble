@@ -23,16 +23,20 @@
 		<para> 
 		<itemizedlist>
 			<listitem>Pré-requisitos
-				<para>Antes de começar a usar o Demoiselle Nimble, você precisa ter instalado ou instalar 
-				uma <emphasis>JDK </emphasis>- Java Development Kit. <ulink url="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Site de Download da SUN-JDK </ulink> 
+				<para>Antes de começar a usar o Demoiselle Nimble, você precisa ter instalado ou instalar uma <emphasis>JDK </emphasis>- Java Development Kit.
+				 Nos sistemas operacionais linux recomendamos a OpenJDK</para>
+				<para> Nos sistemas operacionais proprietários normalmente está disponível a implementação da Oracle:				
+				<ulink url="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Site de Download da SUN-JDK </ulink>
+				</para>
+				<para> 
 				Veja que não basta ter simplesmente uma JRE - Java Runtime Environment, é necessária uma JDK pois o Nimble executa operações que necessitam
 				de bibliotecas que não estão disponíveis numa JRE.
 				Além disso, é preciso definir a variável de ambiente JAVA_HOME apontando para o caminho onde se localiza a JDK (ex: /usr/lib/jvm/java-6-openjdk/).
 				
 				<example label="SO LINUX">
-					<sidebar><cmdsynopsis><command>export JAVA_HOME=/usr/lib/jvm/java-6-sun/ </command></cmdsynopsis></sidebar>
+					<sidebar><cmdsynopsis><command>export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/ </command></cmdsynopsis></sidebar>
 				</example>
-				No LINUX, o mais prático é incluir no arquivo /etc/profile 
+				No LINUX, é preciso incluir no arquivo /etc/profile 
 				<example label="SO ms-windows">
 					<sidebar><cmdsynopsis><command>set JAVA_HOME=C:\Arquivos de programas\Java\jdk1.6.0_17\</command></cmdsynopsis></sidebar>
 				</example>
@@ -67,7 +71,7 @@
 									
 							</sidebar>
 						</example>
-						No LINUX, o mais prático é incluir no arquivo /etc/profile
+						No LINUX, é preciso incluir no arquivo /etc/profile
 						Altere os direitos dos arquivos em "/bin" para permissão de execução <command>chmod +x $DEMOISELLE_HOME/bin/demoiselle</command>
 						<example label="SO ms-windows">
 							<sidebar>
