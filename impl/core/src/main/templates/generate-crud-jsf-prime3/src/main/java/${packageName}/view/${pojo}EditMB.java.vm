@@ -1,0 +1,46 @@
+package ${packageName}.view;
+
+import javax.inject.Inject;
+import br.gov.frameworkdemoiselle.annotation.PreviousView;
+import br.gov.frameworkdemoiselle.stereotype.ViewController;
+import br.gov.frameworkdemoiselle.template.AbstractEditPageBean;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
+import ${packageName}.business.${pojo}BC;
+import ${packageName}.domain.${pojo};
+
+@ViewController
+@PreviousView("/${beanLower}_list.xhtml")
+public class ${pojo}EditMB extends AbstractEditPageBean<${pojo}, Long> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private ${pojo}BC ${beanLower}BC;
+	
+	@Override
+	@Transactional
+	public String delete() {
+		this.${beanLower}BC.delete(getId());
+		return getPreviousView();
+	}
+	
+	@Override
+	@Transactional
+	public String insert() {
+		this.${beanLower}BC.insert(getBean());
+		return getPreviousView();
+	}
+	
+	@Override
+	@Transactional
+	public String update() {
+		this.${beanLower}BC.update(getBean());
+		return getPreviousView();
+	}
+	
+	@Override
+	protected void handleLoad() {
+		setBean(this.${beanLower}BC.load(getId()));
+	}
+
+}
