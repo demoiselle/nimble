@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="eclipsesample" >
+	<abstract><para>Exemplo prático usando o ambiente de Desenvolvimento <foreignphrase>Eclipse IDE</foreignphrase></para></abstract>
+	<title>Exemplo usando Eclipse IDE</title>	
+	<para>O Demoiselle Nimble possui um plugin para Eclipse que já conta com uma boa integração. Então neste capítulo faremos uma desmonstração com o uso desta ferramenta. 
+	</para>
+	 <para>Vamos considerar que a instalação e configuração já esteja de  acordo com as intruções contidas no capítulo 
+	 <xref linkend="eclipse_install"/>	 
+	</para>
+	<section id="ESample">
+	<title>Prepararação</title>
+		<para> Antes de iniciar o uso do Demoiselle-Nimble, vamos criar um projeto usando um arquétipo do Demoiselle.</para>
+		<para> Selecione o projeto e veja onde estão os acionadores do Plugin Demoiselle Nimble</para>
+		<para>
+			<itemizedlist>
+				<listitem>
+					<para> Um ícone na barra de ferramentas:</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Icone do Demoiselle Nimble na barra de ferramentas</phrase>
+							</textobject>
+							<caption>
+								<para>Icone do Demoiselle Nimble na barra de ferramentas</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+				<listitem>
+					<para>Sub-item no Menu Ferramentas</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/MenuNimbleEclipse.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/MenuNimbleEclipse.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Sub-item Demoiselle Nimble</phrase>
+							</textobject>
+							<caption>
+								<para>Sub-item Demoiselle Nimble</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+		<para>Acione o Demoiselle-Nimble através dos atalhos acima, após alguns segundos a tela seguinte deverá ser apresentada:</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/Demoiselle_Nimble_CreateApp.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/Demoiselle_Nimble_CreateApp.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Criando uma aplicação Maven com Demoiselle Nimble</phrase>
+				</textobject>
+				<caption>
+					<para>Criando uma aplicação Maven com Demoiselle Nimble</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Selecione a opção: Demoiselle V2 Create JSF Application, e clique no botão <emphasis> Next > </emphasis> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/Demoiselle_v2_Create_JSF_Application.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/Demoiselle_v2_Create_JSF_Application.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Criando uma aplicação JSF com Demoiselle Nimble</phrase>
+				</textobject>
+				<caption>
+					<para>Criando uma aplicação JSF com Demoiselle Nimble</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Nesta tela, na opção: 1. Output Folder, no Eclipse estará selecionado o Workspace atual, caso contrário utilize o botão <emphasis> Browse... </emphasis> 
+		 para encontrar o diretório correto</para>
+		 <para>Informe as seguintes informações nos campos seguintes:</para>
+		 <para>2. Package Name: br.org.frameworkdemoiselle</para>
+		 <para>3. Project Name: testeV2</para>
+		 <para>4. Version: 1.0.0</para>
+		 <para>Em seguinda clique no botão <emphasis>Finish</emphasis> e aguarde que o processo seja concluído pelo Eclipse. </para>
+		
+		<para>O passo seguinte é identificar o Projeto no Eclipse como um projeto Maven, para isso selecione o projeto recém-criado e clique com o botão direito do mouse para acionar o menu e selecione as opções <emphasis>  Configure -> Convert to Maven Project</emphasis>  </para>
+		
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ConfigureAplicationEclipseMaven.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ConfigureAplicationEclipseMaven.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Configurando aplicação Maven no Eclipse</phrase>
+				</textobject>
+				<caption>
+					<para>Configurando aplicação Maven no Eclipse</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		
+		<para>Após criado o projeto, vamos localizar o pacote <emphasis>Domian</emphasis> conforme a figura abaixo: </para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/PacoteDomain.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/PacoteDomain.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Localizando o pacote das classes de domínio</phrase>
+				</textobject>
+				<caption>
+					<para>Localizando o pacote das classes de domínio</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Crie neste pacote uma classe chamada <emphasis>Pessoa</emphasis>, conforme o código abaixo</para>
+		 <para>
+		       <programlisting role="JAVA"><![CDATA[import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@MappedSuperclass
+public abstract class Pessoa {
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@Column
+    private Long cpf;
+	
+    @Column(nullable=false,  length=255)
+    private String nome;
+    
+
+    @Column(nullable=false)
+    @Temporal(value=TemporalType.DATE)
+    private Date dataNascimento;
+
+    	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
+	}
+	public Long getCpf() {
+		return cpf;
+	}
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+}]]></programlisting>		 
+         </para>
+		 <para>Depois criaremos a classe <emphasis>Estudante</emphasis>, de acordo com o código abaixo :</para>
+		 <para>
+        	      <programlisting role="JAVA"><![CDATA[import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="Estudante")
+public class Estudante extends Pessoa implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Column(nullable=false)
+    @Temporal(value=TemporalType.DATE)
+    private Date dataMatricula;
+	
+	@Column
+	private int numeroMatricula;
+
+	public Date getDataMatricula() {
+		return dataMatricula;
+	}
+
+	public void setDataMatricula(Date dataMatricula) {
+		this.dataMatricula = dataMatricula;
+	}
+
+	public int getNumeroMatricula() {
+		return numeroMatricula;
+	}
+
+	public void setNumeroMatricula(int numeroMatricula) {
+		this.numeroMatricula = numeroMatricula;
+	}
+
+}]]></programlisting>
+		 </para>
+		 <para> Isso é tudo que precisamos criar manualmente para começar o uso do Demoiselle-Nimble.
+		 </para>
+</section>
+	<beginpage/>
+	<section id="nimble_eclipse_uso">
+	<title>Instruções de Uso</title>
+		<para>Selecione o projeto e veja onde estão os acionadores do Plugin Demoiselle Nimble</para>
+		<para>
+			<itemizedlist>
+				<listitem>
+					<para> Um ícone na barra de ferramentas:</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Icone do Demoiselle Nimble na barra de ferramentas</phrase>
+							</textobject>
+							<caption>
+								<para>Icone do Demoiselle Nimble na barra de ferramentas</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+				<listitem>
+					<para>Sub-item no Menu Ferramentas</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/MenuNimbleEclipse.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/MenuNimbleEclipse.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Sub-item Demoiselle Nimble</phrase>
+							</textobject>
+							<caption>
+								<para>Sub-item Demoiselle Nimble</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+		<para>Com o projeto selecionado, use uma das opções acima para acionar a interface do Demoiselle Nimble, onde selecionaremos o Template
+		para geração de um CRUD (Create, Read, Update e Delete) que são as operações básicas de criar, ler, atualizar e apagar</para>
+		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo Primefaces 2, conforme a figura abaixo:</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/SelectCRUDTemplate.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/SelectCRUDTemplate.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Escolhendo o template de CRUD</phrase>
+				</textobject>
+				<caption>
+					<para>Escolhendo o template de CRUD</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>	
+		 <para>Na tela seguinte, deverão ser informados os parâmetros para geração dos artefatos</para>
+		 <para>1. Output Folder*: Já estará selecionado a pasta correta, caso contrário use o botão <emphasis>Browse...</emphasis> </para>
+		 <para>2. Package Name*: <emphasis>br.org.frameworkdemoiselle</emphasis> </para>
+		 <para>3. Entity Name*: Estudante</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/GenerateJSFPrimefaces2CRUD.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/GenerateJSFPrimefaces2CRUD.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Informando os parâmetros para criação dos artefatos</phrase>
+				</textobject>
+				<caption>
+					<para>Informando os parâmetros para criação dos artefatos</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Aguarde o processamento até que a tela de confirmação apareceça</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/TemplateProcessOK.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/TemplateProcessOK.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Processamento do Template OK</phrase>
+				</textobject>
+				<caption>
+					<para>Processamento do Template OK</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Confira os artefatos que foram gerados nos pacotes de negócio(business), persistência (persistence)
+		 e de visão (view)</para>
+		 <para>Na pasta /src/main/webapp também deverão ser geradas as páginas XHTML de edição e listagem</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ArtifactsCreated.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ArtifactsCreated.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Listagem dos artefatos criados</phrase>
+				</textobject>
+				<caption>
+					<para>Listagem dos artefatos criados</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Veja também nos arquivos: persistence.xml, messages.properties e menu.xhml, que novas
+		 informações foram incluídas.</para>
+		 <para>Para testar as funcionalidade criadas, adicione o projeto no servidor JBoss e inicie o mesmo.</para>
+		 <para>No exemplo a aplicação estará em http://localhost:8080/testeV2</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/RunningExample.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/RunningExample.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Resultado na aplicação em funcionamento.</phrase>
+				</textobject>
+				<caption>
+					<para>Resultado na aplicação em funcionamento</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>		 
+	</section>
+</chapter>

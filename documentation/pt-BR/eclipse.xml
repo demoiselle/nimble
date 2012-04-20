@@ -20,8 +20,146 @@
 	<section id="eclipse_install">
 	<title>Instalação</title>
 		<para> Aqui, lembramos novamente que para usuários LINUX/DEBIAN existe o projeto Infra <ulink url="http://demoiselle.sourceforge.net/infra/"></ulink>
-		que facilita a instalação das ferramentas que o Demoiselle recomenda para uso em seu desenvolvimento.
-		</para>
+		que facilita a instalação das ferramentas que o Demoiselle recomenda para uso em seu desenvolvimento. Usando o pacote mais atual não é necessário fazer a 
+		instalação. Neste caso é só seguir para o item: <xref linkend="eclipse_uso"/> </para>
+		<section id="indigo_or_plus">
+		<title>Instalação no Eclipse Indigo ou superior</title>
+		 <para>Nas versões mais atuais existe um serviço chamado Eclipse MarketPlace, que facilita bastante o processo
+		 de instalação de plugins.</para>
+		 <para>O primeiro passo é encontrar esse item no Eclipse.</para>
+		 <para>Acione o menu: Help -> Eclipse Marketplace, como mostra a figura abaixo:</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/EclipseMarket.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/EclipseMarket.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Eclipse Marketplace</phrase>
+				</textobject>
+				<caption>
+					<para>Eclipse Marketplace</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		
+		<para>No próximo passo, digete a palavra Demoiselle no campo de busca e clique no botão <emphasis>GO</emphasis>
+		</para>  
+		<para>Após carregado o resultado da pesquisa localize o item <emphasis>Demoiselle Nimble Eclipse Plugin</emphasis> 
+		e clique no botão <emphasis>Install</emphasis> </para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallNimbleEclipseMarket.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallNimbleEclipseMarket.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Localizando Demoiselle Nimble no Eclipse Marketplace</phrase>
+				</textobject>
+				<caption>
+					<para>Localizando Demoiselle Nimble no Eclipse Marketplace</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na tela seguinte, verifique se os itens estão selecionados e clique no botão <emphasis>Next ></emphasis> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallNimbleMarket2.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallNimbleMarket2.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Selecionando o plugin</phrase>
+				</textobject>
+				<caption>
+					<para>Selecionando o plugin</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		
+		<para>Na tela seguinte, é preciso aceitar a licença,  clicar no botão <emphasis>Finish</emphasis> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallNimbleMarket3.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallNimbleMarket3.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Aceitando a licença</phrase>
+				</textobject>
+				<caption>
+					<para>Aceitando a licença</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		
+		<para>Durante este processo, a tela abaixo pode ser apresentada, é apenas um aviso sobre a 
+		assinatura da bibliteca , basta clicar no botão <emphasis>OK</emphasis> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/WarningNimbleMarket.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/WarningNimbleMarket.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Aviso sobre assinatura da biblioteca</phrase>
+				</textobject>
+				<caption>
+					<para>Aviso sobre assinatura da biblioteca</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		
+		<para>Depois aguarde o processo de instalação terminar </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/InstallingNimbleMarket.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/InstallingNimbleMarket.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Aceitando a licença</phrase>
+				</textobject>
+				<caption>
+					<para>Aceitando a licença</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		
+		<para>Ao final o Eclipse precisará ser reiniciado. </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/RestartEclipse.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/RestartEclipse.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Aceitando a licença</phrase>
+				</textobject>
+				<caption>
+					<para>Aceitando a licença</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Depois de reiniciado, veja <xref linkend="eclipse_uso"/> </para>
+		</section>
+		<section id="older_versions">
+		<title> Instalação em versões antigas.</title>
+		
 		<para>Os pré-requisitos para o uso da Plugin são os mesmos para o <xref linkend="setup"/> além é claro
 		da IDE Eclipse instalada</para>
 		<para>No Eclipse 3.6 (Helios) ou superior acione o menu <menuchoice><guimenu>Help</guimenu><guimenuitem>Install New Software</guimenuitem></menuchoice> 
@@ -123,6 +261,7 @@
         	</mediaobject>            		
 		 </para>
 		 <para>Aguarde a instalação e reinicie o Eclipse, conforme será sugerido pelo próprio</para>
+		 </section>
 	</section>
 	<beginpage/>
 	<section id="eclipse_uso">
@@ -171,6 +310,7 @@
 		 			</para>
 				</listitem>
 			</itemizedlist>
-		</para>		
+		</para>
+		<para> Para saber mais sobre o uso com eclipse veja <xref linkend="eclipsesample"/> </para>		
 	</section>
 </chapter>

@@ -3,7 +3,7 @@
    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
 <book lang="pt" xmlns:xi="http://www.w3.org/2001/XInclude">
 
-	<xi:include href="bookinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="bookinfo.xml"/>
 
 	<preface>
 		<title>Guia do usuário</title>
@@ -27,5 +27,6 @@
 	<xi:include href="quickstart.xml"/>
 	<xi:include href="eclipse.xml"/>
 	<xi:include href="netbeans.xml"/>
+	<xi:include href="eclipsesample.xml"/>
 
 </book>
