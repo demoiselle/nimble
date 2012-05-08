@@ -5,7 +5,7 @@
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
 	<artifactId>demoiselle-nimble</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<packaging>jar</packaging>
 
 	<name>Demoiselle Nimble</name>
@@ -83,7 +83,13 @@
 		<repository>
 			<id>demoiselle.sourceforge.net-release</id>
 			<url>http://demoiselle.sourceforge.net/repository/release</url>
+		</repository>		
+		<repository>
+			<id>groovy</id>
+			<url>http://repository.codehaus.org/</url>
 		</repository>
+		
+		
 	</repositories>
 
 	<dependencies>
