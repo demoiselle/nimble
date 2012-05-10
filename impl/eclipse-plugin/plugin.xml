@@ -80,20 +80,6 @@
       </objectContribution>
    </extension>
    <extension
-         point="org.eclipse.ui.views">
-      <category
-            name="Nimble Category"
-            id="br.gov.frameworkdemoiselle.tools.nimble.eclipse">
-      </category>
-      <view
-            name="Nimbel View"
-            icon="icons/demoiselleIcon.png"
-            category="br.gov.frameworkdemoiselle.tools.nimble.eclipse"
-            class="br.gov.frameworkdemoiselle.tools.nimble.eclipse.views.NimbleView"
-            id="br.gov.frameworkdemoiselle.tools.nimble.eclipse.views.NimbleView">
-      </view>
-   </extension>
-   <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
