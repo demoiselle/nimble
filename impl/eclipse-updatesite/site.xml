@@ -15,6 +15,9 @@
    <feature url="features/br.gov.framewordemoiselle.nimble.eclipse.feature_1.0.3.jar" id="br.gov.framewordemoiselle.nimble.eclipse.feature" version="1.0.3">
       <category name="Demoiselle Nimble 1.0.3"/>
    </feature>
+   <feature url="features/br.gov.framewordemoiselle.nimble.eclipse.feature_1.0.4.jar" id="br.gov.framewordemoiselle.nimble.eclipse.feature" version="1.0.4">
+      <category name="Demoiselle Nimble 1.0.4"/>
+   </feature>
    <category-def name="Demoiselle Nimble 1.0.0" label="Demoiselle Nimble 1.0.0"/>
    <category-def name="Demoiselle Nimble 1.0.1" label="Demoiselle Nimble 1.0.1"/>
    <category-def name="Demoiselle Nimble 1.0.2" label="Demoiselle Nimble 1.0.2">
@@ -25,6 +28,11 @@
    <category-def name="Demoiselle Nimble 1.0.3" label="Demoiselle Nimble 1.0.3">
       <description>
          Eclipse Plugin for Demoiselle Nimble Template Processor version 1.0.3
+      </description>
+   </category-def>
+   <category-def name="Demoiselle Nimble 1.0.4" label="Demoiselle Nimble 1.0.4">
+      <description>
+         Eclipse Plugin for Demoiselle Nimble Template Processor version 1.0.4
       </description>
    </category-def>
 </site>
