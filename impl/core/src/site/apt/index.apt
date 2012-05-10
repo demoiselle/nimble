@@ -26,14 +26,19 @@ Sobre Demoiselle Nimble
   automática de código para o <<Framework Demoiselle>>:
   
   * <<create-app-jsf>>: cria uma aplicação completa e funcional baseada no Demoiselle Framework v2 com
-  	JSF e JPA (usa internamente um arquétipo Maven)
+  	JSF e JPA (usa internamente um arquétipo Maven na versão atual do Framework Demoiselle)
   
   * <<create-app-jsf-v1>>: cria uma aplicação baseada no Demoiselle Framework v1
   
   * <<create-app-vaadin>>: cria uma aplicação baseada na extensão Demoiselle Vaadin (com Demoiselle Framework v2)
   
-  * <<generate-crud-jsf>>: cria todos os artefatos necessários para o CRUD de uma dada entidade
-  	baseando-se no Demoiselle Framework v2
+  * <<generate-crud-jsf-prime2>>: cria todos os artefatos necessários para o CRUD de uma dada entidade
+  	baseando-se no Demoiselle Framework v2 e na versão do Primefaces 2. Usado para aplicações geradas pelo arquétipo 
+  	da versão 2.2.1 e anteriores
+  
+  * <<generate-crud-jsf-prime3>>: cria todos os artefatos necessários para o CRUD de uma dada entidade
+  	baseando-se no Demoiselle Framework v2 e na versão do Primefaces 3. Usado para aplicações geradas pelo arquétipo 
+  	da versão 2.2.2
   
   * <<generate-crud-jsf-v1>>: cria os artefatos para o CRUD de uma entidade no Demoiselle Framework v1
   

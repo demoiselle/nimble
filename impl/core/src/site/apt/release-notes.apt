@@ -3,6 +3,29 @@
 
 Notas de Versão
 
+
+* {v1.0.4}
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=765}0000765}} - [Task] Atualizar Documentação
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=762}0000762}} - [Improvement] Criação de template para atualização do Primefaces 3 no arquétipo de geração de aplicações
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=755}0000755}} - [Improvement] Migração para GitHub
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=704}0000704}} - [Bug] Atalho no menu do Gnome não está funcionando
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=659}0000659}} - [Task] Verificar versões de arquétipos
+	
+  
+* {v1.0.3}
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=701}0000701}} - [Improvement] Adequação do template "Demoiselle v2 Generate JSF CRUD" de acordo com o arquétipo JSF-JPA
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=668}0000668}} - [Bug] Template JSF V2
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=658}0000658}} - [Bug] Template de CRUD JSF 2 - xhtml de Edição
+	
+
 * {v1.0.2}
 	
 	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=632}0000632}} - [Bug] Template de CRUD não lê atributos da classe Pai.
