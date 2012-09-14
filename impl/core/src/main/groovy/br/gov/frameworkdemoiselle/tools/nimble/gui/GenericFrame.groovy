@@ -64,8 +64,9 @@ abstract class GenericFrame extends JFrame {
 	// Variables
 	//String title
 	
-	def size = [600, 300]
-	
+	//def size = [600, 300]
+	//Dimension size = new Dimension(600,300)
+		
 	String title
 	String description
 	
