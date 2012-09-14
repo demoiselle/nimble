@@ -37,12 +37,20 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 package br.gov.frameworkdemoiselle.tools.nimble.gui.wizard.tools
 
 import java.util.List
-
 import br.gov.frameworkdemoiselle.tools.nimble.gui.wizard.GenericWizardFrame
 import br.gov.frameworkdemoiselle.tools.nimble.gui.wizard.WizardContext
 import br.gov.frameworkdemoiselle.tools.nimble.util.ConfigUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.FileUtil
 
+/**
+ * 
+ *  Main class for Graphical User Interface
+ * 
+ * @author Serge Normando Rehem
+ * @author Rodrigo Hjort
+ * @author Emerson Sachio Saito
+ *
+ */
 class DemoiselleToolsWizard extends GenericWizardFrame {
 	
 	private ChooseTemplateStep1 step1
@@ -64,7 +72,7 @@ class DemoiselleToolsWizard extends GenericWizardFrame {
 		def skip1 = false
 		if (inputPath) {
 			def template = ConfigUtil.getTemplateConfig(new File(inputPath))
-			if (template?.version?.size() > 0) {
+			if (template?.version?.length > 0) {
 				context.template = template
 				skip1 = true
 			}

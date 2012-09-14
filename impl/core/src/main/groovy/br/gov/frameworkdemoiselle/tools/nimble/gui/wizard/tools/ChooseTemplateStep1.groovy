@@ -42,7 +42,6 @@ import java.awt.event.FocusEvent
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.util.prefs.Preferences
-
 import javax.swing.JOptionPane
 import javax.swing.JPanel
 import javax.swing.JTable

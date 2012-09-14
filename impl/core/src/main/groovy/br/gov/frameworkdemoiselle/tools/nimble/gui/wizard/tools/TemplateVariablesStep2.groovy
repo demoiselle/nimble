@@ -41,14 +41,11 @@ import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 import java.util.prefs.Preferences
-
 import javax.swing.BorderFactory
 import javax.swing.JOptionPane
-import javax.swing.JScrollPane
+import javax.swing.JPanel
 import javax.swing.JTextField
-
 import net.miginfocom.swing.MigLayout
-
 import br.gov.frameworkdemoiselle.tools.nimble.DemoiselleNimble
 import br.gov.frameworkdemoiselle.tools.nimble.gui.Variable 
 import br.gov.frameworkdemoiselle.tools.nimble.gui.wizard.WizardPanel 
@@ -56,14 +53,26 @@ import br.gov.frameworkdemoiselle.tools.nimble.util.BooleanUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.ConfigUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.FileUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil
+import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil
+import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil
+import br.gov.frameworkdemoiselle.tools.nimble.util.CompilerUtil
 
+
+/**
+ *  Second step on template's variables processing by GUI. 
+ * @author Serge Normando Rehem
+ * @author Rodrigo Hjort
+ * @author Emerson Sachio Saito
+ *
+ */
 class TemplateVariablesStep2 extends WizardPanel {
 	
 	final String PREF_DEST_FOLDER = "dest";
 	
 	def varList = []
-	
-	JScrollPane panel 
+		
+	//JScrollPane panel
+	JPanel panel
 	JTextField outputPathText
 	KeyAdapter keyHandler
 	
@@ -93,7 +102,8 @@ class TemplateVariablesStep2 extends WizardPanel {
 			varList = ConfigUtil.loadVars(varList, confFileName)
 		}
 		mountPanel()
-		loadPreferences()
+		//TODO verificar necessidade
+//		loadPreferences()
 		firstField = outputPathText
 	}
 	
@@ -127,12 +137,17 @@ class TemplateVariablesStep2 extends WizardPanel {
 					return
 				}
 			} else {
-				def response = JOptionPane.showConfirmDialog(this, 
-					"Output Folder does not exist. Create it?", title, JOptionPane.OK_CANCEL_OPTION, 1)
-				if (response == JOptionPane.CANCEL_OPTION)
-					return
-				else if (response == JOptionPane.OK_OPTION)
-					new File(outputPathText.text).mkdirs()
+				if (outputPathText.text.size() > 0) {
+					def response = JOptionPane.showConfirmDialog(this,
+						"Output Folder does not exist. Create it?", title, JOptionPane.OK_CANCEL_OPTION, 1)
+					if (response == JOptionPane.CANCEL_OPTION)
+						return
+					else if (response == JOptionPane.OK_OPTION)
+						new File(outputPathText.text).mkdirs()
+				}else {
+					JOptionPane.showMessageDialog(this,	"Please inform a valid Output Folder", title, JOptionPane.WARNING_MESSAGE)
+				    return
+				}
 			}
 			
 			def vars = [:]
@@ -157,13 +172,15 @@ class TemplateVariablesStep2 extends WizardPanel {
 	}
 	
 	void mountPanel() {
-		panel = swing.scrollPane(border: null) {
+		panel = swing.panel(border: null) {
 			panel(layout: new MigLayout('insets 10, fillx', "[pref!][grow,fill][]",""), constraints:'grow') {
+				
 				def lof = label("1. Output Folder*:", displayedMnemonic:'1');
 				outputPathText = textField()
 				lof.setLabelFor(outputPathText)
 				button(text: 'Browse...', constraints: 'wrap', mnemonic:'R', actionPerformed: { selectOutputFolder() })
 				outputPathText.addKeyListener(keyHandler)
+				
 				varList.eachWithIndex { v, i ->
 					
 					def defaultValue = ""
@@ -173,9 +190,13 @@ class TemplateVariablesStep2 extends WizardPanel {
 					} else if (v.defaultValue != null) {
 						defaultValue = v.defaultValue
 					}
-					def lab = label(text:"${i + 2}. ${v.label}${v.required ? '*' : ''}:")
-					if (i < 10)
-						lab.setDisplayedMnemonic(48 + i + 2)
+					def lab
+					if (v.label != null){
+						lab = label(text:"${i + 2}. ${v.label}${v.required ? '*' : ''}:")
+						if (i < 10)
+							lab.setDisplayedMnemonic(48 + i + 2)
+					}
+								
 					
 					def component
 					
@@ -197,22 +218,36 @@ class TemplateVariablesStep2 extends WizardPanel {
 						def checkSelected = v.component.attributes.get("selected") ?: false
 						component = checkBox(text:'', selected:checkSelected, constraints: 'wrap');
 					} else if ("boolean".equalsIgnoreCase(v.dataType)) {
+					/*		break
+					 case "boolean":*/
 						Boolean checkSelected = BooleanUtil.parseString(defaultValue) ?: false
 						component = checkBox(text:null, selected:checkSelected, constraints: 'wrap');
-					} else {
+					} else if ("browserButton".equalsIgnoreCase(v.component?.type)) {
+					/*		break
+					 case "browserButton":*/
+						String actionToPerform = v.component.attributes.get("actionToPerform")
+						if (actionToPerform =="selectEntityAndAttributes") {
+							component = button(text: 'Click to select an entity class file...', constraints: 'wrap', mnemonic:'W', actionPerformed: { selectEntityAndAttributes(v.component) })
+						}else {
+							component = button(text: 'Browse...', constraints: 'wrap', mnemonic:'W', actionPerformed: { selectFileName(v.component) })
+						}
+					}else {
 					/*		break
 						case "text":
 						default:*/
-						def passed = (context.variables?.size() > i ? context.variables[i] : null)
+						def passed = (context.variables?.length() > i ? context.variables[i] : null)
 						component = textField(text:(passed ?: defaultValue), constraints: 'span 2, wrap', columns: 30)
 					/*		break;
 					}*/
 					}
-
-					lab.setLabelFor(component)
+					component.visible = v.visible
+					
+					if (v.visible && v.label != null) {
+						lab.setLabelFor(component)
+					}
+					
 					v.component.attributes.each { key, value ->
-						println "$key -- $value"
-						if (key != "editable" && key != "items" && key != "selected")
+						if (key != "editable" && key != "items" && key != "selected" && key != "actionToPerform")
 							component.setProperty(key, value)
 					}
 					v.component.visualComponent = component
@@ -220,7 +255,8 @@ class TemplateVariablesStep2 extends WizardPanel {
 				}
 			}
 		}
-		panel.setViewportBorder(BorderFactory.createEmptyBorder())
+		//panel.setViewportBorder(BorderFactory.createEmptyBorder())
+		panel.setBorder(BorderFactory.createEmptyBorder())
 		add(panel, BorderLayout.CENTER)
 	}
 	
@@ -232,13 +268,89 @@ class TemplateVariablesStep2 extends WizardPanel {
 		}
 	}
 	
+	/**
+	 *  Select an Entity Class Name and attributes to template variables
+	 * @param comp variable to receive a value
+	 */
+	void selectEntityAndAttributes(def comp) {
+		String dir = FileUtil.getCurrentDir()
+		String entityFile = FileUtil.chooseFile(this, "Select Entity Class", dir)
+		
+		if (entityFile != null) {
+
+			String entityFileName = FileUtil.removePath(entityFile)
+			String entityFilePath = FileUtil.returnPath(entityFile)
+			
+			// verificar se é uma classe de entidade
+			// verify if it is an entity class
+			if (!FileUtil.hasString (entityFilePath+entityFileName,"@Entity"))
+			{
+				JOptionPane.showMessageDialog(this,	"The selected class isn't annotated whit @Entity!", title, JOptionPane.ERROR_MESSAGE)
+				return
+			}
+			// verificar se existe ID para a entidade
+			// verify if the entity class has a ID
+			def fileSelectedEntity = new File(entityFilePath+entityFileName)
+			def extendedClasses = ReflectionUtil.getExtendedClassesFiles(fileSelectedEntity)
+			def hasId = FileUtil.hasString (entityFilePath+entityFileName,"@Id")
+			if (!hasId) {
+				for (cls in extendedClasses){
+					hasId = FileUtil.hasString (entityFilePath+cls+".java","@Id")
+				}
+			}
+			if (!hasId)
+			{
+				JOptionPane.showMessageDialog(this,	"The selected class or that extends isn't annotated whit @Id!", title, JOptionPane.ERROR_MESSAGE)
+				return
+			}			
+			def varClass = CompilerUtil.getClassFromFile(entityFilePath, FileUtil.removeExt(entityFileName), ReflectionUtil.getPackageNameFromClassFile(fileSelectedEntity))
+			def varFieldID
+			if (varClass != null) {
+				varFieldID = ReflectionUtil.getFieldWithAnnotation(varClass, "javax.persistence.Id")
+			}
+			varList.each { var ->
+				if (var.name == "idType") {					
+					if (varFieldID != null) {
+						var.component.textValue = varFieldID.getType().getSimpleName()
+					}				
+				}
+				if (var.name == "idName") {
+					if (varFieldID != null) {
+						var.component.textValue = varFieldID.getName()
+					}
+				}
+				if (var.name == "packageName") {
+					var.component.textValue = FileUtil.removeExt(ReflectionUtil.getPackageNameFromClassFile(fileSelectedEntity))
+				}
+			}
+			
+			entityFileName = FileUtil.removeExt entityFileName
+			comp.textValue = entityFileName
+
+		}
+	}
+	
+	/**
+	 * Select a file name with extension
+	 * @param comp variable to receive a value
+	 */
+	void selectFileName(def comp) {
+		String dir = FileUtil.getCurrentDir()
+		String entityClass = FileUtil.chooseFileName(this, "Select a File", dir)
+		if (entityClass != null) {
+			comp.textValue = entityClass
+		}
+	}
+	
 	public void loadPreferences() {
 		outputPathText.setText(context.outputPath ?: prefs?.get(PREF_DEST_FOLDER, ""))
 		String stringVars = prefs?.get(context.template?.name, "[:]")
 		def mapVars = StringUtil.convertKeyValueStringToMap(stringVars)
 		for (Variable v: varList) {
-//			println v.name + "->" + mapVars[v.name]
-			v.component.textValue = mapVars[v.name]
+			if (mapVars[v.name]!=null) {
+				v.component.textValue = mapVars[v.name]
+			}
+			
 		}
 	}
 	
@@ -252,8 +364,6 @@ class TemplateVariablesStep2 extends WizardPanel {
 	}
 	
 	public static void main(String[] args) {
-		//Toolkit tk = Toolkit.getDefaultToolkit( )
-		//tk.addAWTEventListener(WindowSaver.getInstance( ), AWTEvent.WINDOW_EVENT_MASK)
 		new TemplateVariablesStep2().setVisible true
 	}
 	
