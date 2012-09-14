@@ -36,6 +36,16 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 */
 package br.gov.frameworkdemoiselle.tools.nimble.gui
 
+/**
+ *
+ * Class to identify attributes that can be used on templates files
+ * 
+ * @author Serge Normando Rehem
+ * @author Rodrigo Hjort
+ * @author Emerson Sachio Saito
+ *
+ */
+
 class Variable {
     String name
     String label 
@@ -46,11 +56,13 @@ class Variable {
 	String defaultValue
     String defaultValueClass
 	Boolean required = true
+	Boolean visible = true
+	
 	//String novoAtributo
 	
     VisualComponent component
 
     String toString() {
-        return "$name,$label,$component,$mainClass,$searchClass,$dataType,$listClass,$defaultValue,$defaultValueClass"
+        return "$name,$label,$component,$mainClass,$searchClass,$dataType,$listClass,$defaultValue,$defaultValueClass,$required,$visible,$component"
     }
 }
