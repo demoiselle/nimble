@@ -47,9 +47,9 @@ def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
 							def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
 							if (attrName.equalsIgnoreCase(idName)) {
 					%>
-					<h:outputLabel value="#{messages['${beanLower}.label.id']}: " for="id" styleClass="text-input" />
-					<h:outputText id="id" value="#{${beanLower}EditMB.bean.id}" />
-					<p:message for="id" />
+					<h:outputLabel value="#{messages['${beanLower}.label.${idName}']}: " for="${idName}" styleClass="text-input" />
+					<h:outputText id="${idName}" value="#{${beanLower}EditMB.bean.${idName}}" />
+					<p:message for="${idName}" />
 					<%
 							} else {
 								if (attrValue.equalsIgnoreCase('Date')) {

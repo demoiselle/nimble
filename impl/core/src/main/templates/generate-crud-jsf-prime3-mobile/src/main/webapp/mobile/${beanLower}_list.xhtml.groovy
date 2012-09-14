@@ -38,7 +38,7 @@ def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
 							<h:outputText styleClass="ui-li-count" value="#{bean.${attrLow}}" />
 							<% } else { %>							
 							<h:commandLink value="#{bean.${attrLow}}" action="#{${beanLower}ListMB.getNextView}">
-								<f:param name="id" value="#{bean.id}" />
+								<f:param name="${idName}" value="#{bean.${idName}}" />
 							</h:commandLink>
 						<% }
 							}							

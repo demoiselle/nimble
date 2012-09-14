@@ -64,7 +64,13 @@ class CompilerUtil {
 		def extendedClasses = ReflectionUtil.getExtendedClassesFiles(file)
 		  		
 		for (cls in extendedClasses){
-			doCompileJava(fileLocation,cls+".java")
+			doCompileJava(fileLocation, cls+".java")
+			URL varUrl2= new File(fileLocation+cls+".class").toURI().toURL()
+			ToolProvider.getSystemToolClassLoader().getSystemClassLoader().addURL(varUrl2)
+			URL[] allLocations = new URL[1];
+			allLocations[0] = varUrl2;
+			ClassLoader loader = URLClassLoader.newInstance(allLocations,ToolProvider.getSystemToolClassLoader());
+			Class varClass = loader.loadClass(PackageName +'.'+ cls, true);
 			ToolProvider.getSystemToolClassLoader().loadClass(PackageName +'.'+ cls)
 		}		
 		int compileResult = doCompileJava(fileLocation, fileName+".java") 

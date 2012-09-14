@@ -152,6 +152,9 @@ class TemplateVariablesStep2 extends WizardPanel {
 			
 			def vars = [:]
 			varList.each { v ->
+				if (v.component.textValue.equalsIgnoreCase("Click to select an entity class file...")) {
+					v.component.textValue = "Entity"
+				}
 				vars.put v.name, v.component.textValue
 			}
 			
