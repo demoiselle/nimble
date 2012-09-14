@@ -12,9 +12,9 @@ import ${packageName}.business.${pojo}BC;
 import ${packageName}.domain.${pojo};
 
 @ViewController
-@NextView("/${beanLower}_edit.xhtml")
-@PreviousView("/${beanLower}_list.xhtml")
-public class ${pojo}ListMB extends AbstractListPageBean<${pojo}, Long> {
+@NextView("./${beanLower}_edit.jsf")
+@PreviousView("./${beanLower}_list.jsf")
+public class ${pojo}ListMB extends AbstractListPageBean<${pojo}, ${idType}> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,8 +29,8 @@ public class ${pojo}ListMB extends AbstractListPageBean<${pojo}, Long> {
 	@Transactional
 	public String deleteSelection() {
 		boolean delete;
-		for (Iterator<Long> iter = getSelection().keySet().iterator(); iter.hasNext();) {
-			Long id = iter.next();
+		for (Iterator<${idType}> iter = getSelection().keySet().iterator(); iter.hasNext();) {
+			${idType} id = iter.next();
 			delete = getSelection().get(id);
 			if (delete) {
 				${beanLower}BC.delete(id);

@@ -34,7 +34,7 @@ def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
 				if (!attrList.isEmpty()) {
 					attrList.each() { attrName, attrValue ->
 						def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
-						if (attrName.equalsIgnoreCase('id')) {	
+						if (attrName.equalsIgnoreCase(idName)) {	
 				%>
 				<p:column style="width:5%;" sortBy="#{bean.id}">
 					<f:facet name="header">#{messages['${beanLower}.label.id']}</f:facet>

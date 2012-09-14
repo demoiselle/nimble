@@ -45,7 +45,7 @@ def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
 					} else {
 						attrList.each() { attrName, attrValue ->
 							def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
-							if (attrName.equalsIgnoreCase('id')) {
+							if (attrName.equalsIgnoreCase(idName)) {
 					%>
 					<h:outputLabel value="#{messages['${beanLower}.label.id']}: " for="id" styleClass="text-input" />
 					<h:outputText id="id" value="#{${beanLower}EditMB.bean.id}" />
