@@ -1,14 +1,9 @@
-Rodrigo
 - Usar o contexto para permitir que a linha de comando passe informações para a GUI
 - Permitir aceleradores nos campos (ex: numerar em ordem crescente e permitir Alt+1, Alt+2, ....)
 - GUI: "efeito ampulheta" no processamento (após o "Finish")
-- tecla ESC poderia invocar o botão "Cancel"
 - Implementação de variáveis customizadas no template 
-- template create-app: ignora o output path indicado na tela (na execução de comandos externos deveria ser
-  inicialmente alterado o diretório corrente para o output, i.e., "$ cd dir_output")
 - console: se não especificado outputpath, considerar diretório atual
 - alterar numeração no passo 2: "1. output path, 2. var1, 3. var2, ..."
-- remover pacotes obsoletos: com.test e fwk.demoiselle
 - template create-app: erro se diretório do projeto já existente
 - GUI: considerar as variáveis passadas como argumento na chamada do programa
 - exibir listagem de variáveis e respectivos valores considerados no início do processamento
@@ -16,22 +11,16 @@ Rodrigo
 - testar a regra condicional dentro do Velocity usando variavel booleana no Vars
 - permitir no template.conf que o tipo de cada variavel seja definido. Default: 'String'
 - interpretar o tipo da variavel ao jogar no Vars
-- mixar o template gerador de crud v1.x para usar ou não o Demoiselle CRUD
 - console: se dataType = boolean, perguntar ao usuário no formato "[S/n]"
 - interpretar possíveis variantes do booleano (ex: S/N, Y/N, true/false, on/off, 1/0)
 - criar classe utilitária BooleanUtil para tratar de valores booleanos (parse/input e format/output)
 - refatoração: mover classe Message para console
 - implementar skipIfExists e processTemplate (i.e., condition) para os fragmentos também
-- renomear templates (create-app => create-app-jsf, generate-crud => generate-crud-jsf)
 - console + Linux: configurar script no bash-completion
 - assembly: ao fazer a distribuição, não incluir -javadoc.jar e -sources.jar no diretório /lib
 - shell script: atualizar textos descritivos
-- GUI: no passo 1, mesmo se passado outputPath, está considerando o valor do preferences
-- GUI: tecla ENTER poderia invocar o botão "Next" (ou "Finish", se última etapa)
 - GUI: ao exibir/trocar aba, setar foco no primeiro campo
 - testes unitários: está criando subdiretórios temp/ e templates/dest/ dentro do src/test/
-
-Serge
 - Mostrar parametros default
 - Colocar os ":" ao lado de cada campo
 - Considerar required=true como default na GUI
@@ -40,21 +29,16 @@ Serge
 - Remover borda do ScrollPane da tela de variaveis
 - GUI: no passo 1, ordenar os templates exibidos na lista pela sua descrição
 - Salvar os valores individualmente no preferences
-
-Backlog
 - Melhorar tratamento exceções
 - Internacionalização
 - console: exibir mensagem de confirmação com as variáveis preenchidas antes de iniciar o processador
 - refatoração: retirar Variable do pacote gui (mas essa classe aponta para VisualComponent)
-- create-app-jsf: mudar archetypeVersion para 2.1.0
-- create-app-vaadin: mudar archetypeVersion para 2.1.0
 - opção validation="expressão regular" nas variáveis do template.conf
 - substituição de trechos de fragmentos, usando expressão regular
   (ex: "app.title=${applicationTitle}" no messages.properties, com variável não obrigatória)
 - tornar obrigatório o uso do arquivo "template.conf" nos templates
 - GUI: na aba 1, validar diretórios especificados (i.e., existência do "template.conf") 
 - copiar arquivos não processáveis (ex: png, jpg), sem extensões alvo (.vm, .groovy)
-- RegexUtil.getClassAttributes() só considera métodos "getXxxx()", descartando "boolean isXxx()"
 
 -----
 
