@@ -5,13 +5,13 @@
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
 	<artifactId>demoiselle-nimble</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<packaging>jar</packaging>
 
 	<name>Demoiselle Nimble</name>
 	<description>Demoiselle Tools</description>
 	<url>http://demoiselle.sourceforge.net/wizard/demoiselle-nimble/${project.version}/</url>
-	
+
 	<organization>
 		<name>SERPRO</name>
 		<url>http://www.serpro.gov.br</url>
@@ -24,8 +24,7 @@
 		<repository.url>${htdocs.url}/repository/release</repository.url>
 		<snapshot.url>${htdocs.url}/repository/snapshot</snapshot.url>
 		<java-version>1.6</java-version>
-		<groovy-version>1.7.8</groovy-version>
-		<gmaven-version>1.2</gmaven-version>
+		<gmaven-version>1.4</gmaven-version>
 		<junit-version>4.8.1</junit-version>
 		<velocity-version>1.6.4</velocity-version>
 		<freemarker-version>2.3.9</freemarker-version>
@@ -50,7 +49,7 @@
 			<subscribe>https://lists.sourceforge.net/lists/listinfo/demoiselle-users</subscribe>
 			<unsubscribe>https://lists.sourceforge.net/lists/listinfo/demoiselle-users</unsubscribe>
 		</mailingList>
-	</mailingLists>	
+	</mailingLists>
 
 	<distributionManagement>
 		<site>
@@ -76,6 +75,10 @@
 	</scm>
 
 	<repositories>
+		<repository>	
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
 		<repository>
 			<id>demoiselle.sourceforge.net-snapshot</id>
 			<url>http://demoiselle.sourceforge.net/repository/snapshot</url>
@@ -83,14 +86,23 @@
 		<repository>
 			<id>demoiselle.sourceforge.net-release</id>
 			<url>http://demoiselle.sourceforge.net/repository/release</url>
-		</repository>		
-		<repository>
-			<id>groovy</id>
-			<url>http://repository.codehaus.org/</url>
 		</repository>
-		
-		
 	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Maven Plugin Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Demoiselle</id>
+			<name>Demoiselle</name>
+			<url>http://demoiselle.sourceforge.net/repository/release</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<dependencies>
 		<!-- <dependency> -->
@@ -101,8 +113,7 @@
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>1.7.8</version>
-			<!-- <version>${groovy-version}</version> -->
+			<version>2.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -142,17 +153,28 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>jaxme</groupId>
+			<groupId>org.apache.ws.jaxme</groupId>
 			<artifactId>jaxmejs</artifactId>
-			<version>0.5.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
+			<version>0.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>antlr</groupId>
 			<artifactId>antlr</artifactId>
 			<version>2.7.5</version>
 			<scope>compile</scope>
+		</dependency>
+		
+		<!--<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>antlr</artifactId>
+			<version>1.8.4</version>
+			<scope>compile</scope>
+		</dependency>  -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<version>2.0.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -161,9 +183,6 @@
 		<!-- These resources are needed to integrate the gmaven plugin with the source plugin -->
 		<resources>
 			<resource>
-				<directory>src/main/java</directory>
-			</resource>
-			<resource>
 				<directory>src/main/groovy</directory>
 			</resource>
 			<resource>
@@ -171,9 +190,6 @@
 			</resource>
 		</resources>
 		<testResources>
-			<testResource>
-				<directory>src/test/java</directory>
-			</testResource>
 			<testResource>
 				<directory>src/test/groovy</directory>
 			</testResource>
@@ -254,19 +270,17 @@
 			<plugin>
 				<groupId>org.codehaus.gmaven</groupId>
 				<artifactId>gmaven-plugin</artifactId>
-				<version>1.3</version>
-				<!-- <version>${gmaven-version}</version> -->
+				<version>1.4</version>
 				<configuration>
-					<providerSelection>1.7</providerSelection>
+					<providerSelection>2.0</providerSelection>
 					<source />
 					<targetBytecode>${java-version}</targetBytecode>
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>org.codehaus.gmaven.runtime</groupId>
-						<artifactId>gmaven-runtime-1.7</artifactId>
-						<version>1.3</version>
-						<!-- <version>${gmaven-version}</version> -->
+						<artifactId>gmaven-runtime-2.0</artifactId>
+						<version>1.4</version>
 						<exclusions>
 							<exclusion>
 								<groupId>org.codehaus.groovy</groupId>
@@ -277,8 +291,7 @@
 					<dependency>
 						<groupId>org.codehaus.groovy</groupId>
 						<artifactId>groovy-all</artifactId>
-						<version>1.7.8</version>
-						<!-- <version>${groovy-version}</version> -->
+						<version>2.0.1</version>
 					</dependency>
 				</dependencies>
 				<executions>
@@ -384,5 +397,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
+
 </project>
