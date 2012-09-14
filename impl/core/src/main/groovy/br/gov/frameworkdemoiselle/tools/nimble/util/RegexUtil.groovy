@@ -36,10 +36,19 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 */
 package br.gov.frameworkdemoiselle.tools.nimble.util
 
-import org.apache.ws.jaxme.js.*
-import org.apache.ws.jaxme.js.util.JavaParser;
 import java.util.List;
 import java.util.ArrayList;
+import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil
+
+
+/**
+ * Utility class for Regex (Regular Expressions) operations.
+ * 
+ * @author Serge Normando Rehem
+ * @author Rodrigo Hjort
+ * @author Emerson Sachio Saito
+ *
+ */
 
 class RegexUtil {
 	
@@ -60,30 +69,7 @@ class RegexUtil {
 			e.printStackTrace()
 			return map
 		}
-	}
-	
-	static def getClassAttributesFromFile(String fileName, String path) {
-		try {
-			
-			// get Attributes from original Class
-			def file = new File(path+fileName)
-			getClassAttributes(file.text)
-			
-			// get Attributes from Extended Class
-			def extendedClasses = getExtendedClasses(file)
-			for (cls in extendedClasses){
-				file = new File (path+cls)
-				getClassAttributes(file.text)
-			}			
-			
-			return map
-		} catch(Exception e) {
-			println "Error on getClassAttributes: "
-			e.printStackTrace()
-			return map
-		}
-	}
-	
+	}	
 	
 	/**
 	 * Returns a map containing attributes name and type, obtained by
@@ -100,17 +86,50 @@ class RegexUtil {
 		return map
 	}
 	
-	static List<String> getExtendedClasses (file){
-		def List<String> extendedClass = new ArrayList<String>()
-		def jsf = new JavaSourceFactory()
-		def jp = new JavaParser(jsf)
-		jp.parse(file);
-		for (iter in  jsf.getJavaSources()) {
-			for (extend in iter.getExtends()){
-				 extendedClass.add extend.getClassName()+'.java'
+			
+	/**
+	 *
+	 * @param fileName
+	 * @param path
+	 *
+	 * @return a map containing attributes name and type, obtained by
+	 * regex searching get methods in a given fileName and path
+	 * supporting extended Classes
+	 */
+	static def getClassAttributesFromFile(String fileName, String path) {
+		try {
+			
+			// get Attributes from original Class
+			def file = new File(path+fileName)
+			getClassAttributes(file.text)
+			
+			// get Attributes from Extended Class
+			def extendedClasses = ReflectionUtil.getExtendedClassesFiles(file)
+			for (cls in extendedClasses){
+				file = new File (path+cls+".java")
+				getClassAttributes(file.text)
 			}
-		  }
-		  return extendedClass
+			
+			return map
+		} catch(Exception e) {
+			println "Error on getClassAttributes: "
+			e.printStackTrace()
+			return map
+		}
 	}
+
+	
+	
+	static def getIdType(String text) {
+		def regex = [/(\w+) get(\w+\s*)\(\)\s*\{(\s*)/,/(\w+) is(\w+\s*)\(\)\s*\{(\s*)/]
+		regex.each {
+			def matcher = text =~ it
+			matcher.each { all, type, name, ignoreIt ->
+				map.put name, type
+			}
+		}
+		return map
+	}
+	
 	
 }
