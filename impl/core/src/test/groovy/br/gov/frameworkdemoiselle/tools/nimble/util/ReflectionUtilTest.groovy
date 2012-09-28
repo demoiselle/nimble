@@ -113,8 +113,91 @@ public class Classe2 extends Classe1 implements Serializable {
 
 }
 		'''
+			
+		def code3 = '''
+package br.org.frameworkdemoiselle.tools.nimble.test.domain;
+
+import static javax.persistence.GenerationType.SEQUENCE;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Entidade implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	/*
+				 *  If you are using Glassfish then remove the strategy attribute
+				 */
+	@Id
+	@GeneratedValue(strategy = SEQUENCE)
+	private Integer identificador;
+	
+	@Column
+	private String texto;
+	
+	@Column
+	@Temporal(value = TemporalType.DATE)
+	private Date data;
 	
 	
+	public Entidade() {
+		super();
+	}
+	
+	public Entidade(String texto, Date data) {
+		super();
+		this.texto = texto;
+		this.data = data;
+	}
+
+	
+	public Integer getIdentificador() {
+		return identificador;
+	}
+
+	
+	public void setIdentificador(Integer identificador) {
+		this.identificador = identificador;
+	}
+
+	
+	public String getTexto() {
+		return texto;
+	}
+
+	
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	
+	public Date getData() {
+		return data;
+	}
+
+	
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+}
+'''
+	
+		void tearDown() {
+			File tempDir = new File("./src/test/temp/")
+			if (tempDir.exists())
+				FileUtil.delTree(tempDir)
+		}
+		
 	void testGetExtendedClasses() {
 		
 			def tempDir = new File("./src/test/temp/")
@@ -139,11 +222,16 @@ public class Classe2 extends Classe1 implements Serializable {
 		tempDir.mkdir()
 		
 		def tmpFile2 = new File("./src/test/temp/Classe2.java")
-		tmpFile2 << code2
+		tmpFile2 << code3
 		
-		def expected = ['dataMatricula':'Date','numeroMatricula':'int']
+		def expected = ['identificador':'Integer', 'texto':'String', 'data':'Date']
+		                
 		
 		assert expected == ReflectionUtil.getAttributesFromClassFile(tmpFile2)
+		
+		
+		
+		
 	}
 	
 	void testGetPackageNameFromClass() {
@@ -167,15 +255,6 @@ public class Classe2 extends Classe1 implements Serializable {
 	
 	void testGetSuperClasses() {
 	
-			
-	/*	String fileLocation = "./src/test/resources/br/org/frameworkdemoiselle/tools/nimble/test/";
-		String fileName = "Estudante"
-		String packageFile = "br.org.frameworkdemoiselle.tools.nimble.test"
-		def varClass =	 CompilerUtil.getClassFromFile(fileLocation, fileName, packageFile)
-		def expected = "br.org.frameworkdemoiselle.tools.nimble.test.Pessoa"
-		assert expected == ReflectionUtil.getSuperClasses(varClass.getClass())[0].getName()*/
-	
-		
 		List<String> listOfStrings = new ArrayList<String>()
 		def expected = "java.util.AbstractList"
 		assert expected == ReflectionUtil.getSuperClasses(listOfStrings.getClass())[0].getName()
@@ -185,36 +264,12 @@ public class Classe2 extends Classe1 implements Serializable {
 	
 	void testGetFieldsFromClass() {
 		
-/*				
-			String fileLocation = "./src/test/resources/br/org/frameworkdemoiselle/tools/nimble/test/";
-			String fileName = "Estudante"
-			String packageFile = "br.org.frameworkdemoiselle.tools.nimble.test"
-			def varClass =	 CompilerUtil.getClassFromFile(fileLocation, fileName, packageFile)
-			def expected = "dataMatricula"
-			assert expected == ReflectionUtil.getFieldsFromClass(varClass.getClass())[1].getName()
-*/		
-			
 			List<String> listOfStrings = new ArrayList<String>()
 			def expected = "serialVersionUID"
 			assert expected == ReflectionUtil.getFieldsFromClass(listOfStrings.getClass())[0].getName()
 		
 			
-		}
-	
-	void testGetFieldWithAnnotation() {
-		
-		String fileLocation = "./src/test/resources/br/org/frameworkdemoiselle/tools/nimble/test/domain/";
-		String fileName = "Estudante"
-		String packageFile = "br.org.frameworkdemoiselle.tools.nimble.test.domain"
-		def varClass =	 CompilerUtil.getClassFromFile(fileLocation, fileName, packageFile)
-		
-		def varField = ReflectionUtil.getFieldWithAnnotation(varClass, "javax.persistence.Id")
-		def expected = "private java.lang.Long br.org.frameworkdemoiselle.tools.nimble.test.domain.Pessoa.id"
-		println varField.getName()
-		assert expected == varField.toString()
-			
-	}
-	
+		}	
 	
 }
 

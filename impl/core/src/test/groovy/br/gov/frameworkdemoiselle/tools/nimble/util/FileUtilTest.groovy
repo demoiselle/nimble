@@ -183,6 +183,82 @@ public class Classe2 extends Classe1 implements Serializable {
 
 }
 		'''
+			
+		def code3 = '''
+package br.org.frameworkdemoiselle.tools.nimble.test.domain;
+
+import static javax.persistence.GenerationType.SEQUENCE;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Entidade implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	
+	@Id
+	@GeneratedValue(strategy = SEQUENCE)
+	private Integer identificador;
+	
+	@Column
+	private String texto;
+	
+	@Column
+	@Temporal(value = TemporalType.DATE)
+	private Date data;
+	
+	
+	public Entidade() {
+		super();
+	}
+	
+	public Entidade(String texto, Date data) {
+		super();
+		this.texto = texto;
+		this.data = data;
+	}
+
+	
+	public Integer getIdentificador() {
+		return identificador;
+	}
+
+	
+	public void setIdentificador(Integer identificador) {
+		this.identificador = identificador;
+	}
+
+	
+	public String getTexto() {
+		return texto;
+	}
+
+	
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	
+	public Date getData() {
+		return data;
+	}
+
+	
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+}
+'''
 	void testHasString() {
 		
 		def tempDir = new File("./src/test/temp/")
@@ -208,5 +284,22 @@ public class Classe2 extends Classe1 implements Serializable {
 		assert expected == FileUtil.hasString ("./src/test/temp/Classe1.java", "@Entity")
 	}
 	
+	
+	void testGetNameAndTypeId() {
 		
+		def tempDir = new File("./src/test/temp/")
+		if (tempDir.exists()) tempDir.deleteDir()
+		tempDir.mkdir()
+		
+		def tmpFile1 = new File("./src/test/temp/Classe3.java")
+		tmpFile1 << code1
+		
+		def tmpFile2 = new File("./src/test/temp/Classe4.java")
+		tmpFile2 << code3
+		
+		def expected = ['Type':'Long', 'Name':'id']		
+		assert expected == FileUtil.getNameAndTypeId("./src/test/temp/Classe3.java")		
+		expected = ['Type':'Integer','Name':'identificador']
+		assert expected == FileUtil.getNameAndTypeId("./src/test/temp/Classe4.java")
+	}		
 }
