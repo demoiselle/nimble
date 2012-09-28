@@ -1,6 +1,7 @@
 <%
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil as RU
-def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
+import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil as RU
+def tmpFile = new File(beanPath+beanJavaName)
+def attrList = RU.getAttributesFromClassFile(tmpFile)
 %>
 <f:view xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
