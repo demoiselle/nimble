@@ -5,7 +5,7 @@
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
 	<artifactId>demoiselle-nimble</artifactId>
-	<version>1.0.5</version>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>Demoiselle Nimble</name>
@@ -160,22 +160,9 @@
 		<dependency>
 			<groupId>antlr</groupId>
 			<artifactId>antlr</artifactId>
-			<version>2.7.5</version>
+			<version>2.7.7</version>
 			<scope>compile</scope>
-		</dependency>
-		
-		<!--<dependency>
-			<groupId>org.apache.ant</groupId>
-			<artifactId>antlr</artifactId>
-			<version>1.8.4</version>
-			<scope>compile</scope>
-		</dependency>  -->
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>javax.persistence</artifactId>
-			<version>2.0.1</version>
-			<scope>test</scope>
-		</dependency>
+		</dependency>		
 	</dependencies>
 
 	<build>
