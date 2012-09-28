@@ -261,5 +261,41 @@ class FileUtil {
 		}
 		return foundString;
 	}
+	
+	
+	
+	/**
+	 * 
+	 *
+	 * @param fileName
+	 * @param phrase
+	 * @return true if exists
+	 * @throws IOException
+	 */
+	static def getNameAndTypeId(String javaFile) throws IOException{
+		
+		def map = [:]
+		Scanner fileScanner = new Scanner(new File(javaFile))
+		def lineID = 0
+		
+		Pattern pattern =  Pattern.compile("@Id")
+		Matcher matcher = null
+		while(fileScanner.hasNextLine()){
+			String line = fileScanner.nextLine()
+			lineID++
+			matcher = pattern.matcher(line)
+			if(matcher.find()){
+				pattern =  Pattern.compile("private")
+				if (line.contains("private")) {
+					 def regex = /private (\w+) (\w+)/
+					 def matcher2 = ( line =~ regex )
+					 map.put "Type", matcher2 [0][1]
+					 map.put "Name", matcher2 [0][2]
+					 break	
+				}
+			}
+		}
+		return map
+	}
 
 }

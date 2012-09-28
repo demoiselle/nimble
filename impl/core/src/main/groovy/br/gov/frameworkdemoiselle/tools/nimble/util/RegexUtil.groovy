@@ -76,6 +76,7 @@ class RegexUtil {
 	 * regex searching get methods in a given String
 	 */
 	static def getClassAttributes(String text) {
+		
 		def regex = [/(\w+) get(\w+\s*)\(\)\s*\{(\s*)/,/(\w+) is(\w+\s*)\(\)\s*\{(\s*)/]
 		regex.each {
 			def matcher = text =~ it
@@ -97,8 +98,9 @@ class RegexUtil {
 	 * supporting extended Classes
 	 */
 	static def getClassAttributesFromFile(String fileName, String path) {
+		
 		try {
-			
+			map = [:]
 			// get Attributes from original Class
 			def file = new File(path+fileName)
 			getClassAttributes(file.text)
@@ -117,19 +119,5 @@ class RegexUtil {
 			return map
 		}
 	}
-
-	
-	
-	static def getIdType(String text) {
-		def regex = [/(\w+) get(\w+\s*)\(\)\s*\{(\s*)/,/(\w+) is(\w+\s*)\(\)\s*\{(\s*)/]
-		regex.each {
-			def matcher = text =~ it
-			matcher.each { all, type, name, ignoreIt ->
-				map.put name, type
-			}
-		}
-		return map
-	}
-	
 	
 }

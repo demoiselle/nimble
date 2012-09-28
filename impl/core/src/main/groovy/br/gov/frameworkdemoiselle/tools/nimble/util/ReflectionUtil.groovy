@@ -36,9 +36,8 @@
  */
 package br.gov.frameworkdemoiselle.tools.nimble.util
 
-import java.util.List;
 import org.apache.ws.jaxme.js.*
-import org.apache.ws.jaxme.js.util.JavaParser;
+import org.apache.ws.jaxme.js.util.JavaParser
 
 /**
  * 
@@ -49,6 +48,8 @@ import org.apache.ws.jaxme.js.util.JavaParser;
  *
  */
 class ReflectionUtil {
+	
+	private static def fieldsList = [:]
 	
 	/**
 	 * 
@@ -86,9 +87,10 @@ class ReflectionUtil {
 	 * @return List of classes that was extended by gived file.
 	 */
 	static List<String> getExtendedClassesFiles (paramFile){
+		
 		def List<String> extendedClass = new ArrayList<String>()
-		def jsf = new JavaSourceFactory()
-		def jp = new JavaParser(jsf)
+		JavaSourceFactory jsf = new JavaSourceFactory()
+		JavaParser jp = new JavaParser(jsf)
 		jp.parse(paramFile)
 		for (iter in  jsf.getJavaSources()) {
 			for (extend in iter.getExtends()){
@@ -98,26 +100,51 @@ class ReflectionUtil {
 		  return extendedClass
 	}
 	
+	
 	/**
 	 * Inspects a java source file to find declared attributes 
 	 *
 	 * @param file
 	 * @return List of Attributes from class that was extended by gived file.
 	 */
-	static def getAttributesFromClassFile (paramFile){
-		
-		def fieldsList = [:]
-		def jsf = new JavaSourceFactory()
-		def jp = new JavaParser(jsf)
+	static def getAttributesFromClass (paramFile){
+				
+		JavaSourceFactory jsf = new JavaSourceFactory()
+		JavaParser jp = new JavaParser(jsf)
 		jp.parse(paramFile)
+		
+		def textFiles = jsf.getTextFiles()
 		for (iter in  jsf.getJavaSources()) {
 			for (eachField in iter.getFields()){
 				if (eachField.getName() != "serialVersionUID") {
 					fieldsList.put eachField.getName(),eachField.getType().getClassName()
 				} 			
 			}
-		  }
-		  return fieldsList
+		  }		
+		  return fieldsList		  	  
+	}
+	
+	/**
+	 * Inspects a java source file to find declared attributes
+	 *
+	 * @param file
+	 * @return List of Attributes from class that was extended by gived file.
+	 */
+	static def getAttributesFromClassFile (paramFile){
+		
+		fieldsList = [:]
+		
+		getAttributesFromClass(paramFile)
+		
+		String varPath = paramFile.getParent()+"/"
+		
+		def extendedClasses = getExtendedClassesFiles(paramFile)
+		for (cls in extendedClasses){
+			def varFile = new File (varPath+cls+".java")
+			getAttributesFromClass(varFile)
+		}
+		return fieldsList
+		
 	}
 	
 	/**
