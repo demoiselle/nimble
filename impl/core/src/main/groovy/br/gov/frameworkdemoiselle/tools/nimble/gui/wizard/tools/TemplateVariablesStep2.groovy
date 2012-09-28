@@ -53,9 +53,7 @@ import br.gov.frameworkdemoiselle.tools.nimble.util.BooleanUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.ConfigUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.FileUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil
-import br.gov.frameworkdemoiselle.tools.nimble.util.CompilerUtil
 
 
 /**
@@ -153,7 +151,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 			def vars = [:]
 			varList.each { v ->
 				if (v.component.textValue.equalsIgnoreCase("Click to select an entity class file...")) {
-					v.component.textValue = "Entity"
+					v.component.textValue = "MyEntity"
 				}
 				vars.put v.name, v.component.textValue
 			}
@@ -238,7 +236,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 					/*		break
 						case "text":
 						default:*/
-						def passed = (context.variables?.length() > i ? context.variables[i] : null)
+						def passed = (context.variables?.size() > i ? context.variables[i] : null)
 						component = textField(text:(passed ?: defaultValue), constraints: 'span 2, wrap', columns: 30)
 					/*		break;
 					}*/
@@ -258,7 +256,6 @@ class TemplateVariablesStep2 extends WizardPanel {
 				}
 			}
 		}
-		//panel.setViewportBorder(BorderFactory.createEmptyBorder())
 		panel.setBorder(BorderFactory.createEmptyBorder())
 		add(panel, BorderLayout.CENTER)
 	}
@@ -305,21 +302,40 @@ class TemplateVariablesStep2 extends WizardPanel {
 			{
 				JOptionPane.showMessageDialog(this,	"The selected class or that extends isn't annotated whit @Id!", title, JOptionPane.ERROR_MESSAGE)
 				return
-			}			
-			def varClass = CompilerUtil.getClassFromFile(entityFilePath, FileUtil.removeExt(entityFileName), ReflectionUtil.getPackageNameFromClassFile(fileSelectedEntity))
-			def varFieldID
-			if (varClass != null) {
-				varFieldID = ReflectionUtil.getFieldWithAnnotation(varClass, "javax.persistence.Id")
 			}
+			def mapNameTypeID = [:]
+			mapNameTypeID = FileUtil.getNameAndTypeId(entityFilePath+entityFileName)
+			if (mapNameTypeID.empty) {
+				for (cls in extendedClasses){
+					 mapNameTypeID = FileUtil.getNameAndTypeId (entityFilePath+cls+".java")
+				}
+			}
+			def varNameId 
+			def varTypeId
+			
+			Set sMap = mapNameTypeID.entrySet();
+			Iterator itMap = sMap.iterator();
+	
+			while(itMap.hasNext())
+			{
+				Map.Entry mEntry = (Map.Entry)itMap.next();
+				if (mEntry.getKey()=='Name') {
+					varNameId = mEntry.getValue()
+				}
+				if (mEntry.getKey()=='Type') {
+					varTypeId = mEntry.getValue()
+				}				
+			}			
+
 			varList.each { var ->
-				if (var.name == "idType") {					
-					if (varFieldID != null) {
-						var.component.textValue = varFieldID.getType().getSimpleName()
+				if (var.name == "idName") {
+					if (varNameId != null) {
+						var.component.textValue = varNameId
 					}				
 				}
-				if (var.name == "idName") {
-					if (varFieldID != null) {
-						var.component.textValue = varFieldID.getName()
+				if (var.name == "idType") {
+					if (varTypeId != null) {
+						var.component.textValue = varTypeId
 					}
 				}
 				if (var.name == "packageName") {

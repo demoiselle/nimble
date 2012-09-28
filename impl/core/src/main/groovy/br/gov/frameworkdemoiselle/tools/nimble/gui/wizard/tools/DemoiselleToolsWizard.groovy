@@ -72,7 +72,7 @@ class DemoiselleToolsWizard extends GenericWizardFrame {
 		def skip1 = false
 		if (inputPath) {
 			def template = ConfigUtil.getTemplateConfig(new File(inputPath))
-			if (template?.version?.length > 0) {
+			if (template?.version?.size() > 0) {
 				context.template = template
 				skip1 = true
 			}
