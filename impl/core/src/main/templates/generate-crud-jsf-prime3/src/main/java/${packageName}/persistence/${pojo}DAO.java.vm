@@ -1,9 +1,5 @@
 package ${packageName}.persistence;
 
-import javax.inject.Inject;
-
-import org.slf4j.Logger;
-
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
 import br.gov.frameworkdemoiselle.template.JPACrud;
 
@@ -14,8 +10,5 @@ public class ${pojo}DAO extends JPACrud<${pojo}, ${idType}> {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
-	@SuppressWarnings("unused")
-	private Logger logger;
 
 }

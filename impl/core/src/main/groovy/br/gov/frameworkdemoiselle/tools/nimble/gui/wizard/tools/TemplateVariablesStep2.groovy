@@ -179,6 +179,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 				def lof = label("1. Output Folder*:", displayedMnemonic:'1');
 				outputPathText = textField()
 				lof.setLabelFor(outputPathText)
+				outputPathText.setText(FileUtil.getCurrentDir())
 				button(text: 'Browse...', constraints: 'wrap', mnemonic:'R', actionPerformed: { selectOutputFolder() })
 				outputPathText.addKeyListener(keyHandler)
 				
@@ -273,7 +274,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 	 * @param comp variable to receive a value
 	 */
 	void selectEntityAndAttributes(def comp) {
-		String dir = FileUtil.getCurrentDir()
+		String dir = (new File(outputPathText.text).isDirectory()) ? outputPathText.text : FileUtil.getCurrentDir()
 		String entityFile = FileUtil.chooseFile(this, "Select Entity Class", dir)
 		
 		if (entityFile != null) {
