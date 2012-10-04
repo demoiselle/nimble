@@ -97,6 +97,27 @@
 		 <para>4. Version: 1.0.0</para>
 		 <para>Em seguinda clique no botão <emphasis>Finish</emphasis> e aguarde que o processo seja concluído pelo Eclipse. </para>
 		
+		<para>Verifique o arquivo /src/main/resources/persistence.xml e remova os comentários para escolher a estratégia de transação. Conforme mostrado abaixo:</para>
+		<programlisting role="xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<!-- If you are using JBoss AS7 with non JTA transaction then use this persistence-unit -->
+	<!--
+	-->
+	<persistence-unit name="testeV2-ds" transaction-type="RESOURCE_LOCAL">
+		<non-jta-data-source>java:jboss/datasources/ExampleDS</non-jta-data-source>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		</properties>
+	</persistence-unit>
+</persistence>
+		]]></programlisting>
+		<para>No arquivo /src/main/resources/messages.properties, encontre e muda a propriedade: </para>
+		 <para>main.app.title=TesteV2</para>		
+		
 		<para>O passo seguinte é identificar o Projeto no Eclipse como um projeto Maven, para isso selecione o projeto recém-criado e clique com o botão direito do mouse para acionar o menu e selecione as opções <emphasis>  Configure -> Convert to Maven Project</emphasis>  </para>
 		
 		<para>
@@ -135,7 +156,7 @@
 		 </para>
 		 <para>Crie neste pacote uma classe chamada <emphasis>Pessoa</emphasis>, conforme o código abaixo</para>
 		 <para>
-		       <programlisting role="JAVA"><![CDATA[import java.util.Date;
+		       <programlisting role="java"><![CDATA[import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -191,7 +212,7 @@ public abstract class Pessoa {
          </para>
 		 <para>Depois criaremos a classe <emphasis>Estudante</emphasis>, de acordo com o código abaixo :</para>
 		 <para>
-        	      <programlisting role="JAVA"><![CDATA[import java.io.Serializable;
+        	      <programlisting role="java"><![CDATA[import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -284,7 +305,8 @@ public class Estudante extends Pessoa implements Serializable {
 		</para>
 		<para>Com o projeto selecionado, use uma das opções acima para acionar a interface do Demoiselle Nimble, onde selecionaremos o Template
 		para geração de um CRUD (Create, Read, Update e Delete) que são as operações básicas de criar, ler, atualizar e apagar</para>
-		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo Primefaces 2, conforme a figura abaixo:</para>
+		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo optamos pelo Primefaces 3, que é compatível com a versão 2.2.2 (ou superior) do Demoiselle
+		 conforme a figura abaixo:</para>
 		<para>
         	<mediaobject>
 		       	<imageobject role="fo">
@@ -302,16 +324,17 @@ public class Estudante extends Pessoa implements Serializable {
         	</mediaobject>            		
 		 </para>	
 		 <para>Na tela seguinte, deverão ser informados os parâmetros para geração dos artefatos</para>
-		 <para>1. Output Folder*: Já estará selecionado a pasta correta, caso contrário use o botão <emphasis>Browse...</emphasis> </para>
-		 <para>2. Package Name*: <emphasis>br.org.frameworkdemoiselle</emphasis> </para>
-		 <para>3. Entity Name*: Estudante</para>
+		 <para>1. Output Folder*: Use o botão <emphasis>Browse...</emphasis> para selecionar o projeto dentro do diretório de Workspace do Eclipse</para>
+		 <para>2. Entity Name*:  Use o botão <emphasis>Click to select an entity class file...</emphasis> e procure no diretório (/src/main/java/br/org/frameworkdemoiselle/domain/)
+		 a classe Estudante</para>
+		 <para>3. Package Name*: Será preenchido automáticamente com <emphasis>br.org.frameworkdemoiselle</emphasis> </para>
 		<para>
         	<mediaobject>
 		       	<imageobject role="fo">
-		               <imagedata fileref="images/GenerateJSFPrimefaces2CRUD.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		               <imagedata fileref="images/GenerateJSFPrimefaces3CRUD.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="images/GenerateJSFPrimefaces2CRUD.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/GenerateJSFPrimefaces3CRUD.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
 					<phrase>Informando os parâmetros para criação dos artefatos</phrase>

@@ -41,7 +41,7 @@
 					<sidebar><cmdsynopsis><command>set JAVA_HOME=C:\Arquivos de programas\Java\jdk1.6.0_17\</command></cmdsynopsis></sidebar>
 				</example>
 				Para ms-windows, o indicado é abrir as configurações de ambiente (Icone Meu Computador) e incluir uma nova variável de ambiente.
-				<note>Recomenda-se utilizar a versão 1.5 ou superior da JDK. Porém se seu objetivo é utilizar a versão 2.0 do Demoiselle a versão 
+				<note>Recomenda-se utilizar a versão 1.5 ou superior da JDK. Porém se seu objetivo é utilizar a versão 2.0 do Demoiselle a versão mínima 
 				recomendada é a 1.6</note>				
 				</para>
 				<para> Para utilizar alguns dos templates de criação de aplicações (create-app-*), também é preciso ter instalado e configurado

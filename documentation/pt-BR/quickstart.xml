@@ -65,7 +65,7 @@
 						</listitem>
 					</itemizedlist>
 				 </para>
-				 <para> Para os <foreignphrase>Templates</foreignphrase> fornecidos pelo Demoiselle serão 
+				 <para> Para os <foreignphrase>Templates</foreignphrase> fornecidos pelo Demoiselle, conforme forem escolhidos na tela principal, serão 
 				 apresentadas as seguintes telas:				 
 				 </para>
 				 <section id="createapp">
@@ -118,7 +118,8 @@
 				 <title>Templates de Geração de <abbrev>CRUD</abbrev> para JSF e VAADIN com Demoiselle v2.x</title>
 				 <para>Um <abbrev>CRUD</abbrev> acrônimo de Create, Retrieve, Update e Delete em língua Inglesa, são as operações básicas
 				 relacionadas ao uso de bancos de dados em aplicações, assim nestes Templates, os produtos gerados são as classes para 
-				 implementação destas operações</para>
+				 implementação destas operações, e também todos os artefatos de configuração e interface (páginas XHTML).</para>
+				 
 				  <para>
             		<mediaobject>
 		            	<imageobject role="fo">

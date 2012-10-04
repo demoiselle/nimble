@@ -99,7 +99,7 @@
 		<repository>
 			<id>nexus.jboss.org</id>
 			<name>JBoss Maven Repository</name>
-			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -107,15 +107,7 @@
 		<repository>
 			<id>public-jboss</id>
 			<name>JBoss Public Maven Repository</name>
-			<url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>repository.jboss.org</id>
-			<name>JBoss Maven Repository</name>
-			<url>http://repository.jboss.org/maven2</url>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>

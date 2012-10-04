@@ -12,7 +12,7 @@
 	</para>
 	<para>Como o Demoiselle-Nimble foi concebido para ser independente de Plataforma, o Eclipse faz apenas
 	a chamada à interface gráfica do Demoiselle-Nimble passando os parâmetros necessários e as atulizações 
-	no ambiente (worspace).</para>
+	no ambiente (workspace).</para>
 	<para>Assim, as instruções de uso dos <foreignphrase>templates</foreignphrase> são as mesmas contidas no 
 	 <xref linkend="QS_UI"/>	 
 	</para>
