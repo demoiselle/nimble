@@ -49,14 +49,19 @@ import javax.swing.JTextField
 import javax.swing.ListSelectionModel
 import javax.swing.event.ListSelectionListener
 import javax.swing.table.TableModel
-
 import net.miginfocom.swing.MigLayout
-
 import br.gov.frameworkdemoiselle.tools.nimble.gui.wizard.WizardContext
 import br.gov.frameworkdemoiselle.tools.nimble.gui.wizard.WizardPanel
 import br.gov.frameworkdemoiselle.tools.nimble.util.ConfigUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.FileUtil
 
+/**
+ * Class to select a Template
+ *  
+ *  
+ * @author Serge Normando Rehem
+ *
+ */
 class ChooseTemplateStep1 extends WizardPanel {
 	
 	final String PREF_SRC_TEMPLATE = "src";
@@ -65,7 +70,6 @@ class ChooseTemplateStep1 extends WizardPanel {
 	int selectedRow = -1
 	
 	JPanel panel
-	//JComboBox templateSourcePathCombo
 	JTextField templateSourcePathText
 	JTable templatesTable
 	TableModel tableModel

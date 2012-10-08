@@ -57,7 +57,8 @@ import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil
 
 
 /**
- *  Second step on template's variables processing by GUI. 
+ *  Second step on template's variables processing by GUI.
+ *   
  * @author Serge Normando Rehem
  * @author Rodrigo Hjort
  * @author Emerson Sachio Saito
@@ -100,8 +101,6 @@ class TemplateVariablesStep2 extends WizardPanel {
 			varList = ConfigUtil.loadVars(varList, confFileName)
 		}
 		mountPanel()
-		//TODO verificar necessidade
-//		loadPreferences()
 		firstField = outputPathText
 	}
 	
@@ -177,9 +176,9 @@ class TemplateVariablesStep2 extends WizardPanel {
 			panel(layout: new MigLayout('insets 10, fillx', "[pref!][grow,fill][]",""), constraints:'grow') {
 				
 				def lof = label("1. Output Folder*:", displayedMnemonic:'1');
-				outputPathText = textField()
 				lof.setLabelFor(outputPathText)
-				outputPathText.setText(FileUtil.getCurrentDir())
+				outputPathText = textField()
+				outputPathText.setText(context.outputPath)
 				button(text: 'Browse...', constraints: 'wrap', mnemonic:'R', actionPerformed: { selectOutputFolder() })
 				outputPathText.addKeyListener(keyHandler)
 				
@@ -275,6 +274,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 	 */
 	void selectEntityAndAttributes(def comp) {
 		String dir = (new File(outputPathText.text).isDirectory()) ? outputPathText.text : FileUtil.getCurrentDir()
+		println "dir:  " + dir
 		String entityFile = FileUtil.chooseFile(this, "Select Entity Class", dir)
 		
 		if (entityFile != null) {
