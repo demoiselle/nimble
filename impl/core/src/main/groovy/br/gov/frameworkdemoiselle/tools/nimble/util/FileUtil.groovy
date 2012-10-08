@@ -81,7 +81,7 @@ class FileUtil {
 	 * Gets the current directory.
 	 */
 	static String getCurrentDir() {
-		new File('./').canonicalPath + File.separator
+		new File('.').canonicalPath + File.separator
 	}
 
 	/**
