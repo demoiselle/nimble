@@ -39,7 +39,7 @@
 Sobre o Demoiselle Nimble
 
   O Demoiselle Nimble é um processador automatizado de templates. Ele é parte do projeto Tools que tem como objetivo fornecer ferramentas de apoio
-  ao desenvolvedorque utiliza o Framework Demoiselle. Um processador de templates (i.e., template processor, também conhecido como template engine 
+  ao desenvolvedor que utiliza o Framework Demoiselle. Um processador de templates (i.e., template processor, também conhecido como template engine 
   ou template parser) é um software ou um componente de software projetado para combinar um ou mais templates com um modelo de dados a fim de produzir
   um ou mais documentos resultantes, podendo estes serem páginas web, arquivos de texto ou códigos fontes. 
   No caso específico do Demoiselle Nimble, no template são definidas estruturas de arquivos e scripts de transformação utilizando linguagens como Velocity

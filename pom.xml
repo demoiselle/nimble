@@ -41,7 +41,7 @@
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
 	<artifactId>demoiselle-nimble-build</artifactId>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<packaging>pom</packaging>
 
 
@@ -107,7 +107,7 @@
 	<properties>
 		<project.alias>nimble</project.alias>
 		<category>Tools</category>
-		<project.nextVersion>1.0.5-SNAPSHOT</project.nextVersion>
+		<project.nextVersion>1.1.1-SNAPSHOT</project.nextVersion>
 		<htdocs.url>sftp://web.sourceforge.net/home/project-web/demoiselle/htdocs</htdocs.url>
 		<site.url>${htdocs.url}/${category}/${project.alias}/${project.version}</site.url>
 	</properties>
