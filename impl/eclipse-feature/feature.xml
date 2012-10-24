@@ -2,7 +2,7 @@
 <feature
       id="br.gov.framewordemoiselle.nimble.eclipse.feature"
       label="Demoiselle-Nimble-Eclipse-Feature"
-      version="1.0.4"
+      version="1.1.0"
       provider-name="www.frameworkdemoiselle.gov.br"
       plugin="br.gov.frameworkdemoiselle.tools.nimble.eclipse">
 
@@ -197,8 +197,8 @@ Inc. in the United States, other countries, or both.
 
    <plugin
          id="br.gov.frameworkdemoiselle.tools.nimble.eclipse"
-         download-size="8200"
-         install-size="8200"
-         version="1.0.4"/>
+         download-size="10500"
+         install-size="10500"
+         version="1.1.0"/>
 
 </feature>
