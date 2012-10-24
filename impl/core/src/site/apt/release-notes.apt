@@ -4,10 +4,27 @@
 Notas de Versão
 
 
+* {v1.1.0}
+
+
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=813}0000813}} - [Improvement] Criação de template CRUD para mobile com PrimeFace3.
+		
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=647}0000647}} - [Improvement] Selecionar artefato do Projeto - CRUD
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=847}0000847}} - [Improvement] Atualizar templates para compatibilidade com versão 1.1.0
+	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=833}0000833}} - [Improvement] Atualização da versão do Groovy
+		
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=810}0000810}} - [Bug] [Template-CRUD] Tipo do campo ID Fixo
+
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=812}0000812}} - [Task] Verificar as versões do arquétipos
+ 
+ 	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=834}0000834}} - [Task] Atualizar documentação de referência.
+
+
 * {v1.0.4}
 	
-	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=765}0000765}} - [Task] Atualizar Documentação
-	
+		
 	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=762}0000762}} - [Improvement] Criação de template para atualização do Primefaces 3 no arquétipo de geração de aplicações
 	
 	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=755}0000755}} - [Improvement] Migração para GitHub
@@ -16,15 +33,17 @@ Notas de Versão
 	
 	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=659}0000659}} - [Task] Verificar versões de arquétipos
 	
-  
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=765}0000765}} - [Task] Atualizar Documentação
+	
+	
 * {v1.0.3}
 	
 	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=701}0000701}} - [Improvement] Adequação do template "Demoiselle v2 Generate JSF CRUD" de acordo com o arquétipo JSF-JPA
 	
 	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=668}0000668}} - [Bug] Template JSF V2
 	
-	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=658}0000658}} - [Bug] Template de CRUD JSF 2 - xhtml de Edição
-	
+	* {{{http://sourceforge.net/apps/mantisbt/demoiselle/view.php?id=658}0000658}} - [Bug] Template de CRUD JSF 2 - xhtml de Edição 
+
 
 * {v1.0.2}
 	

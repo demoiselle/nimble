@@ -25,23 +25,24 @@ Sobre Demoiselle Nimble
   São disponibilizados com o Demoiselle Nimble os seguintes templates voltados para a geração
   automática de código para o <<Framework Demoiselle>>:
   
-  * <<create-app-jsf>>: cria uma aplicação completa e funcional baseada no Demoiselle Framework v2 com
-  	JSF e JPA (usa internamente um arquétipo Maven na versão atual do Framework Demoiselle)
+  * <<create-app-jsf>>:cria uma aplicação completa e funcional baseada no Demoiselle Framework versão 2.x com
+  				JSF e JPA (usa internamente um arquétipo Maven da versão mais recente do Demoiselle) 
   
-  * <<create-app-jsf-v1>>: cria uma aplicação baseada no Demoiselle Framework v1
+  * <<create-app-jsf-v1>>: cria a estrutura básica de  uma aplicação baseada no Demoiselle Framework Versão 1.x
   
-  * <<create-app-vaadin>>: cria uma aplicação baseada na extensão Demoiselle Vaadin (com Demoiselle Framework v2)
+  * <<create-app-vaadin>>: cria uma aplicação baseada na extensão Demoiselle Vaadin (com Demoiselle Framework versão 2.x)
   
-  * <<generate-crud-jsf-prime2>>: cria todos os artefatos necessários para o CRUD de uma dada entidade
-  	baseando-se no Demoiselle Framework v2 e na versão do Primefaces 2. Usado para aplicações geradas pelo arquétipo 
-  	da versão 2.2.1 e anteriores
+  * <<generate-crud-jsf-v1>>: ria os artefatos para as funcionalidades de CRUD (Create, Read, Update and Delete) de uma entidade no Demoiselle Framework Versão 1.x
   
-  * <<generate-crud-jsf-prime3>>: cria todos os artefatos necessários para o CRUD de uma dada entidade
-  	baseando-se no Demoiselle Framework v2 e na versão do Primefaces 3. Usado para aplicações geradas pelo arquétipo 
-  	da versão 2.2.2
-  
-  * <<generate-crud-jsf-v1>>: cria os artefatos para o CRUD de uma entidade no Demoiselle Framework v1
-  
+  * <<generate-crud-jsf-prime2>>: cria todos os artefatos necessários para as funcionalidades CRUD (Create, Read, Update and Delete) de uma dada entidade 
+    baseando-se no Demoiselle Framework versão 2.x, e utilizando a biblioteca JSF2 PrimeFaces versão 2.x
+    
+  * <<generate-crud-jsf-prime3>>: cria todos os artefatos necessários para o CRUD (Create, Read, Update and Delete) de uma dada entidade
+  				baseando-se no Demoiselle Framework versão 2.x, e utilizando a biblioteca JSF2 PrimeFaces versão 3.x
+  	
+  * <<generate-crud-jsf-prime3-mobile>>: cria todos os artefatos necessários para o CRUD (Create, Read, Update and Delete) de uma dada entidade
+  				baseando-se no Demoiselle Framework versão 2.x, e utilizando a biblioteca JSF2, especializada para WEB Mobile, PrimeFaces-Mobile versão 3.x
+  	
   * <<generate-crud-vaadin>>: cria os artefatos para o CRUD de uma entidade na extensão Demoiselle Vaadin
   	(com Demoiselle Framework v2)
   

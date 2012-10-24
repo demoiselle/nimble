@@ -13,8 +13,6 @@ Templates
   Internamente é feito uso de um arquétipo do Maven, sendo que o <<Apache Maven>> precisa
   estar devidamente instalado na máquina.
   
-  É usado o arquétipo da versão atual do Framework Demoiselle.
-  
   * Variáveis
     
     * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
@@ -27,25 +25,49 @@ Templates
 
   []
 
-* {generate-crud-jsf-prime2}
+* {generate-crud-jsf-prime3}
 
-  O template <<Demoiselle v2 Generate JSF-Primefaces2 CRUD>> gera todos os artefatos envolvidos em um CRUD da
-  entidade especificada. Basea-se no arquétipo gerado para versões até 2.2.1 do Demoiselle.
+  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces 3) CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da
+  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>> e utiliza a biblioteca JSF2 PrimeFaces versão 3.x.
+  
   
   * Variáveis
+   
+     * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
     
     * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
     
-    * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
+    * <<idType>>: tipo do propriedade anotada com @Id na entidade (ex: <<<Integer>>>)
+   
+    * <<idName>>: nome da propriedade anotada com @Id na entidade (ex: <<<Identificador>>>)
     
     []
 
   []
+  
+ * {generate-crud-jsf-prime3-mobile}
 
-* {generate-crud-jsf-prime3}
+  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces3 Mobile) CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da
+  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>> e utilizando a biblioteca JSF2, especializada para WEB Mobile, PrimeFaces-Mobile versão 3.x
+  
+  
+  * Variáveis
+   
+     * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
+    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    
+    * <<idType>>: tipo do propriedade anotada com @Id na entidade (ex: <<<Integer>>>)
+   
+    * <<idName>>: nome da propriedade anotada com @Id na entidade (ex: <<<Identificador>>>)
+    
+    []
 
-  O template <<Demoiselle v2 Generate JSF2 (Primefaces 3) CRUD>> gera todos os artefatos envolvidos em um CRUD da
-  entidade especificada. Basea-se no arquétipo gerado para versões a partir da 2.2.2 do Demoiselle.
+  []
+* {generate-crud-jsf-prime2}
+
+  O template <<Demoiselle v2 Generate JSF-PrimeFaces2 CRUD:>> gera todos os artefatos envolvidos em um CRUD da
+  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>> e utiliza a biblioteca JSF2 PrimeFaces versão 2.x.
   
   * Variáveis
     
