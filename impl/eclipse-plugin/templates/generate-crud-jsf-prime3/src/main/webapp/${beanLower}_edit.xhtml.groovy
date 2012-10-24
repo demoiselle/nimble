@@ -1,6 +1,7 @@
 <% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil as RU
-def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
+import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil as RU
+def tmpFile = new File(beanPath+beanJavaName)
+def attrList = RU.getAttributesFromClassFile(tmpFile)
 %>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
@@ -45,11 +46,11 @@ def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
 					} else {
 						attrList.each() { attrName, attrValue ->
 							def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
-							if (attrName.equalsIgnoreCase('id')) {
+							if (attrName.equalsIgnoreCase(idName)) {
 					%>
-					<h:outputLabel value="#{messages['${beanLower}.label.id']}: " for="id" styleClass="text-input" />
-					<h:outputText id="id" value="#{${beanLower}EditMB.bean.id}" />
-					<p:message for="id" />
+					<h:outputLabel value="#{messages['${beanLower}.label.${idName}']}: " for="${idName}" styleClass="text-input" />
+					<h:outputText id="${idName}" value="#{${beanLower}EditMB.bean.${idName}}" />
+					<p:message for="${idName}" />
 					<%
 							} else {
 								if (attrValue.equalsIgnoreCase('Date')) {

@@ -9,8 +9,8 @@ import ${packageName}.business.${pojo}BC;
 import ${packageName}.domain.${pojo};
 
 @ViewController
-@PreviousView("/${beanLower}_list.xhtml")
-public class ${pojo}EditMB extends AbstractEditPageBean<${pojo}, Long> {
+@PreviousView("./${beanLower}_list.jsf")
+public class ${pojo}EditMB extends AbstractEditPageBean<${pojo}, ${idType}> {
 
 	private static final long serialVersionUID = 1L;
 

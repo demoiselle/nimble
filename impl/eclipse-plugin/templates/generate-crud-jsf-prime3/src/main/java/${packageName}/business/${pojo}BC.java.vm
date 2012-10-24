@@ -7,7 +7,7 @@ import ${packageName}.domain.${pojo};
 import ${packageName}.persistence.${pojo}DAO;
 
 @BusinessController
-public class ${pojo}BC extends DelegateCrud<${pojo}, Long, ${pojo}DAO> {
+public class ${pojo}BC extends DelegateCrud<${pojo}, ${idType}, ${pojo}DAO> {
 	
 	private static final long serialVersionUID = 1L;
 	

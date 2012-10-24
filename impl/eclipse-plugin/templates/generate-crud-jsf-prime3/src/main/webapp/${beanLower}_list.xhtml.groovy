@@ -1,6 +1,7 @@
 <% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil as RU
-def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
+import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil as RU
+def tmpFile = new File(beanPath+beanJavaName)
+def attrList = RU.getAttributesFromClassFile(tmpFile)
 %>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
@@ -28,17 +29,17 @@ def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
 			<p:dataTable id="list" var="bean" value="#{${beanLower}ListMB.resultList}">
 				<f:facet name="header">#{messages['${beanLower}.list.table.title']}</f:facet>
 				<p:column style="width:1%;">
-					<h:selectBooleanCheckbox value="#{${beanLower}ListMB.selection[bean.id]}"></h:selectBooleanCheckbox>
+					<h:selectBooleanCheckbox value="#{${beanLower}ListMB.selection[bean.${idName}]}"></h:selectBooleanCheckbox>
 				</p:column>
 				<%
 				if (!attrList.isEmpty()) {
 					attrList.each() { attrName, attrValue ->
 						def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
-						if (attrName.equalsIgnoreCase('id')) {	
+						if (attrName.equalsIgnoreCase(idName)) {	
 				%>
-				<p:column style="width:5%;" sortBy="#{bean.id}">
-					<f:facet name="header">#{messages['${beanLower}.label.id']}</f:facet>
-					<h:outputText value="#{bean.id}" />
+				<p:column style="width:5%;" sortBy="#{bean.${idName}}">
+					<f:facet name="header">#{messages['${beanLower}.label.${idName}']}</f:facet>
+					<h:outputText value="#{bean.${idName}}" />
 				</p:column>
 						<%
 						} else {
@@ -47,7 +48,7 @@ def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
 					<f:facet name="header">#{messages['${beanLower}.label.${attrLow}']}</f:facet>
 					<h:commandLink action="#{${beanLower}ListMB.getNextView}" actionListener="#{${beanLower}ListMB.clear}">
 						<h:outputText value="#{bean.${attrLow}}" />
-						<f:param name="id" value="#{bean.id}" />
+						<f:param name="id" value="#{bean.${idName}}" />
 					</h:commandLink>
 				</p:column>
 						<%
