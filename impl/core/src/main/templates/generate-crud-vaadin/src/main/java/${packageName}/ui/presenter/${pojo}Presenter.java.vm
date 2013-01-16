@@ -1,21 +1,23 @@
 package ${packageName}.ui.presenter;
 
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import br.gov.frameworkdemoiselle.event.ProcessClear;
-import br.gov.frameworkdemoiselle.event.ProcessDelete;
-import br.gov.frameworkdemoiselle.event.ProcessItemSelection;
-import br.gov.frameworkdemoiselle.event.BeforeNavigateToView;
-import br.gov.frameworkdemoiselle.event.ProcessSave;
-import br.gov.frameworkdemoiselle.template.AbstractPresenter;
-import br.gov.frameworkdemoiselle.stereotype.Presenter;
+import br.gov.frameworkdemoiselle.stereotype.ViewController;
+import br.gov.frameworkdemoiselle.vaadin.event.BeforeNavigateToView;
+import br.gov.frameworkdemoiselle.vaadin.event.ProcessClear;
+import br.gov.frameworkdemoiselle.vaadin.event.ProcessDelete;
+import br.gov.frameworkdemoiselle.vaadin.event.ProcessItemSelection;
+import br.gov.frameworkdemoiselle.vaadin.event.ProcessSave;
+import br.gov.frameworkdemoiselle.vaadin.template.AbstractPresenter;
 
 import ${packageName}.business.${pojo}BC;
 import ${packageName}.domain.${pojo};
 import ${packageName}.ui.view.${pojo}View;
 
-@Presenter
+@ViewController
+@SessionScoped
 public class ${pojo}Presenter extends AbstractPresenter<${pojo}View> {
 
 	private static final long serialVersionUID = 1L;
@@ -23,7 +25,7 @@ public class ${pojo}Presenter extends AbstractPresenter<${pojo}View> {
 	@Inject
 	private ${pojo}BC ${bean}BC;
 
-	public void onSave(@Observes @ProcessSave ${pojo} ${bean}) {
+	public void processSave(@Observes @ProcessSave ${pojo} ${bean}) {
 		if (${bean}.getId() != null) {
 			${bean}BC.update(${bean});
 		} else {
@@ -34,22 +36,22 @@ public class ${pojo}Presenter extends AbstractPresenter<${pojo}View> {
 		getView().setList(${bean}BC.findAll());
 	}
 
-	public void onItemSelection(@Observes @ProcessItemSelection ${pojo} ${bean}) {
+	public void processItemSelection(@Observes @ProcessItemSelection ${pojo} ${bean}) {
 		getView().setBean(${bean});
 		getView().setDeleteButtonEnabled(true);
 	}
 
-	public void onDelete(@Observes @ProcessDelete ${pojo} ${bean}) {
+	public void processDelete(@Observes @ProcessDelete ${pojo} ${bean}) {
 		${bean}BC.delete(${bean}.getId());
 		getView().setDeleteButtonEnabled(false);
 		getView().setList(${bean}BC.findAll());
 	}
 
-	public void onSearch(@Observes @BeforeNavigateToView ${pojo}View view) {
+	public void beforeNavigate(@Observes @BeforeNavigateToView ${pojo}View view) {
 		view.setList(${bean}BC.findAll());
 	}
 
-	public void onFormClear(@Observes @ProcessClear ${pojo} ${bean}) {
+	public void processFormClear(@Observes @ProcessClear ${pojo} ${bean}) {
 		getView().clear();
 		getView().setDeleteButtonEnabled(false);
 	}
