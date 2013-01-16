@@ -1,7 +1,7 @@
 package ${packageName}.ui.view;
 
-import br.gov.frameworkdemoiselle.template.AbstractCrudView;
-import br.gov.frameworkdemoiselle.ui.CrudForm;
+import br.gov.frameworkdemoiselle.vaadin.template.AbstractCrudView;
+import br.gov.frameworkdemoiselle.vaadin.ui.CrudForm;
 
 import ${packageName}.domain.${pojo};
 
@@ -13,8 +13,8 @@ public class ${pojo}View extends AbstractCrudView<${pojo}> {
 		super(new CrudForm<${pojo}>(${pojo}.class));
 	}
 
-	public void init() {
-		super.init();
+	public void initializeComponents() {
+		super.initializeComponents();
 		setCaption("${pojo}");
 
 		addComponent(getCrudForm());
