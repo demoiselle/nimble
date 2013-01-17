@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import br.gov.frameworkdemoiselle.annotation.Field;
+import br.gov.frameworkdemoiselle.vaadin.annotation.Field;
 
 @Entity
 public class ${pojo} implements Serializable {
