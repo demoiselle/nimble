@@ -69,9 +69,9 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:demoiselle/${project.alias}.git</connection>
-        <developerConnection>scm:git:git@github.com:demoiselle/${project.alias}.git</developerConnection>
-        <url>http://github.com/demoiselle/${project.alias}</url>
+        <connection>scm:git:git@github.com:demoiselle/nimble.git</connection>
+        <developerConnection>scm:git:git@github.com:demoiselle/nimble.git</developerConnection>
+        <url>http://github.com/demoiselle/nimble</url>
         <tag>HEAD</tag>
     </scm>
 
