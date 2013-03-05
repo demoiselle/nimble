@@ -45,7 +45,7 @@
     <packaging>pom</packaging>
 
 
-    <name>Build Aggregator</name>
+    <name>Nimble</name>
     <description>
         Agregador do Nimble.
     </description>
