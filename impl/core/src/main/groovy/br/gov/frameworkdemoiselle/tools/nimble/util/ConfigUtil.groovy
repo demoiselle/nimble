@@ -42,6 +42,8 @@ import br.gov.frameworkdemoiselle.tools.nimble.logger.Log
 
 /**
  * Utility class for config file operations.
+ * 
+ * @author Serge Normando Rehem
  */
 class ConfigUtil {
 	static def log = Log.getInstance(ConfigUtil.class)

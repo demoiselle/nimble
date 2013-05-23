@@ -38,6 +38,8 @@ package br.gov.frameworkdemoiselle.tools.nimble.util
 
 /**
  * Utilitary class reserved for handling boolean values.
+ * 
+ * @author Serge Normando Rehem
  */
 class BooleanUtil {
 	

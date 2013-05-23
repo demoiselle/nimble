@@ -57,7 +57,7 @@ import br.gov.frameworkdemoiselle.tools.nimble.util.TemplateUtil
 /**
  * This class is the core of Demoiselle Template Engine.
  *
- * @author 50765795515
+ * @author Serge Normando Rehem
  */
 class DemoiselleNimble {
 	static final String CONF_EXT = '.conf'

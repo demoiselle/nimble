@@ -36,6 +36,11 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 */
 package br.gov.frameworkdemoiselle.tools.nimble.gui.wizard
 
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class WizardContext {
 	
     def attributes = [:]

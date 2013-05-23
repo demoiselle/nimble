@@ -36,6 +36,11 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 */
 package br.gov.frameworkdemoiselle.tools.nimble.template
 
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 interface Template {
     String applyStringTemplate(String templateString, Map vars)
     String applyTemplate(String templateFileName, Map vars)

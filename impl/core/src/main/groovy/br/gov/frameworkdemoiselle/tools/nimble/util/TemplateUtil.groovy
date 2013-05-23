@@ -42,6 +42,9 @@ import br.gov.frameworkdemoiselle.tools.nimble.template.VelocityTemplate
 
 /**
  * Utility class for template operations.
+ * 
+ * @author Serge Normando Rehem
+ * 
  */
 class TemplateUtil {
 

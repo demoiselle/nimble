@@ -46,6 +46,8 @@ import org.apache.log4j.spi.LoggingEvent
 * Simple example of creating a Log4j appender that will
 * write to a JTextArea.
 * Adapted from: http://textareaappender.zcage.com/
+* 
+* @author Serge Normando Rehem
 */
 class TextAreaAppender extends WriterAppender {
    

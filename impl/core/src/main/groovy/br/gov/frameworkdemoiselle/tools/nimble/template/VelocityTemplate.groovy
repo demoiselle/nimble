@@ -41,6 +41,12 @@ import org.apache.velocity.app.VelocityEngine
 import org.apache.velocity.VelocityContext
 import org.apache.velocity.Template
 
+
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class VelocityTemplate extends GenericTemplate {
     static VelocityEngine engine = new VelocityEngine()
 

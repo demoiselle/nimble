@@ -36,7 +36,11 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 */
 package br.gov.frameworkdemoiselle.tools.nimble.console
 
-
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class Message {
 	
 	def title = "DEMOISELLE NIMBLE" 

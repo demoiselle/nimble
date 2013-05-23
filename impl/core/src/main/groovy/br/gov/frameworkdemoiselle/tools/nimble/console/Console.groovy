@@ -39,7 +39,11 @@ package br.gov.frameworkdemoiselle.tools.nimble.console
 import br.gov.frameworkdemoiselle.tools.nimble.logger.Log
 import br.gov.frameworkdemoiselle.tools.nimble.util.BooleanUtil
 
-
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class Console {
 	
 	static def read = System.in.newReader().&readLine 

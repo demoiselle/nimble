@@ -36,6 +36,11 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 */
 package br.gov.frameworkdemoiselle.tools.nimble.template
 
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 abstract class GenericTemplate implements Template {
     public Boolean supports(String fileExt) {
         getSupportedExt().contains(fileExt)

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<demoiselle-nimble-templates>
+	<templates>
+		<template>
+			<id>0001</id>
+			<name>Demoiselle v2 Create JSF Application</name>
+			<description>Creates a Demoiselle 2.x application using JSF-JPA Maven Archetype</description>
+			<version>1.1</version>			
+		</template>
+		<template>
+			<id>0002</id>
+			<name>Demoiselle v2 Generate JSF-Primefaces2 CRUD</name>
+			<description>Generates a complete Demoiselle 2.x JSF (Primefaces 2) CRUD for a given entity</description>
+			<version>1.1</version>
+		</template>
+		<template>
+			<id>0003</id>
+			<name>Demoiselle v2 Generate JSF2 (Primefaces 3) CRUD</name>
+			<description>Generates a complete Demoiselle 2.x JSF2 (Primefaces 3) CRUD for a given entity</description>
+			<version>1.1</version>
+		</template>
+		<template>
+			<id>0004</id>
+			<name>Demoiselle v2 Generate JSF2 (Primefaces 3 Mobile) CRUD</name>
+			<description>Generates a complete Demoiselle 2.x JSF2 (Primefaces 3 Mobile) CRUD for a given entity</description>
+			<version>1.1</version>
+		</template>
+		<template>
+			<id>0005</id>
+			<name>Demoiselle v2 Create Vaadin Application</name>
+			<description>Creates a Demoiselle 2.x application using Vaadin-JPA Maven Archetype</description>
+			<version>1.0</version>
+		</template>
+		<template>
+			<id>0006</id>
+			<name>Demoiselle v2 Generate Vaadin CRUD</name>
+			<description>Generates a complete Demoiselle 2.x Vaadin CRUD for a given entity</description>
+			<version>1.1</version>
+		</template>
+		<template>
+			<id>0007</id>
+			<name>Demoiselle v1 Create JSF Application</name>
+			<description>Creates a Demoiselle 1.x application using JSF-JPA Maven Archetype</description>
+			<version>1.0</version>
+		</template>			
+		<template>
+			<id>0008</id>
+			<name>Demoiselle v1 Generate JSF CRUD</name>
+			<description>Generates a complete Demoiselle 1.x CRUD for a given entity</description>
+			<version>1.0</version>
+		</template>		
+	</templates>
+</demoiselle-nimble-templates>

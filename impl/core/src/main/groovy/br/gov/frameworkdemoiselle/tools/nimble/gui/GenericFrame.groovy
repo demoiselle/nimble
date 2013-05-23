@@ -57,6 +57,11 @@ import javax.swing.UIManager
 import groovy.swing.SwingBuilder
 import net.miginfocom.swing.MigLayout 
 
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 abstract class GenericFrame extends JFrame {
 	
 	boolean debug = false 

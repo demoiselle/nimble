@@ -37,7 +37,10 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 package br.gov.frameworkdemoiselle.tools.nimble.util
 
 /**
+ * 
  * Utility class reserved for String operations.
+ * 
+ * @author Serge Normando Rehem
  */
 class StringUtil {
 	

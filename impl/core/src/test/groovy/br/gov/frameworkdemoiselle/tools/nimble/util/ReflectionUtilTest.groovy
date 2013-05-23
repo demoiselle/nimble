@@ -221,13 +221,13 @@ public class Entidade implements Serializable {
 		if (tempDir.exists()) tempDir.deleteDir()
 		tempDir.mkdir()
 		
-		def tmpFile2 = new File("./src/test/temp/Classe2.java")
-		tmpFile2 << code3
+		def tmpFile3 = new File("./src/test/temp/Classe3.java")
+		tmpFile3 << code3
 		
 		def expected = ['identificador':'Integer', 'texto':'String', 'data':'Date']
 		                
 		
-		assert expected == ReflectionUtil.getAttributesFromClassFile(tmpFile2)
+		assert expected == ReflectionUtil.getAttributesFromClassFile(tmpFile3)
 		
 		
 		
@@ -269,7 +269,100 @@ public class Entidade implements Serializable {
 			assert expected == ReflectionUtil.getFieldsFromClass(listOfStrings.getClass())[0].getName()
 		
 			
-		}	
+	}
+	
+	def code4 = '''
+package br.org.frameworkdemoiselle.tools.nimble.test.domain;
+
+import static javax.persistence.GenerationType.SEQUENCE;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.*;
+
+@Entity
+public class EntidadeAsterisco implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = SEQUENCE)
+	private Integer id;
+	
+	@Column
+	private String text;
+	
+	@Column
+	@Temporal(value = TemporalType.DATE)
+	private Date date;
+	
+	
+	public EntidadeAsterisco() {
+		super();
+	}
+	
+	public EntidadeAsterisco(String text, Date date) {
+		super();
+		this.text = text;
+		this.date = date;
+	}
+
+	
+	public Integer getId() {
+		return id;
+	}
+
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
+	public String getText() {
+		return text;
+	}
+
+	
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	
+	public Date getDate() {
+		return date;
+	}
+
+	
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+}
+'''
+	void testGetCompilationUni() {
+		
+		def tempDir = new File("./src/test/temp/")
+		if (tempDir.exists()) tempDir.deleteDir()
+		tempDir.mkdir()
+		
+		def tmpFile4 = new File("./src/test/temp/Classe4.java")
+		tmpFile4 << code2
+		
+		//def expected = ['identificador':'Integer', 'texto':'String', 'data':'Date']
+		
+	
+		def ret = ReflectionUtil.getCompilationUnit(tmpFile4)
+		
+		//println ret.getProperties()
+		
+		
+		//assert expected == ReflectionUtil.getCompilationUni(tmpFile2)
+		
+		
+		
+		
+	}
 	
 }
 

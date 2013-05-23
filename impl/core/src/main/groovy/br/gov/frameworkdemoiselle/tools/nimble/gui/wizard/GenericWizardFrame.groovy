@@ -41,16 +41,20 @@ import java.awt.CardLayout
 import java.awt.event.ActionEvent
 import java.awt.event.KeyEvent
 import java.util.List
-
 import javax.swing.AbstractAction
 import javax.swing.JButton
 import javax.swing.JComponent
 import javax.swing.JPanel
 import javax.swing.KeyStroke
-
 import net.miginfocom.swing.MigLayout
 import br.gov.frameworkdemoiselle.tools.nimble.gui.GenericFrame
 
+
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class GenericWizardFrame extends GenericFrame {
 	
 	private def panels = []

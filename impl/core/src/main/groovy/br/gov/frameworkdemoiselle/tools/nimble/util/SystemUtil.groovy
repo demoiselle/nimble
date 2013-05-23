@@ -36,12 +36,17 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 */
 package br.gov.frameworkdemoiselle.tools.nimble.util
 
+/**
+ * 
+ * @author Emerson Sachio Saito
+ *
+ */
 class SystemUtil {
 
 	/**
 	* to discover if it is running on ms-windows so.
 	*
-	* @return
+	* @return true if it is running on ms-windows so.
 	*/
    static boolean isWindows() {
 
@@ -53,7 +58,7 @@ class SystemUtil {
    /**
 	* to discover if it is running mac so.
 	*
-	* @return
+	* @return true if it is running mac so.
 	*/
    static boolean isMac() {
 
@@ -65,7 +70,7 @@ class SystemUtil {
    /**
 	* to discover if it is running on Linux Like OS
 	*
-	* @return
+	* @return true if it is running on Linux Like OS
 	*/
    static boolean isUnix() {
 

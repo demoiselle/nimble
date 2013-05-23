@@ -46,6 +46,11 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory 
 
 
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class Log  {
 	
 	//static String PATTERN = "%d{ABSOLUTE} %-5p [%c{1}] %m%n"

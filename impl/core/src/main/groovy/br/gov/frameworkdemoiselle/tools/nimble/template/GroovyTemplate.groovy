@@ -38,6 +38,12 @@ package br.gov.frameworkdemoiselle.tools.nimble.template
 
 import groovy.text.SimpleTemplateEngine
 
+
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class GroovyTemplate extends GenericTemplate {
 
     List getSupportedExt() {

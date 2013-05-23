@@ -41,6 +41,11 @@ import javax.swing.JCheckBox
 import javax.swing.JComboBox 
 
 
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class VisualComponent {
     String type = "text"
     def attributes = [:]

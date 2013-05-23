@@ -47,6 +47,8 @@ import freemarker.cache.FileTemplateLoader
  * Date: 06/10/2010
  * Time: 16:26:17
  * To change this template use File | Settings | File Templates.
+ * 
+ * @author Serge Normando Rehem
  */
 class FreeMarkerTemplate extends GenericTemplate {
 

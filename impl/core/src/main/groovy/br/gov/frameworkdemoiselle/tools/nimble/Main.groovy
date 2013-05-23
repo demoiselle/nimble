@@ -40,7 +40,11 @@ import br.gov.frameworkdemoiselle.tools.nimble.gui.wizard.tools.DemoiselleToolsW
 import br.gov.frameworkdemoiselle.tools.nimble.logger.Log
 import br.gov.frameworkdemoiselle.tools.nimble.util.FileUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil
-
+/**
+ * 
+ * @author Serge Normando Rehem
+ *
+ */
 class Main {
 	
     public static void main(String[] args) {

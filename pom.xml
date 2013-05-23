@@ -113,9 +113,9 @@
 
     <properties>
         <project.alias>nimble</project.alias>
-        <category>Tools</category>
+        <category>tools</category>
         <project.nextVersion>1.1.1-SNAPSHOT</project.nextVersion>
-        <htdocs.url>sftp://web.sourceforge.net/home/project-web/demoiselle/htdocs</htdocs.url>
+        <htdocs.url>sftp://web.sourceforge.net/home/project-web/demoiselle/htdocs/docs</htdocs.url>
         <site.url>${htdocs.url}/${category}/${project.alias}/${project.version}</site.url>
     </properties>
 </project>
