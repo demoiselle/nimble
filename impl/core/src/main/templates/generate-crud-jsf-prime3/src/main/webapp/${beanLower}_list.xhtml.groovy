@@ -11,10 +11,10 @@ def attrList = RU.getAttributesFromClassFile(tmpFile)
 		<h:form>
 			<p:toolbar>
 				<p:toolbarGroup align="left">
-					<p:commandButton title="#{messages['button.new']}" image="ui-icon-document" action="#{${beanLower}ListMB.getNextView}"
+					<p:commandButton title="#{messages['button.new']}" icon="ui-icon-document" action="#{${beanLower}ListMB.getNextView}"
 						actionListener="#{${beanLower}ListMB.clear}" ajax="false" />
 
-					<p:commandButton title="#{messages['button.delete']}" image="ui-icon-trash" onclick="confirmation.show()"
+					<p:commandButton title="#{messages['button.delete']}" icon="ui-icon-trash" onclick="confirmation.show()"
 						type="button" immediate="true" ajax="false" />
 
 					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
