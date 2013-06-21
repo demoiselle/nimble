@@ -6,12 +6,12 @@
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
 	<artifactId>demoiselle-nimble</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.1</version>
 	<packaging>jar</packaging>
 
 	<name>Demoiselle Nimble</name>
 	<description>Demoiselle Tools</description>
-	<url>http://demoiselle.sourceforge.net/wizard/demoiselle-nimble/${project.version}/</url>
+	<url>http://demoiselle.sourceforge.net/tools/nimble/${project.version}/</url>
 
 	<organization>
 		<name>SERPRO</name>
