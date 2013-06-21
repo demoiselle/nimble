@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>demoiselle-guide-nimble</artifactId>
 	<packaging>jdocbook</packaging>
-	<version>1.1.0</version>
+	<version>1.1.2</version>
 
 	<name>Demoiselle Nimble User Guide</name>
 	<url>http://www.frameworkdemoiselle.gov.br</url>
 
 	<parent>
-		<groupId>br.gov.frameworkdemoiselle.documentation</groupId>
+		<groupId>br.gov.frameworkdemoiselle</groupId>
 		<artifactId>demoiselle-documentation-parent</artifactId>
-		<version>2.0.1</version>
-		<!--
-		<relativePath>../support/parent/pom.xml</relativePath>
-		-->
-	</parent>	
+		<!-- <relativePath>../support/parent/pom.xml</relativePath> -->
+		<version>9-SNAPSHOT</version>
+	</parent>
 
 	<build>
 		<plugins>
@@ -29,62 +28,9 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.jboss.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-jdocbook-plugin
-										</artifactId>
-										<versionRange>
-											[2.3.5,)
-										</versionRange>
-										<goals>
-											<goal>resources</goal>
-											<goal>generate</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-antrun-plugin
-										</artifactId>
-										<versionRange>
-											[1.3,)
-										</versionRange>
-										<goals>
-											<goal>run</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
+
+
 	<repositories>
 		<repository>
 			<id>demoiselle.sourceforge.net</id>
@@ -97,21 +43,12 @@
 			<url>http://demoiselle.sourceforge.net/repository/snapshot</url>
 		</repository>
 		<repository>
-			<id>nexus.jboss.org</id>
-			<name>JBoss Maven Repository</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>public-jboss</id>
 			<name>JBoss Public Maven Repository</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss</url>
+			<url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
 			<snapshots>
-				<enabled>false</enabled>
+				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
-
 </project>

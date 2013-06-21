@@ -3,17 +3,28 @@
    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
 <revhistory>
 	<revision>
-		<revnumber>1.0.0</revnumber>
-		<date>25/04/2011</date>
+		<revnumber>1.1.2</revnumber>
+		<date>11/06/2013</date>
 		<authorinitials>ess</authorinitials>
-		<revremark>criação.</revremark>
+		<revremark></revremark>
+	</revision>
+
+	<revision>
+		<revnumber>1.1.0</revnumber>
+		<date>11/10/2012</date>
+		<authorinitials>ess</authorinitials>
+		<revremark>Adequação às mudanças até a versão 1.1.0: Seleção de classe pojo e template mobile.</revremark>
+	</revision>	
+	<revision>
 		<revnumber>1.0.4</revnumber>
 		<date>05/05/2012</date>
 		<authorinitials>ess</authorinitials>
 		<revremark>Adequação às mudanças até a versão 1.0.4</revremark>
-		<revnumber>1.1.0</revnumber>
-		<date>11/10/2012</date>
-		<authorinitials>ess</authorinitials>
-		<revremark>Adequação às mudanças até a versão 1.1.0</revremark>
 	</revision>
+	<revision>
+		<revnumber>1.0.0</revnumber>
+		<date>25/04/2011</date>
+		<authorinitials>ess</authorinitials>
+		<revremark>criação.</revremark>
+	</revision>	
 </revhistory>

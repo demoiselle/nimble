@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
-<chapter id="eclipsesample" >
+<chapter id="eclipsesample"  >
 	<abstract><para>Exemplo prático usando o ambiente de Desenvolvimento <foreignphrase>Eclipse IDE</foreignphrase></para></abstract>
 	<title>Exemplo usando Eclipse IDE</title>	
 	<para>O Demoiselle Nimble possui um plugin para Eclipse que já conta com uma boa integração. Então neste capítulo faremos uma desmonstração com o uso desta ferramenta. 
@@ -137,7 +137,7 @@
         	</mediaobject>            		
 		 </para>
 		
-		<para>Após criado o projeto, vamos localizar o pacote <emphasis>Domian</emphasis> conforme a figura abaixo: </para>
+		<para>Após criado o projeto, vamos localizar o pacote <emphasis>Domain</emphasis> conforme a figura abaixo: </para>
 		<para>
         	<mediaobject>
 		       	<imageobject role="fo">
