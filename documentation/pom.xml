@@ -6,7 +6,7 @@
 
 	<artifactId>demoiselle-guide-nimble</artifactId>
 	<packaging>jdocbook</packaging>
-	<version>1.1.2</version>
+	<version>1.1.1</version>
 
 	<name>Demoiselle Nimble User Guide</name>
 	<url>http://www.frameworkdemoiselle.gov.br</url>
