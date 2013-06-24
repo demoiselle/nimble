@@ -6,7 +6,7 @@
 		<revnumber>1.1.1</revnumber>
 		<date>21/06/2013</date>
 		<authorinitials>ess</authorinitials>
-		<revremark>Correções de links, problemas de encoding.</revremark>
+		<revremark>Correções de links, problemas de encoding, exemplo com Vaadin</revremark>
 	</revision>
 
 	<revision>
