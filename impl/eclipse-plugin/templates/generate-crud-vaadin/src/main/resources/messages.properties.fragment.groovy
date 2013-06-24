@@ -1,8 +1,11 @@
 
 menu.new.${bean} = ${pojo}
-<% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil as RU
-def attrList = RU.getClassAttributesFromFile(pojoFileName)
+<%
+
+
+import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil as RU
+def tmpFile = new File(beanPath+beanJavaName)
+def attrList = RU.getAttributesFromClassFile(tmpFile)
 if (!attrList.isEmpty()) {
 	attrList.each() { attrName, attrValue -> 
 		String attrLow = attrName.toLowerCase() 

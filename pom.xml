@@ -1,121 +1,130 @@
-<!--
- Demoiselle Framework
- Copyright (C) 2010 SERPRO
- ============================================================================
- This file is part of Demoiselle Framework.
-
- Demoiselle Framework is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public License version 3
- as published by the Free Software Foundation.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU Lesser General Public License version 3
- along with this program; if not,  see <http://www.gnu.org/licenses />
- or write to the Free Software Foundation, Inc., 51 Franklin Street,
- Fifth Floor, Boston, MA  02110-1301, USA.
- ============================================================================
- Este arquivo é parte do Framework Demoiselle.
-
- O Framework Demoiselle é um software livre; você pode redistribuí-lo e/ou
- modificá-lo dentro dos termos da GNU LGPL versão 3 como publicada pela Fundação
- do Software Livre (FSF).
-
- Este programa é distribuído na esperança que possa ser útil, mas SEM NENHUMA
- GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a qualquer MERCADO ou
- APLICAÇÃO EM PARTICULAR. Veja a Licença Pública Geral GNU/LGPL em português
- para maiores detalhes.
-
- Você deve ter recebido uma cópia da GNU LGPL versão 3, sob o título
- "LICENCA.txt", junto com esse programa. Se não, acesse <http://www.gnu.org/licenses />
- ou escreva para a Fundação do Software Livre (FSF) Inc.,
- 51 Franklin St, Fifth Floor, Boston, MA 02111-1301, USA.
--->
+<!-- Demoiselle Framework Copyright (C) 2010 SERPRO ============================================================================ 
+	This file is part of Demoiselle Framework. Demoiselle Framework is free software; 
+	you can redistribute it and/or modify it under the terms of the GNU Lesser 
+	General Public License version 3 as published by the Free Software Foundation. 
+	This program is distributed in the hope that it will be useful, but WITHOUT 
+	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+	FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
+	You should have received a copy of the GNU Lesser General Public License 
+	version 3 along with this program; if not, see <http://www.gnu.org/licenses 
+	/> or write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth 
+	Floor, Boston, MA 02110-1301, USA. ============================================================================ 
+	Este arquivo é parte do Framework Demoiselle. O Framework Demoiselle é um 
+	software livre; você pode redistribuí-lo e/ou modificá-lo dentro dos termos 
+	da GNU LGPL versão 3 como publicada pela Fundação do Software Livre (FSF). 
+	Este programa é distribuído na esperança que possa ser útil, mas SEM NENHUMA 
+	GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a qualquer MERCADO ou APLICAÇÃO 
+	EM PARTICULAR. Veja a Licença Pública Geral GNU/LGPL em português para maiores 
+	detalhes. Você deve ter recebido uma cópia da GNU LGPL versão 3, sob o título 
+	"LICENCA.txt", junto com esse programa. Se não, acesse <http://www.gnu.org/licenses 
+	/> ou escreva para a Fundação do Software Livre (FSF) Inc., 51 Franklin St, 
+	Fifth Floor, Boston, MA 02111-1301, USA. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.gov.frameworkdemoiselle.tools</groupId>
-    <artifactId>demoiselle-nimble-build</artifactId>
-    <version>1.1.0</version>
-    <packaging>pom</packaging>
+	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
+	<artifactId>demoiselle-nimble-build</artifactId>
+	<version>1.1.1</version>
+	<packaging>pom</packaging>
 
 
-    <name>Nimble</name>
-    <description>
+	<name>Demoiselle-Nimble-Build</name>
+	<description>
         Agregador do Nimble.
     </description>
 
-    <modules>
-        <module>impl/core</module>
-        <module>documentation</module>
-    </modules>
 
-    <scm>
-        <connection>scm:git:git@github.com:demoiselle/nimble.git</connection>
-        <developerConnection>scm:git:git@github.com:demoiselle/nimble.git</developerConnection>
-        <url>http://github.com/demoiselle/nimble</url>
-        <tag>HEAD</tag>
-    </scm>
+	<developers>
+		<developer>
+			<name>Emerson Sachio Saito</name>
+			<email>emerson.saito@serpro.gov.br</email>
+		</developer>
+		<developer>
+			<name>Rodrigo Hjort</name>
+			<email>rodrigo.hjort@serpro.gov.br</email>
+		</developer>
+		<developer>
+			<name>Serge Normando Rehem</name>
+			<email>serge.rehem@serpro.gov.br</email>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>André Fernandes De Jesus</name>
+			<email>afj.gyn@gmail.com</email>
+		</contributor>
+	</contributors>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <preparationGoals>clean install</preparationGoals>
-                    <goals>deploy wagon:upload site site:deploy</goals>
-                    <developmentVersion>${project.nextVersion}</developmentVersion>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <configuration>
-                    <siteDirectory>${basedir}/site</siteDirectory>
-                </configuration>
-            </plugin>
 
-        </plugins>
-    </build>
 
-    <distributionManagement>
-        <site>
-            <id>demoiselle.sourceforge.net</id>
-            <url>${site.url}</url>
-        </site>
-    </distributionManagement>
+	<modules>
+		<module>impl/core</module>
+		<module>documentation</module>
+	</modules>
 
-    <repositories>
-        <repository>
-            <id>demoiselle.sourceforge.net</id>
-            <name>Demoiselle Maven Repository</name>
-            <url>http://demoiselle.sourceforge.net/repository/release</url>
-        </repository>
-    </repositories>
+	<scm>
+		<connection>scm:git:git@github.com:demoiselle/nimble.git</connection>
+		<developerConnection>scm:git:git@github.com:demoiselle/nimble.git</developerConnection>
+		<url>http://github.com/demoiselle/nimble</url>
+		<tag>HEAD</tag>
+	</scm>
 
-    <properties>
-        <project.alias>nimble</project.alias>
-        <category>tools</category>
-        <project.nextVersion>1.1.1-SNAPSHOT</project.nextVersion>
-        <htdocs.url>sftp://web.sourceforge.net/home/project-web/demoiselle/htdocs/docs</htdocs.url>
-        <site.url>${htdocs.url}/${category}/${project.alias}/${project.version}</site.url>
-    </properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<preparationGoals>clean install</preparationGoals>
+					<goals>deploy wagon:upload site site:deploy</goals>
+					<developmentVersion>${project.nextVersion}</developmentVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<siteDirectory>${basedir}/site</siteDirectory>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<site>
+			<id>demoiselle.sourceforge.net</id>
+			<url>${site.url}</url>
+		</site>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>demoiselle.sourceforge.net</id>
+			<name>Demoiselle Maven Repository</name>
+			<url>http://demoiselle.sourceforge.net/repository/release</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<project.alias>nimble</project.alias>
+		<category>tools</category>
+		<project.nextVersion>1.1.2-SNAPSHOT</project.nextVersion>
+		<htdocs.url>sftp://web.sourceforge.net/home/project-web/demoiselle/htdocs/docs</htdocs.url>
+		<site.url>${htdocs.url}/${category}/${project.alias}/${project.version}</site.url>
+	</properties>
 </project>

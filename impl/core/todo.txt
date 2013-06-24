@@ -80,3 +80,24 @@ TODO
 	- opcao 1, criar o arquivo apenas com aquele fragmento
 	- opcao 2, mostrar mensagem de erro
 	- opcao 3, perguntar se o usuario quer criar ou ignorar....
+
+	
+	
+http://code.google.com/p/javaparser/
+http://stackoverflow.com/questions/2206065/java-parse-java-source-code-extract-methods
+http://java-source.net/open-source/parser-generators
+http://code.google.com/p/javaparser/wiki/UsingThisParser
+
+
+http://www.rgagnon.com/javadetails/java-0039.html
+http://stackoverflow.com/questions/12173294/compiling-fully-in-memory-with-javax-tools-javacompiler
+http://www.accordess.com/wpblog/an-overview-of-java-compilation-api-jsr-199/
+http://www.java2s.com/Code/Java/JDK-6/CompileaJavafilewithJavaCompiler.htm
+http://mindprod.com/jgloss/snippet/iframe/TestJavaCompiler.java.html
+http://www.ibm.com/developerworks/library/j-jcomp/
+https://javacc.java.net/doc/installhelp.html
+
+
+
+
+

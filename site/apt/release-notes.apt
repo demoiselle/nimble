@@ -3,6 +3,25 @@
 
 Notas de Versão
 
+* {v1.1.1}
+
+
+	* {{{https://demoiselle.atlassian.net/browse/NB-6}[NB-6]}} - [Bug] El generador de CRUD excepciona si existen imports con asterisco (*)
+	
+	* {{{https://demoiselle.atlassian.net/browse/NB-11}[NB-11]}} - [Improvement] Mudar lib para parser dos fontes.
+	
+	* {{{https://demoiselle.atlassian.net/browse/NB-12}[NB-12]}} - [Improvement] Template para Primeface 3, com propriedade depreciada.
+		
+	* {{{https://demoiselle.atlassian.net/browse/NB-5}[NB-5]}} - [Task] Correção de documentação
+	
+	* {{{https://demoiselle.atlassian.net/browse/NB-8}[NB-8]}} - [Task] Corrigir links de documentação
+	
+	* {{{https://demoiselle.atlassian.net/browse/NB-9}[NB-9]}} - [Task] Atualizar versões dos arquétipos para o Framework Demoiselle
+	
+	* {{{https://demoiselle.atlassian.net/browse/NB-13}[NB-13]}} - [Task] Adequar templates de CRUD para Vaadin	
+	
+	* {{{https://demoiselle.atlassian.net/browse/NB-14}[NB-14]}} - [Task] Documentação de Exemplo com Vaadin
+
 
 * {v1.1.0}
 

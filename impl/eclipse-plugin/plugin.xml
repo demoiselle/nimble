@@ -3,23 +3,6 @@
 <plugin>
 
    <extension
-         point="org.eclipse.ui.decorators">
-      <decorator
-            lightweight="true"
-            location="BOTTOM_RIGHT"
-            adaptable="true"
-            label="Resource Decorator"
-            icon="icons/demoiselleIcon.png"
-            state="true"
-            id="br.gov.frameworkdemoiselle.tools.nimble.eclipse.decorator">
-         <enablement>
-               <objectClass
-                        name="org.eclipse.core.resources.IProject">
-               </objectClass>
-         </enablement>
-      </decorator>
-   </extension>   
-   <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
             label="Nimble Template Processor"
@@ -57,33 +40,4 @@
             id="br.gov.frameworkdemoiselle.tools.nimble.eclipse.wizards.NimbleNewWizard">
       </wizard>
    </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            objectClass="org.eclipse.core.resources.IFile"
-            id="br.gov.frameworkdemoiselle.tools.nimble.eclipse.contribution1">
-         <menu
-               label="Template Processor"
-               path="additions"
-               id="br.gov.frameworkdemoiselle.tools.nimble.eclipse.menu1">
-            <separator
-                  name="Nimble">
-            </separator>
-         </menu>
-         <action
-               label="Template Processor"
-               class="br.gov.frameworkdemoiselle.tools.nimble.eclipse.popup.actions.NimbelAction"
-               menubarPath="br.gov.frameworkdemoiselle.tools.nimble.eclipse.menu1/group1"
-               enablesFor="multiple"
-               id="br.gov.frameworkdemoiselle.tools.nimble.eclipse.newAction">
-         </action>
-      </objectContribution>
-   </extension>   
-   <extension
-         point="org.eclipse.help.contexts">
-      <contexts
-            file="contexts.xml">
-      </contexts>
-   </extension>
-
 </plugin>

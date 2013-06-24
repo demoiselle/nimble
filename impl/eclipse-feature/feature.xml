@@ -2,7 +2,7 @@
 <feature
       id="br.gov.framewordemoiselle.nimble.eclipse.feature"
       label="Demoiselle-Nimble-Eclipse-Feature"
-      version="1.1.0"
+      version="1.1.1"
       provider-name="www.frameworkdemoiselle.gov.br"
       plugin="br.gov.frameworkdemoiselle.tools.nimble.eclipse">
 
@@ -12,7 +12,7 @@
 
    <copyright url="http://www.gnu.org/licenses">
       Demoiselle Framework
-Copyright (C) 2012 SERPRO
+Copyright (C) 2013 SERPRO
 ============================================================================
 This file is part of Demoiselle Framework.
 Demoiselle Framework is free software; you can redistribute it
@@ -186,19 +186,16 @@ Inc. in the United States, other countries, or both.
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.core.resources"/>
-      <import plugin="org.eclipse.jface.text"/>
       <import plugin="org.eclipse.ui.editors"/>
       <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.eclipse.debug.core"/>
-      <import plugin="org.eclipse.debug.ui"/>
       <import plugin="org.eclipse.jdt.launching"/>
+      <import plugin="org.eclipse.core.resources"/>
    </requires>
 
    <plugin
          id="br.gov.frameworkdemoiselle.tools.nimble.eclipse"
          download-size="10500"
          install-size="10500"
-         version="1.1.0"/>
+         version="1.1.1"/>
 
 </feature>
