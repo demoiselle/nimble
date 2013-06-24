@@ -28,5 +28,6 @@
 	<xi:include href="eclipse.xml"/>
 	<xi:include href="netbeans.xml"/>
 	<xi:include href="eclipsesample.xml"/>
+	<xi:include href="eclipsesamplevaadin.xml"/>
 
 </book>

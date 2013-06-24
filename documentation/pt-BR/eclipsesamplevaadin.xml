@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="eclipsesamplevaadin"  >
+	<abstract><para>Exemplo prático usando o ambiente de Desenvolvimento <foreignphrase>Eclipse IDE</foreignphrase> para gerar aplicação CRUD Vaadin</para></abstract>
+	<title>Exemplo de CRUD Vaadin usando Eclipse IDE</title>	
+		 <para>Vamos considerar que a instalação e configuração do Nimble já esteja de  acordo com as intruções contidas no capítulo 
+	 <xref linkend="eclipse_install"/> ou preferenciamento que esteja utilizando o <ulink url="http://demoiselle.sourceforge.net/infra/">Demoiselle-Infra</ulink>
+	</para>
+	<section id="EVSample">
+	<title>Prepararação</title>
+		<para> Antes de iniciar o uso do Demoiselle-Nimble, vamos criar um projeto usando um arquétipo do Demoiselle.</para>
+		<para> Selecione o Menu do Eclipse <emphasis>File-> New-> Project...</emphasis> que irá acionar a seguinte tela</para>
+		
+		<para>
+			<screenshot>
+				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/EclipseNewProject.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/EclipseNewProject.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Tela para criação de novos projetos no Eclipse</phrase>
+							</textobject>
+							<caption>
+								<para>Tela para criação de novos projetos no Eclipse</para>
+							</caption>		        	    
+        			</mediaobject>
+			</screenshot>
+		</para>
+		<para>Digite a palavra <emphasis>Maven</emphasis>no campo Wizards para em seguida selecionar a opção Maven Project e depois clique no botão <menuchoice><guibutton>Next-></guibutton></menuchoice></para>
+		<para>Na tela seguinte mantenha os valores padrão e clique novamente em <menuchoice><guibutton>Next-></guibutton></menuchoice></para>
+		<para>
+		<screenshot>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NewMavenProject.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NewMavenProject.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Definindo workspace para criar o projeto</phrase>
+				</textobject>
+				<caption>
+					<para>Definindo workspace para criar o projeto</para>
+				</caption>		        	    
+        	</mediaobject>
+        	</screenshot>            		
+		 </para>
+		 <para>Na tela seguinte, considerando que esteja usando o Eclipse provido pela instalação do Demoiselle-Infra, com o catálogo <emphasis>Demoiselle</emphasis> selecionado
+		 escolha o arquétipo <emphasis>demoiselle-vaadin-jpa</emphasis> que irá criar um projeto Vaadin utilizando a extensão JPA.</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NewMavenProjectArchetype.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NewMavenProjectArchetype.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Escolhendo o arquétipo Demoiselle para VAADIN</phrase>
+				</textobject>
+				<caption>
+					<para>Escolhendo o arquétipo Demoiselle para VAADIN</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na tela seguinte, adicionamos as informações basicas do projeto</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NewMavenProjectProperties.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NewMavenProjectProperties.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Escolhendo o arquétipo Demoiselle para VAADIN</phrase>
+				</textobject>
+				<caption>
+					<para>Escolhendo o arquétipo Demoiselle para VAADIN</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Digite as seguintes informações nos campos:</para>
+		 <itemizedlist> 
+		 	<listitem><para><emphasis>Group Id:</emphasis> br.org.frameworkdemoiselle </para></listitem>
+		 	<listitem><para><emphasis>Artifact Id:</emphasis> testeV </para></listitem>
+		 </itemizedlist>
+		 
+		 
+		 <para>Os demais o Eclipse já preenche automaticamente</para>
+		 <para>Em seguinda clique no botão <emphasis>Finish</emphasis> e aguarde que o processo seja concluído pelo Eclipse. </para>
+		
+		<para>Verifique o arquivo /src/main/resources/META-INF/persistence.xml e remova os comentários para escolher a estratégia de transação. Conforme mostrado abaixo:</para>
+		<programlisting role="xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+<!-- JBoss6 ou JBoss7 -->
+	<persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
+		<non-jta-data-source>java:jboss/datasources/ExampleDS</non-jta-data-source>
+		<class>br.org.framewokdemoiselle.testeV.domain.Bookmark</class>
+		<class>br.org.framewokdemoiselle.testeV.domain.Category</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="hibernate.show_sql" value="true" /> 
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		</properties>
+	</persistence-unit>
+	</persistence>
+		]]></programlisting>
+		<para>No arquivo /src/main/resources/messages.properties, encontre e muda a propriedade: </para>
+		 <para>main.app.title=TesteVaadin</para>		
+		
+		
+		<para>Após criado o projeto, vamos localizar o pacote <emphasis>Domain</emphasis> conforme a figura abaixo: </para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/PacoteDomainVaadin.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/PacoteDomainVaadin.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Localizando o pacote das classes de domínio</phrase>
+				</textobject>
+				<caption>
+					<para>Localizando o pacote das classes de domínio</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Crie neste pacote uma classe chamada <emphasis>Pessoa</emphasis>, conforme o código abaixo</para>
+		 <para>
+		       <programlisting role="java"><![CDATA[package br.org.framewokdemoiselle.testeV.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.*;
+import br.gov.frameworkdemoiselle.vaadin.annotation.*;
+
+@Entity
+@Table(name="TB_Contato")
+public class Contato implements Serializable{
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1169988670196408411L;
+
+		@Id
+		@GeneratedValue
+		private Long id;
+		
+		@Column(nullable=false,  length=255)
+	    @TextField
+		@Field(prompt = "{Contato.prompt.nome}", label = "{Contato.label.nome}")
+	    private String nome;
+		
+		@Column
+		@CpfField
+		@Field(prompt = "{Contato.prompt.cpf}", label = "{Contato.label.cpf}")
+	    private String cpf;
+		
+	    @Column(nullable=false)
+	    @Temporal(value=TemporalType.DATE)
+	    @Field(prompt = "{Contato.prompt.datanascimento}", label = "{Contato.label.datanascimento}")
+	    @DateField
+	    private Date dataNascimento;
+	    
+	    @Column
+		@PhoneField
+		@Field(prompt = "{Contato.prompt.telefone}", label = "{Contato.label.telefone}")
+		private String telefone;	 
+	    
+	    @Column
+		@RichText
+		@Field(prompt = "{Contato.prompt.observacoes}", label = "{Contato.label.observacoes}")
+		private String observacoes;
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public String getNome() {
+			return nome;
+		}
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+
+		public String getCpf() {
+			return cpf;
+		}
+
+		public void setCpf(String cpf) {
+			this.cpf = cpf;
+		}
+
+		public Date getDataNascimento() {
+			return dataNascimento;
+		}
+
+		public void setDataNascimento(Date dataNascimento) {
+			this.dataNascimento = dataNascimento;
+		}
+
+		public String getTelefone() {
+			return this.telefone;
+		}
+
+		public void setTelefone(String telefone) {
+			this.telefone = telefone;
+		}
+
+		public String getObservacoes() {
+			return this.observacoes;
+		}
+
+		public void setObservacoes(String observacoes) {
+			this.observacoes = observacoes;
+		}
+
+}]]></programlisting>		 
+         </para>
+</section>
+	<beginpage/>
+	<section id="nimble_vaadin_webtradicional">
+	<title> Gerando a Aplicação</title>
+		<para>Ainda no ambiente Eclipse, selecione a pasta principal do projeto e veja onde estão os acionadores do Plugin Demoiselle Nimble</para>
+		<para>
+			<itemizedlist>
+				<listitem>
+					<para> Um ícone na barra de ferramentas:</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/IconeNimble.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Icone do Demoiselle Nimble na barra de ferramentas</phrase>
+							</textobject>
+							<caption>
+								<para>Icone do Demoiselle Nimble na barra de ferramentas</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+				<listitem>
+					<para>Sub-item no Menu Ferramentas</para>
+					<para>
+        				<mediaobject>
+		       				<imageobject role="fo">
+		               			<imagedata fileref="images/MenuNimbleEclipse.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        			</imageobject>
+		        			<imageobject role="html">
+		  	            			<imagedata fileref="images/MenuNimbleEclipse.png"  format="PNG" align="center"/>
+		        			</imageobject>
+	       	    			<textobject>
+								<phrase>Sub-item Demoiselle Nimble</phrase>
+							</textobject>
+							<caption>
+								<para>Sub-item Demoiselle Nimble</para>
+							</caption>		        	    
+        				</mediaobject>            		
+		 			</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+		<para>Com o projeto selecionado, use uma das opções acima para acionar a interface do Demoiselle Nimble, onde selecionaremos o Template
+		para geração de um CRUD (Create, Read, Update e Delete) que são as operações básicas de criar, ler, atualizar e apagar</para>
+		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo optamos pelo <emphasis>Demoiselle V2 Generate Vaadin CRUD</emphasis>, que é o tipo de aplicação que estamos 
+		criando, conforme a figura abaixo:</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/SelectCRUDTemplateVaadin.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/SelectCRUDTemplateVaadin.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Escolhendo o template de CRUD</phrase>
+				</textobject>
+				<caption>
+					<para>Escolhendo o template de CRUD</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>	
+		 <para>Na tela seguinte, deverão ser informados os parâmetros para geração dos artefatos</para>
+		 <para>1. Output Folder*: Use o botão <emphasis>Browse...</emphasis> para selecionar o projeto dentro do diretório de Workspace do Eclipse, caso ainda não esteja selecionado</para>
+		 <para>2. Entity Name*:  Use o botão <emphasis>Click to select an entity class file...</emphasis> e procure no diretório (/src/main/java/br/org/frameworkdemoiselle/testeV/domain/)
+		 a classe Contato</para>
+		 <para>3. Package Name*: Será preenchido automáticamente com <emphasis>br.org.frameworkdemoiselle.testeV</emphasis> </para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/GenerateVaadinCRUD.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/GenerateVaadinCRUD.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Informando os parâmetros para criação dos artefatos</phrase>
+				</textobject>
+				<caption>
+					<para>Informando os parâmetros para criação dos artefatos</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Aguarde o processamento até que a tela de confirmação apareceça</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/GenerateVaadinOK.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/GenerateVaadinOK.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Processamento do Template OK</phrase>
+				</textobject>
+				<caption>
+					<para>Processamento do Template OK</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Confira os artefatos que foram gerados nos pacotes de negócio(business), persistência (persistence)
+		 e de visão (presenter e view)</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ArtifactsVaadinCreated.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ArtifactsVaadinCreated.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Listagem dos artefatos criados</phrase>
+				</textobject>
+				<caption>
+					<para>Listagem dos artefatos criados</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Veja também nos arquivos: persistence.xml e messages.properties, que novas
+		 informações foram incluídas.</para>
+		 <para>Assim como os arquivos MainPresenter.java e MainView.java que também foram editados</para>
+		 <para>Para testar as funcionalidade criadas, adicione o projeto no servidor JBoss e inicie o mesmo.</para>
+		 <para>No exemplo a aplicação estará em http://localhost:8080/testeV</para>
+		 <para>Veja algumas telas abaixo:</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/RunningExampleVaadin.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/RunningExampleVaadin.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Resultado na aplicação em funcionamento.</phrase>
+				</textobject>
+				<caption>
+					<para>Resultado na aplicação em funcionamento</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/RunningExampleVaadin01.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/RunningExampleVaadin01.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Resultado na aplicação em funcionamento.</phrase>
+				</textobject>
+				<caption>
+					<para>Resultado na aplicação em funcionamento</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/RunningExampleVaadin02.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/RunningExampleVaadin02.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Resultado na aplicação em funcionamento.</phrase>
+				</textobject>
+				<caption>
+					<para>Resultado na aplicação em funcionamento</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>		 
+	</section>
+</chapter>

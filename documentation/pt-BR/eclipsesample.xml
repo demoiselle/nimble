@@ -118,24 +118,6 @@
 		<para>No arquivo /src/main/resources/messages.properties, encontre e muda a propriedade: </para>
 		 <para>main.app.title=TesteV2</para>		
 		
-		<para>O passo seguinte é identificar o Projeto no Eclipse como um projeto Maven, para isso selecione o projeto recém-criado e clique com o botão direito do mouse para acionar o menu e selecione as opções <emphasis>  Configure -> Convert to Maven Project</emphasis>  </para>
-		
-		<para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/ConfigureAplicationEclipseMaven.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/ConfigureAplicationEclipseMaven.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Configurando aplicação Maven no Eclipse</phrase>
-				</textobject>
-				<caption>
-					<para>Configurando aplicação Maven no Eclipse</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
 		
 		<para>Após criado o projeto, vamos localizar o pacote <emphasis>Domain</emphasis> conforme a figura abaixo: </para>
 		<para>
