@@ -1,0 +1,9 @@
+Tag pelo Eclipse
+
+.git/config 
+------
+[remote "origin"]
+	url = https://user@github.com/demoiselle/nimble.git
+---------
+
+git push --tags
