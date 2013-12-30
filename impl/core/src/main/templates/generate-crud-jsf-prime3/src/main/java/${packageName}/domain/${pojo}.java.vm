@@ -17,10 +17,6 @@ public class ${pojo} implements Serializable {
 
     private String text;
 
-    //TODO: Add attributes here
-##If pojoAtrr, iterar
-
-##Else
     public Long getId() {
 		return id;
     }
