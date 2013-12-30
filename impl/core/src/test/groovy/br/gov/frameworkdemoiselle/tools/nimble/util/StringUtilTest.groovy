@@ -16,11 +16,19 @@ class StringUtilTest extends GroovyTestCase{
     }
 
 	void testInsertAfterFirstOccurence() {
-		assertEquals "insert here groovy and not here or there", StringUtil.insertAfter("insert here and not here or there", " groovy", "here", true)
+		assertEquals "insert here groovy and not here or there", StringUtil.insertAfter("insert here and not here or there", " groovy", "here", "first")
+	}
+	
+	void testInsertAfterLastOccurence() {
+		assertEquals "not insert here and not here, but there groovy", StringUtil.insertAfter("not insert here and not here, but there", " groovy", "here", "last")
 	}
 	
 	void testInsertBefore() {
 		assertEquals "this is a cool! groovy string", StringUtil.insertBefore("this is a groovy string", " cool! ", "groovy")
+	}
+	
+	void testInsertBeforeFirst() {
+		assertEquals "this is a cool! groovy string groovy", StringUtil.insertBefore("this is a groovy string groovy", " cool! ", "groovy", "first")
 	}
 
 	void testInsertTop() {
@@ -50,7 +58,14 @@ class StringUtilTest extends GroovyTestCase{
 	void testUpcaseFirstLetter() {
 		assertEquals "Groovy", StringUtil.upperCaseFirstLetter("groovy")
 	}	
-	
+
+	void testLowerCaseFirstLetter() {
+		assertEquals "firstLower", StringUtil.lowerCaseFirstLetter("FirstLower")
+		assertEquals "firstLowerCase", StringUtil.lowerCaseFirstLetter("FirstLowerCase")
+		assertEquals "lower", StringUtil.lowerCaseFirstLetter("Lower")
+	}
+
+		
     void testConvertKeyValueStringToMap() {
         assert [p1:'v1'] == StringUtil.convertKeyValueStringToMap("p1=v1")
         assert [p1:'v1',p2:'v2'] == StringUtil.convertKeyValueStringToMap("p1=v1&p2=v2")
@@ -60,6 +75,20 @@ class StringUtilTest extends GroovyTestCase{
 		assert "p1=v1" == StringUtil.convertMapToKeyValueString([p1:'v1'])
 		assert "p1=v1&p2=v2" == StringUtil.convertMapToKeyValueString([p1:'v1',p2:'v2'])
 	}
-
+	
+	void testGetClassNameOfListOf(){
+		def parm1 = "List<EntidadeRelacionamento>"
+		assertEquals "EntidadeRelacionamento", StringUtil.getClassNameOfListOf(parm1)		
+		
+	}
+	
+	void testHasOneInList(){
+		def list1 = ['Column', 'Temporal', 'OneToOne']
+		def list2 = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
+		def list3 = ['Column', 'Temporal']
+		
+		assertEquals "OneToOne", StringUtil.hasOneInList(list1, list2)
+		assertNull StringUtil.hasOneInList(list3, list2) 
+	}
 }
 

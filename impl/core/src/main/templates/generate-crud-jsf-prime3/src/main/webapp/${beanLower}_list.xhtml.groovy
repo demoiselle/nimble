@@ -1,7 +1,9 @@
 <% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil as RU
+import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil as PU
+import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil as SU
 def tmpFile = new File(beanPath+beanJavaName)
-def attrList = RU.getAttributesFromClassFile(tmpFile)
+def attrList = PU.getAttributesFromClassFile(tmpFile)
+def relationshipsAnnotations = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
 %>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
@@ -28,22 +30,23 @@ def attrList = RU.getAttributesFromClassFile(tmpFile)
 			</p:toolbar>
 			<p:dataTable id="list" var="bean" value="#{${beanLower}ListMB.resultList}">
 				<f:facet name="header">#{messages['${beanLower}.list.table.title']}</f:facet>
-				<p:column style="width:1%;">
+				<p:column style="width:2%;">
 					<h:selectBooleanCheckbox value="#{${beanLower}ListMB.selection[bean.${idName}]}"></h:selectBooleanCheckbox>
 				</p:column>
 				<%
 				if (!attrList.isEmpty()) {
 					attrList.each() { attrName, attrValue ->
-						def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
-						if (attrName.equalsIgnoreCase(idName)) {	
+						def annotationsForAField = PU.getAnnotationsForField(tmpFile, attrName)
+						def hasRelationship = SU.hasOneInList(annotationsForAField, relationshipsAnnotations)
+						if (hasRelationship == null){
+							def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
+							if (PU.hasAnnotationForField(tmpFile, attrName, 'Id' )) {	
 				%>
-				<p:column style="width:5%;" sortBy="#{bean.${idName}}">
-					<f:facet name="header">#{messages['${beanLower}.label.${idName}']}</f:facet>
-					<h:outputText value="#{bean.${idName}}" />
+				<p:column style="width:5%;" sortBy="#{bean.${attrLow}}">
+					<f:facet name="header">#{messages['${beanLower}.label.${attrLow}']}</f:facet>
+					<h:outputText value="#{bean.${attrLow}}" />
 				</p:column>
-						<%
-						} else {
-						%>
+						<% } else { %>
 				<p:column sortBy="#{bean.${attrLow}}">
 					<f:facet name="header">#{messages['${beanLower}.label.${attrLow}']}</f:facet>
 					<h:commandLink action="#{${beanLower}ListMB.getNextView}" actionListener="#{${beanLower}ListMB.clear}">
@@ -51,8 +54,8 @@ def attrList = RU.getAttributesFromClassFile(tmpFile)
 						<f:param name="id" value="#{bean.${idName}}" />
 					</h:commandLink>
 				</p:column>
-						<%
-						}
+					<%	}
+					 }
 					}
 				} else {
 				%>

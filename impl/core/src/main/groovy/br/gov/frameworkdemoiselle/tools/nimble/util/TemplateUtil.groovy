@@ -53,8 +53,12 @@ class TemplateUtil {
 	}
 	
 	public static String applyTemplate(String templateName, vars = [:]) {
-		Template template = TemplateFactory.getTemplate(FileUtil.getExt(templateName))
-		return template.applyTemplate(templateName, vars)
+		try {
+			Template template = TemplateFactory.getTemplate(FileUtil.getExt(templateName))
+			return template.applyTemplate(templateName, vars)
+		}catch (Exception e){
+			throw new Exception(e.cause)
+		}		
 	}
 	
 	public static String applyStringTemplate(String templateString, vars = [:]) {

@@ -38,7 +38,7 @@ package br.gov.frameworkdemoiselle.tools.nimble.util
 
 import java.util.List;
 import java.util.ArrayList;
-import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil
+import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil
 
 
 /**
@@ -106,7 +106,7 @@ class RegexUtil {
 			getClassAttributes(file.text)
 			
 			// get Attributes from Extended Class
-			def extendedClasses = ReflectionUtil.getExtendedClassesFiles(file)
+			def extendedClasses = ParserUtil.getExtendedClassesFiles(file)
 			for (cls in extendedClasses){
 				file = new File (path+cls+".java")
 				getClassAttributes(file.text)

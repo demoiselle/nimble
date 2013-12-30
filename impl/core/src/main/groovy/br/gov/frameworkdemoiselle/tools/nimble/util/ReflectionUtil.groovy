@@ -31,9 +31,12 @@
 package br.gov.frameworkdemoiselle.tools.nimble.util
 
 import japa.parser.ast.CompilationUnit;
+import japa.parser.ast.body.AnnotationDeclaration
+import japa.parser.ast.body.BodyDeclaration
 import japa.parser.ast.body.ClassOrInterfaceDeclaration
 import japa.parser.ast.body.FieldDeclaration
 import japa.parser.ast.body.VariableDeclarator
+import japa.parser.ast.expr.AnnotationExpr
 import japa.parser.ast.visitor.VoidVisitorAdapter
 
 /**
@@ -52,7 +55,7 @@ class ReflectionUtil {
 	 * 
 	 * @param paramInstanceClass
 	 * @param paramAnnotation
-	 * @return the field that contains gived Annotation type (ex: javax.persistence.Id)
+	 * @return the field that contains given Annotation type (ex: javax.persistence.Id)
 	 */
 	static def getFieldWithAnnotation (Class paramInstanceClass, String paramAnnotation) {
 
@@ -73,18 +76,17 @@ class ReflectionUtil {
 		return retField
 	}
 
-
-
 	/**
 	 * Inspects a java source file to find classes that are extended.
 	 *   
+	 * @deprecated moved to ParserUtil class 
 	 * @param file
-	 * @return List of classes that was extended by gived file.
+	 * @return List of classes that was extended by given file.
 	 */
+	@Deprecated
 	static List<String> getExtendedClassesFiles (paramFile){
 
 		def List<String> extendedClass = new ArrayList<String>()
-
 		new ClassOrInterfaceDeclarationVisitor().visit(getCompilationUnit(paramFile), null);
 
 		for (extend in new ClassOrInterfaceDeclarationVisitor().getExtendClasses() ){
@@ -97,36 +99,34 @@ class ReflectionUtil {
 	/**
 	 * Inspects a java source file to find declared attributes 
 	 *
+	 * @deprecated moved to ParserUtil class
 	 * @param file
 	 * @return List of Attributes from class that was extended by gived file.
 	 */
+	@Deprecated
 	static def getAttributesFromClass (paramFile){
 
 		fieldsList = [:]
-	
-
 		new FieldDeclarationVisitor().visit(getCompilationUnit(paramFile), null);
-
-		fieldsList = new FieldDeclarationVisitor().getFields() 
-		
+		fieldsList = new FieldDeclarationVisitor().getFields()
 		return fieldsList
 	}
 
 	/**
 	 * Inspects a java source file to find declared attributes
 	 *
+	 * @deprecated moved to ParserUtil class
 	 * @param file
-	 * @return List of Attributes from class that was extended by gived file.
+	 * @return List of Attributes from class that was extended by given file.
 	 */
+	@Deprecated
 	static def getAttributesFromClassFile (paramFile){
 
 		fieldsList = [:]
-
 		getAttributesFromClass(paramFile)
-
 		String varPath = paramFile.getParent()+"/"
-
 		def extendedClasses = getExtendedClassesFiles(paramFile)
+
 		for (cls in extendedClasses){
 			def varFile = new File (varPath+cls+".java")
 			getAttributesFromClass(varFile)
@@ -137,15 +137,18 @@ class ReflectionUtil {
 	/**
 	 * Inspects a java source file to find the declared Package Name 
 	 * 
+	 * @deprecated moved to ParserUtil class
 	 * @param file
 	 * @return a PackageName
 	 */
+	@Deprecated
 	static def getPackageNameFromClassFile (paramFile){
 
 		def compilationUnit = getCompilationUnit(paramFile)
 
 		return compilationUnit.getPackage().toString().replace("package ", "").replace(";", "").trim();
 	}
+
 
 	/**
 	 *  to find declared fields for a gived Instanced Class, using reflection
@@ -156,11 +159,13 @@ class ReflectionUtil {
 	static def getFieldsFromClass (Class paramInstanceClass) {
 		def List<?> fieldsList = new ArrayList<?>()
 		def varSuperClasses = getSuperClasses(paramInstanceClass)
+		
 		if (paramInstanceClass.getDeclaredFields().size() > 0) {
 			for (eachField in paramInstanceClass.getDeclaredFields()){
 				fieldsList.add eachField
 			}
 		}
+		
 		for (scls in varSuperClasses){
 			if (scls.getDeclaredFields().size() > 0) {
 				for (eachField in scls.getDeclaredFields()){
@@ -168,7 +173,6 @@ class ReflectionUtil {
 				}
 			}
 		}
-
 		return fieldsList
 	}
 
@@ -183,11 +187,11 @@ class ReflectionUtil {
 
 		def List<?> varSuperClasses = new ArrayList<?>()
 		Class varSuperClass = getSuperClass(paramInstanceClass)
+		
 		while (varSuperClass.getName() != "java.lang.Object") {
 			varSuperClasses.add varSuperClass
 			varSuperClass = getSuperClass(varSuperClass)
 		}
-
 		return varSuperClasses
 	}
 
@@ -201,13 +205,14 @@ class ReflectionUtil {
 		return paramInstanceClass.getSuperclass()
 	}
 
-
 	/**
 	 *  to Get a japa.parser.ast.CompilationUnit from a File Java Source 
 	 * 
+	 * @deprecated moved to ParserUtil class
 	 * @param fileI
 	 * @return
 	 */
+	@Deprecated
 	static CompilationUnit getCompilationUnit (fileI){
 
 		CompilationUnit compilationUnit;
@@ -222,12 +227,14 @@ class ReflectionUtil {
 		return compilationUnit;
 	}
 
-
 	/**
 	 * 
 	 * Class to visit source and provide a method to get Extended Class Name
+	 * 
+	 * @deprecated moved to ParserUtil class
 	 *
 	 */
+	@Deprecated
 	private static class ClassOrInterfaceDeclarationVisitor extends VoidVisitorAdapter {
 
 		def static List<?> extendClasses = new ArrayList<?>()
@@ -244,22 +251,25 @@ class ReflectionUtil {
 
 	/**
 	 * 
-	 * Class to visit source and provide a method to get Attributes (name and type)
+	 * Class to visit source and provide a method to get Field Declaration Attributes (name and type)
 	 *
+	 * @deprecated moved to ParserUtil class
 	 */
+	@Deprecated
 	private static class FieldDeclarationVisitor extends VoidVisitorAdapter {
-		
+
 		def static fields = [:]
 
 		@Override
 		public void visit(FieldDeclaration n, Object arg) {
 
 			for (VariableDeclarator declarator : n.getVariables()) {
-				
+
 				if (declarator.getId().getName() != "serialVersionUID") {
+
 					fields.put declarator.getId().getName(),n.getType().toString()
 				}
-			}			
+			}
 		}
 
 		public static def getFields(){

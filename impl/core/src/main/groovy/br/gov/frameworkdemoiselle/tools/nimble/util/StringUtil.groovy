@@ -41,36 +41,49 @@ package br.gov.frameworkdemoiselle.tools.nimble.util
  * Utility class reserved for String operations.
  * 
  * @author Serge Normando Rehem
+ * @author Emerson Sachio Saito
  */
 class StringUtil {
 	
 	/**
 	 * Generic inserts method
 	 */
-	static String insert(String str, String fragment, String insertPosition = "after", String insertPoint = null) {
+	static String insert(String str, String fragment, String insertPosition = "after", String insertPoint = null, String insertOcurrence = "last") {
 		String position = upperCaseFirstLetter(insertPosition)
 		if (insertPosition in ["top","bottom"])
 			return StringUtil."insert${position}"(str, fragment)
 		else
-			return StringUtil."insert${position}"(str, fragment, insertPoint)
+			return StringUtil."insert${position}"(str, fragment, insertPoint, insertOcurrence)
 	}
 	
 	/**
 	 * Inserts a fragment after first or last (default) occurrence of a String (insertPoint) inside another (str)
 	 */
-	static String insertAfter(String str, String fragment, String insertPoint, Boolean first = false) {
-		int pos = first? str.indexOf(insertPoint) : str.lastIndexOf(insertPoint)
-		return pos == -1 ? str : str.substring(0, pos + insertPoint.size()) + fragment + str.substring(pos + insertPoint.size())
+	static String insertAfter(String str, String fragment, String insertPoint, String insertOcurrence = "last") {
+		def pos
+		if (insertOcurrence.equalsIgnoreCase("first")) 
+		  pos =  str.indexOf(insertPoint) 
+		else 
+		  pos = str.lastIndexOf(insertPoint)
+		
+		  
+		  return str.substring(0, pos + insertPoint.size()) + fragment + str.substring(pos + insertPoint.size())
 	}
 	
 	/**
-	 * Inserts a fragment before the last occurrence of a String (insertPoint) inside another (str)
+	 * Inserts a fragment before the occurrence (insertOcurrence), default=last, of a String (insertPoint) inside another (str)
 	 */
-	static String insertBefore(String str, String fragment, String insertPoint) {
-		def pos = str.lastIndexOf(insertPoint)
+	static String insertBefore(String str, String fragment, String insertPoint, String insertOcurrence= "last") {
+		def pos
+		if (insertOcurrence.equalsIgnoreCase("first"))
+			pos = str.indexOf(insertPoint)
+		else			
+			pos = str.lastIndexOf(insertPoint)
+		
 		return str.substring(0, pos - 1) + fragment + str.substring(pos)
 	}
 	
+		
 	/**
 	 * Inserts a fragment at the beggining of a given String
 	 */
@@ -112,5 +125,41 @@ class StringUtil {
 	 */
 	static String upperCaseFirstLetter(String str) {
 		str[0].toUpperCase() + str.substring(1)
+	}
+	
+	
+	/**
+	 * Lowercases the first letter of a given string
+	 */
+	static String lowerCaseFirstLetter(String str) {
+		str[0].toLowerCase() + str.substring(1)
+	}
+	
+	/**
+	 *  Returns the Name of Class Parameter (N) for List<N> 
+	 */
+	static String getClassNameOfListOf(def str) {
+		
+		def i = str.indexOf('<')
+		def j = str.indexOf('>')
+		str.substring(i+1,j)
+	}
+	
+	/**
+	 * 
+	 * @param L1 a List of strings
+	 * @param L2 a List of strings
+	 * @return one of elements on L1 is on L2
+	 */
+	static String hasOneInList(List<String> L1, List<String> L2){
+		//TODO melhorar
+		//	def words = ['ant', 'buffalo', 'cat', 'dinosaur']
+		// assert words.findAll{ w -> w.size() > 4 } == ['buffalo', 'dinosaur']
+		for (String element : L1){
+			if (L2.contains(element)){
+				return element;
+			}			
+		}		
+		return null
 	}
 }
