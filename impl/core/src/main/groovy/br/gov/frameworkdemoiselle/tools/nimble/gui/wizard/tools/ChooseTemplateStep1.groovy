@@ -168,10 +168,21 @@ class ChooseTemplateStep1 extends WizardPanel {
 	
 	Boolean beforeNext() {
 		WizardContext context = WizardContext.getDefault()
+		
 		if (selectedRow != -1) {
-			context.template = tableData.template[selectedRow]
-			savePreferences()
-			return true
+			switch ( selectedRow ) {
+				case [6,7]:
+					context.clear()
+					JOptionPane.showMessageDialog(this, "Please use Browse... Button to select a template folder",
+					title, JOptionPane.WARNING_MESSAGE)
+				return false
+					break
+				default:
+					context.template = tableData.template[selectedRow]
+					savePreferences()
+					return true
+			}
+			
 		} else {
 			context.clear()
 			JOptionPane.showMessageDialog(this, "Please select a template from the list.",

@@ -53,7 +53,7 @@ import br.gov.frameworkdemoiselle.tools.nimble.util.BooleanUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.ConfigUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.FileUtil
 import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil
-import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil
+import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil
 
 
 /**
@@ -274,7 +274,6 @@ class TemplateVariablesStep2 extends WizardPanel {
 	 */
 	void selectEntityAndAttributes(def comp) {
 		String dir = (new File(outputPathText.text).isDirectory()) ? outputPathText.text : FileUtil.getCurrentDir()
-		println "dir:  " + dir
 		String entityFile = FileUtil.chooseFile(this, "Select Entity Class", dir)
 		
 		if (entityFile != null) {
@@ -292,7 +291,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 			// verificar se existe ID para a entidade
 			// verify if the entity class has a ID
 			def fileSelectedEntity = new File(entityFilePath+entityFileName)
-			def extendedClasses = ReflectionUtil.getExtendedClassesFiles(fileSelectedEntity)
+			def extendedClasses = ParserUtil.getExtendedClassesFiles(fileSelectedEntity)
 			def hasId = FileUtil.hasString (entityFilePath+entityFileName,"@Id")
 			if (!hasId) {
 				for (cls in extendedClasses){
@@ -340,7 +339,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 					}
 				}
 				if (var.name == "packageName") {
-					var.component.textValue = FileUtil.removeExt(ReflectionUtil.getPackageNameFromClassFile(fileSelectedEntity))
+					var.component.textValue = FileUtil.removeExt(ParserUtil.getPackageNameFromClassFile(fileSelectedEntity))
 				}
 			}
 			

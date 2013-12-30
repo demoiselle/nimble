@@ -1,39 +1,33 @@
 /*
-Demoiselle Framework
-Copyright (C) 2011 SERPRO
-============================================================================
-This file is part of Demoiselle Framework.
-
-Demoiselle Framework is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public License version 3
-as published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License version 3
-along with this program; if not,  see <http://www.gnu.org/licenses/>
-or write to the Free Software Foundation, Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA  02110-1301, USA.
-============================================================================
-Este arquivo é parte do Framework Demoiselle.
-
-O Framework Demoiselle é um software livre; você pode redistribuí-lo e/ou
-modificá-lo dentro dos termos da GNU LGPL versão 3 como publicada pela Fundação
-do Software Livre (FSF).
-
-Este programa é distribuído na esperança que possa ser útil, mas SEM NENHUMA
-GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a qualquer MERCADO ou
-APLICAÇÃO EM PARTICULAR. Veja a Licença Pública Geral GNU/LGPL em português
-para maiores detalhes.
-
-Você deve ter recebido uma cópia da GNU LGPL versão 3, sob o título
-"LICENCA.txt", junto com esse programa. Se não, acesse <http://www.gnu.org/licenses/>
-ou escreva para a Fundação do Software Livre (FSF) Inc.,
-51 Franklin St, Fifth Floor, Boston, MA 02111-1301, USA.
-*/
+ Demoiselle Framework
+ Copyright (C) 2011 SERPRO
+ ============================================================================
+ This file is part of Demoiselle Framework.
+ Demoiselle Framework is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public License version 3
+ as published by the Free Software Foundation.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU Lesser General Public License version 3
+ along with this program; if not,  see <http://www.gnu.org/licenses/>
+ or write to the Free Software Foundation, Inc., 51 Franklin Street,
+ Fifth Floor, Boston, MA  02110-1301, USA.
+ ============================================================================
+ Este arquivo é parte do Framework Demoiselle.
+ O Framework Demoiselle é um software livre; você pode redistribuí-lo e/ou
+ modificá-lo dentro dos termos da GNU LGPL versão 3 como publicada pela Fundação
+ do Software Livre (FSF).
+ Este programa é distribuído na esperança que possa ser útil, mas SEM NENHUMA
+ GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a qualquer MERCADO ou
+ APLICAÇÃO EM PARTICULAR. Veja a Licença Pública Geral GNU/LGPL em português
+ para maiores detalhes.
+ Você deve ter recebido uma cópia da GNU LGPL versão 3, sob o título
+ "LICENCA.txt", junto com esse programa. Se não, acesse <http://www.gnu.org/licenses/>
+ ou escreva para a Fundação do Software Livre (FSF) Inc.,
+ 51 Franklin St, Fifth Floor, Boston, MA 02111-1301, USA.
+ */
 package br.gov.frameworkdemoiselle.tools.nimble
 
 import java.io.File
@@ -42,6 +36,7 @@ import java.util.Map
 
 import javax.swing.JOptionPane
 
+import org.codehaus.groovy.ast.stmt.ThrowStatement;
 import org.codehaus.groovy.runtime.ProcessGroovyMethods
 
 import br.gov.frameworkdemoiselle.tools.nimble.console.Console
@@ -62,86 +57,91 @@ import br.gov.frameworkdemoiselle.tools.nimble.util.TemplateUtil
 class DemoiselleNimble {
 	static final String CONF_EXT = '.conf'
 	static final String FRAG_EXT = '.fragment'
-	
+
 	Boolean silent = false
-	
+
 	class Overwrite {
 		static int UNDEFINED = 0
 		static ALL = 1
 		static NONE = 2
 	}
 	int overwrite = Overwrite.UNDEFINED
-	
+
 	def msg = new Message()
-	
+
 	def log = Log.getInstance(DemoiselleNimble.class)
 	def gui = false
-	
+
 	// Statistics
 	def executions = [:]
 	def templates = [:]
 	def fragments = [:]
 	def confFiles = [:]
 	def singleFiles = [:]
-	
+
 	DemoiselleNimble(gui = false) {
 		this.gui = gui
 	}
-	
+
 	Boolean applyTemplates(String templateSrcPath, String templateDestPath, String varsFile) {
-		return applyTemplates(templateSrcPath, templateDestPath, FileUtil.convertPropsToMap(varsFile))
+		try {
+			return applyTemplates(templateSrcPath, templateDestPath, FileUtil.convertPropsToMap(varsFile))
+		} catch (Exception ex) {
+			return false;
+		}
+
 	}
-	
+
 	Boolean applyTemplates(String templateSrcPath, String templateDestPath, ArrayList args) {
 		def map = [:]
-		
+
 		try {
 			// read settings on "template.conf"
 			def conf = ConfigUtil.getConfig(templateSrcPath + "/template" + CONF_EXT)
 			def vars = conf.vars
 			//println "vars: $vars"
-			
+
 			vars?.eachWithIndex() { var, i ->
 				//println "var: $var, i: $i"
-				
+
 				if (args[i])
 					map[var.key] = args[i]
 				else if (var.value) {
-					
+
 					// boolean variables deserve a special handling! :D
 					if (var.value.dataType && "boolean".equalsIgnoreCase(var.value.dataType)) {
 						map[var.key] = Console.readLineBoolean(
-							"${var.value?.label}? (y/n)", var.value.defaultValue)
-					
-					// remainder types are treated like strings
+								"${var.value?.label}? (y/n)", var.value.defaultValue)
+
+						// remainder types are treated like strings
 					} else {
 						def required = var.value.required ?: true
 						map[var.key] = Console.readLine(
-							var.value.label, [], var.value.defaultValue ?: null,
-							required, Console.REGEXP_VALID_NAME)
+								var.value.label, [], var.value.defaultValue ?: null,
+								required, Console.REGEXP_VALID_NAME)
 					}
 				}
-				
+
 				//println "value: ${map[var.key]}"
 			}
 		} catch (Exception ex) {
-			
+
 			// ex: java.lang.NullPointerException: Cannot get property 'vars' on null object
 			//     at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:56)
-			
+
 			// TODO: implementar tratamento de exceÃ§Ã£o adequado
 			ex.printStackTrace()
-			
+
 			// nÃ£o dar continuidade no processamento!
 			return false
 		}
-		
+
 		//		println "map: $map"
-		
+
 		//return true
 		return applyTemplates(templateSrcPath, templateDestPath, map)
 	}
-	
+
 	private void initStatistics() {
 		executions["total"] = 0
 		templates["total"] = 0
@@ -159,35 +159,35 @@ class DemoiselleNimble {
 		singleFiles["copied"] = 0
 		confFiles["total"] = 0
 	}
-	
+
 	private void printDashes() {
 		log.info "-" * 80
 	}
-	
+
 	/**
 	 * This method applies the template specified in templateSrcPath and rediects its results
 	 * into templateDestPath. Optionally you can pass a map of variables to be used along with
 	 * the transformation.
 	 */
 	Boolean applyTemplates(String templateSrcPath, String templateDestPath, Map vars) {
-		
+
 		templateSrcPath = FileUtil.addSep(templateSrcPath)
 		templateDestPath = FileUtil.addSep(templateDestPath)
-		
+
 		initStatistics()
 		printDashes()
 		log.info msg.title
 		printDashes()
 		log.info msg.source(templateSrcPath)
 		log.info msg.destination(templateDestPath)
-		
+
 		try {
 			def config = ConfigUtil.getConfig(templateSrcPath + "/template" + CONF_EXT)
-			
+
 			// Add source and destination to variables list
 			vars.put "templateSourcePath", templateSrcPath
 			vars.put "templateDestPath", templateDestPath
-			
+
 			// force variables 'typenization' according to its data types
 			config?.vars?.each { var ->
 				if ("boolean".equalsIgnoreCase(var.value?.dataType?.toString())) {
@@ -198,7 +198,7 @@ class DemoiselleNimble {
 					}
 				}
 			}
-			
+
 
 			// Process customized template variables
 			if (config?.customVars) {
@@ -211,14 +211,14 @@ class DemoiselleNimble {
 			}
 			printDashes()
 
-			
+
 			// Processes all executions
 			printDashes()
 			log.info msg.processing_exec
 			printDashes()
 			def execution = config?.exec
 			def command = execution?.command
-			
+
 			if (command) {
 				if (command instanceof List) {
 					for (cmd in command) {
@@ -239,11 +239,11 @@ class DemoiselleNimble {
 				!file.name.toLowerCase().endsWith(CONF_EXT) &&
 				!file.name.toLowerCase().contains(FRAG_EXT)) {
 					log.info "FROM: " + file.path
-					
+
 					def conf = ConfigUtil.getConfig(file.path + CONF_EXT)
 					Boolean skip = conf?.skipIfExists
 					Boolean processTemplate = (conf?.condition ? ConfigUtil.evaluate(vars, conf?.condition) : true)
-					
+
 					if (!processTemplate) {
 						log.info msg.skipped_condition
 						templates["skipped"]++
@@ -255,9 +255,9 @@ class DemoiselleNimble {
 						// Copies file only if it isn't a .conf file corresponding to another
 						String destFolder = getDestFolder(templateSrcPath, templateDestPath, file)
 						String destFileName = TemplateUtil.mountDestFileName(destFolder, file.name, vars)
-//						String destFileName = getDestFolder(templateSrcPath, templateDestPath, file) + file.name
+						//						String destFileName = getDestFolder(templateSrcPath, templateDestPath, file) + file.name
 						log.info "TO  : " + destFileName
-						
+
 						if (new File(destFileName).exists()) {
 							if (skip || overwrite ==  Overwrite.NONE) {
 								log.info msg.skipped
@@ -265,7 +265,7 @@ class DemoiselleNimble {
 							} else if (overwriteDestinationFile(destFileName)) {
 								//println "$file.path -> templateDestPath"
 								FileUtil.copy(file.path, destFileName)
-//								FileUtil.copy(file.path, templateDestPath)
+								//								FileUtil.copy(file.path, templateDestPath)
 								log.info msg.overwritten
 								singleFiles["overwritten"]++
 							} else {
@@ -274,7 +274,7 @@ class DemoiselleNimble {
 							}
 						} else {
 							FileUtil.copy(file.path, destFileName)
-//							FileUtil.copy(file.path, templateDestPath)
+							//							FileUtil.copy(file.path, templateDestPath)
 							log.info msg.copied
 							singleFiles["copied"]++
 						}
@@ -285,7 +285,7 @@ class DemoiselleNimble {
 					}
 				}
 			}
-			
+
 			// Processes all fragments
 			printDashes()
 			log.info msg.processing_frag
@@ -296,30 +296,31 @@ class DemoiselleNimble {
 				TemplateUtil.isTemplate(FileUtil.getExt(file.name.toLowerCase())) &&
 				file.name.toLowerCase().contains(FRAG_EXT)) {
 					log.info "FROM: " + file.path
-					
+
 					def conf = ConfigUtil.getConfig(file.path + CONF_EXT)
 					if (conf != null) confFiles["total"]++
-					
+
 					String insertPoint = conf?.insertPoint
 					String insertPosition = (conf?.insertPosition ?: "after")
+					String insertOcurrence = (conf?.insertOcurrence ?: "last")
 					Boolean processFragment = (conf?.condition ? ConfigUtil.evaluate(vars, conf?.condition) : true)
-					
+
 					if (!processFragment) {
 						log.info msg.skipped_condition
 						fragments["skipped"]++
 
 					} else if (insertPoint != null || insertPosition in ["top", "bottom"]) {
-						
+
 						String fragment = TemplateUtil.applyTemplate(file.path, vars)
-						
+
 						String destFolder = getDestFolder(templateSrcPath, templateDestPath, file)
 						String destFile = file.name - file.name.substring(file.name.indexOf(FRAG_EXT))
 						String destFileName = TemplateUtil.mountDestFileName(destFolder, destFile, vars)
-						
+
 						File fileToReceiveFragment = new File(destFileName)
 						log.info "TO  : " + destFileName
 
-						// TODO: criar arquivo inicial se nÃ£o existente
+						// TODO: criar arquivo inicial se nao existente
 						if (!fileToReceiveFragment.exists()) {
 							fragments["copied"]++
 							// ... copiar aqui
@@ -333,7 +334,7 @@ class DemoiselleNimble {
 								insertPoint = conf?.firstInsertPoint
 								insertPosition = (conf.firstInsertPosition ?: "after")
 							}
-							fileToReceiveFragment.text = StringUtil.insert(fileToReceiveFragment.text, fragment, insertPosition, insertPoint)
+							fileToReceiveFragment.text = StringUtil.insert(fileToReceiveFragment.text, fragment, insertPosition, insertPoint, insertOcurrence)
 							log.info msg.incremented(insertPosition)
 							fragments["incremented"]++
 						}
@@ -343,15 +344,15 @@ class DemoiselleNimble {
 					fragments["total"]++
 				}
 			}
-			
+
 			showStatistics()
 			return true
 		} catch (Exception ex) {
-			ex.printStackTrace()
+			return false
 		}
 		return false
 	}
-	
+
 	/**
 	 * Executes a shell instruction.
 	 *
@@ -369,11 +370,11 @@ class DemoiselleNimble {
 		//FIX-ME windows ok. MAC ?? see SystemUtil
 		def commandExec = null
 		if (SystemUtil.isWindows())
-			commandExec = ['cmd','/c',] + command
+			commandExec = ['cmd', '/c',]+ command
 		else
 			commandExec = command
 		log.info "Executing instruction: ${commandExec}"
-	
+
 		def proc = null
 		def out = new StringBuilder()
 		def err = new StringBuilder()
@@ -386,7 +387,7 @@ class DemoiselleNimble {
 			println e.getMessage()
 			return -1
 		}
-		
+
 		def code = proc.exitValue()
 		if (code == 0) {
 			log.info "\n$out"
@@ -398,10 +399,10 @@ class DemoiselleNimble {
 			println out
 			println err
 		}
-		
+
 		return code
 	}
-	
+
 	private void showStatistics() {
 		printDashes()
 		log.info "Executions.... ${executions['total']}"
@@ -412,17 +413,17 @@ class DemoiselleNimble {
 		log.info "ALL DONE!"
 		printDashes()
 	}
-	
+
 	private Boolean applyFileTemplate(String templateName, String templateDestPath, vars = [:], Boolean skipIfExists = false) {
 		try {
 			String destFileName = FileUtil.removeExt(TemplateUtil.mountDestFileName(templateDestPath, templateName, vars))
 			log.info "TO  : " + destFileName
-		
+
 			vars.put "templateName", templateName
 			vars.put "templateDestPath", templateDestPath
 			vars.put "templateDestFileName", destFileName
 			vars.put "templateVars", vars
-			
+
 			boolean apply = true, skip = false
 			def destFile = new File(destFileName)
 			if (destFile.exists()) {
@@ -444,58 +445,54 @@ class DemoiselleNimble {
 				log.info msg.generated
 				templates["generated"]++
 			}
-			
+
 			vars.remove "templateName"
 			vars.remove "templateDestPath"
 			vars.remove "templateDestFileName"
 			vars.remove "templateVars"
-			
+
 			return true
 		} catch (Exception ex) {
 			ex.printStackTrace()
+			throw new Exception()
 		}
 		return false
 	}
-	
+
 	// TODO: refatorar código para usar método abaixo
 	/*
-	private Boolean applyFragmentTemplate(String templateName, String templateDestPath, vars = [:]) {
-		try {
-			String destFileName = TemplateUtil.mountDestFileName(templateDestPath, templateName, vars)
-			log.info "TO  : " + destFileName
-			
-			vars.put "templateName", templateName
-			vars.put "templateDestPath", templateDestPath
-			vars.put "templateDestFileName", destFileName
-			vars.put "templateVars", vars
-			
-println "destFileName = ${destFileName}"
-			
-			// ...
-			
-			vars.remove "templateName"
-			vars.remove "templateDestPath"
-			vars.remove "templateDestFileName"
-			vars.remove "templateVars"
-			
-			return true
-		} catch (Exception ex) {
-			ex.printStackTrace()
-		}
-		return false
-	}
-	*/
-	
+	 private Boolean applyFragmentTemplate(String templateName, String templateDestPath, vars = [:]) {
+	 try {
+	 String destFileName = TemplateUtil.mountDestFileName(templateDestPath, templateName, vars)
+	 log.info "TO  : " + destFileName
+	 vars.put "templateName", templateName
+	 vars.put "templateDestPath", templateDestPath
+	 vars.put "templateDestFileName", destFileName
+	 vars.put "templateVars", vars
+	 println "destFileName = ${destFileName}"
+	 // ...
+	 vars.remove "templateName"
+	 vars.remove "templateDestPath"
+	 vars.remove "templateDestFileName"
+	 vars.remove "templateVars"
+	 return true
+	 } catch (Exception ex) {
+	 ex.printStackTrace()
+	 }
+	 return false
+	 }
+	 */
+
 	private String getDestFolder(templateSrcPath, templateDestPath, file) {
 		def ret = FileUtil.addSep((FileUtil.removeSep(FileUtil.toJavaPath (templateDestPath)) - FileUtil.toJavaPath(file.parent)) +
-			(FileUtil.toJavaPath(file.parent) - FileUtil.removeSep(FileUtil.toJavaPath(templateSrcPath))))
+				(FileUtil.toJavaPath(file.parent) - FileUtil.removeSep(FileUtil.toJavaPath(templateSrcPath))))
 		return ret
 	}
-	
+
 	private Boolean isConfFile(file) {
 		return file.path.toLowerCase().endsWith(CONF_EXT) && new File(file.path[0..-1 * CONF_EXT.size() - 1]).exists()
 	}
-	
+
 	private Boolean overwriteDestinationFile(String destFileName) {
 		if (silent) return true
 		if (overwrite == Overwrite.ALL) return true

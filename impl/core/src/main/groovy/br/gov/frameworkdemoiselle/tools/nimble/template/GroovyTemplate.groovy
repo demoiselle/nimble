@@ -58,7 +58,11 @@ class GroovyTemplate extends GenericTemplate {
             return template.toString()
         } catch (Exception ex) {
             ex.printStackTrace()
-        }
+			throw new Exception(ex.cause)
+        } catch ( GroovyRuntimeException gRE){
+			gRE.printStackTrace()
+			throw new Exception(gRE.cause)
+        } 
         return null
     }
 	
@@ -69,6 +73,10 @@ class GroovyTemplate extends GenericTemplate {
 			return template.toString()
 		} catch (Exception ex) {
 			ex.printStackTrace()
+			throw new Exception(ex.cause)
+		}	catch ( GroovyRuntimeException gRE){
+			gRE.printStackTrace()
+			throw new Exception(gRE.cause)
 		}
 		return null
 	}
