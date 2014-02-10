@@ -1,0 +1,120 @@
+package ${packageName}.view.managedbean;
+
+#if ($useDemoiselleCRUD)
+import br.gov.component.demoiselle.crud.annotation.CrudPaged;
+import br.gov.component.demoiselle.crud.supercrud.SuperCrudMB;
+
+import ${packageName}.bean.${pojo};
+
+@CrudPaged(title="${pojo}", view = "${bean}_crud")
+public class ${pojo}MB extends SuperCrudMB<${pojo}> {
+	private static final long serialVersionUID = 1L;
+}
+#else
+import br.gov.framework.demoiselle.core.layer.integration.Injection;
+import br.gov.framework.demoiselle.core.message.IMessageContext;
+import br.gov.framework.demoiselle.util.page.Page;
+import br.gov.framework.demoiselle.util.page.PagedResult;
+import br.gov.framework.demoiselle.view.faces.controller.AbstractManagedBean;
+import br.gov.framework.demoiselle.view.faces.util.PagedResultDataModel;
+
+import ${packageName}.bean.${pojo};
+import ${packageName}.business.I${pojo}BC;
+import ${packageName}.constant.AliasNavigationRule;
+import ${packageName}.message.WarningMessage;
+
+public class ${pojo}MB extends AbstractManagedBean {
+
+	private static final long serialVersionUID = 1L;
+
+	@Injection
+	private I${pojo}BC ${bean}BC;
+
+	@Injection
+	private transient IMessageContext messageContext;
+
+	private ${pojo} ${bean};
+
+	private PagedResultDataModel<${pojo}> list;
+
+	private boolean deletion = false;
+
+	public ${pojo}MB() {
+		${bean} = new ${pojo}();
+	}
+
+	public String list() {
+		loadList();
+		return AliasNavigationRule.${pojoUpper}_LIST;
+	}
+
+	public String insert() {
+		${bean}BC.insert(${bean});
+		loadList();
+		return AliasNavigationRule.${pojoUpper}_LIST;
+	}
+
+	public String delete() {
+		${bean} = ${bean}BC.load(${bean});
+		${bean}BC.delete(${bean});
+		loadList();
+		return AliasNavigationRule.${pojoUpper}_LIST;
+	}
+
+	public String update() {
+		${bean}BC.update(${bean});
+		loadList();
+		return AliasNavigationRule.${pojoUpper}_LIST;
+	}
+
+	public void loadList() {
+		Page page = new Page(getMaxPages());
+		loadList(page);
+	}
+
+	public void loadList(Page page) {
+		PagedResult<${pojo}> result = ${bean}BC.listAll(page);
+		this.list = new PagedResultDataModel<${pojo}>(result);
+	}
+
+	public String preInsert() {
+		${bean} = new ${pojo}();
+		return AliasNavigationRule.${pojoUpper}_EDIT;
+	}
+
+	public String preDelete() {
+		${bean} = ${bean}BC.load(${bean});
+		messageContext.addMessage(WarningMessage.${pojoUpper}_CONFIRM_DELETE);
+		deletion = true;
+		return AliasNavigationRule.${pojoUpper}_VIEW;
+	}
+
+	public String preUpdate() {
+		${bean} = ${bean}BC.load(${bean});
+		return AliasNavigationRule.${pojoUpper}_EDIT;
+	}
+
+	public String view() {
+		${bean} = ${bean}BC.load(${bean});
+		deletion = false;
+		return AliasNavigationRule.${pojoUpper}_VIEW;
+	}
+
+	public ${pojo} get${pojo}() {
+		return this.${bean};
+	}
+
+	public void set${pojo}(${pojo} ${bean}) {
+		this.${bean} = ${bean};
+	}
+
+	public PagedResultDataModel<${pojo}> getList() {
+		return list;
+	}
+
+	public boolean isDeletion() {
+		return deletion;
+	}
+
+}
+#end

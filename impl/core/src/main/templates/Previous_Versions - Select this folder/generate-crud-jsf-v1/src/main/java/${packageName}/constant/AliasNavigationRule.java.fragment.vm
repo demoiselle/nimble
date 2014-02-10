@@ -1,0 +1,5 @@
+
+
+	final String ${pojoUpper}_LIST = "${bean}_list";
+	final String ${pojoUpper}_EDIT = "${bean}_edit";
+	final String ${pojoUpper}_VIEW = "${bean}_view";

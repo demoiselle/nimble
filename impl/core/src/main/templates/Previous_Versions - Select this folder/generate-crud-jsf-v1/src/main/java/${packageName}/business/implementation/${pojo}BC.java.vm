@@ -1,0 +1,63 @@
+package ${packageName}.business.implementation;
+
+#if ($useDemoiselleCRUD)
+import br.gov.component.demoiselle.crud.supercrud.SuperCrudBC;
+
+import ${packageName}.bean.${pojo};
+import ${packageName}.business.I${pojo}BC;
+
+public class ${pojo}BC extends SuperCrudBC<${pojo}> implements I${pojo}BC {
+	private static final long serialVersionUID = 1L;
+}
+#else
+import java.util.List;
+
+import br.gov.framework.demoiselle.core.layer.integration.Injection;
+import br.gov.framework.demoiselle.core.message.IMessageContext;
+import br.gov.framework.demoiselle.util.page.Page;
+import br.gov.framework.demoiselle.util.page.PagedResult;
+
+import ${packageName}.bean.${pojo};
+import ${packageName}.business.I${pojo}BC;
+import ${packageName}.message.InfoMessage;
+import ${packageName}.persistence.dao.I${pojo}DAO;
+
+public class ${pojo}BC implements I${pojo}BC {
+
+	private static final long serialVersionUID = 1L;
+
+	@Injection
+	private I${pojo}DAO ${bean}DAO;
+
+	@Injection
+	private IMessageContext messageContext;
+
+	public ${pojo} load(${pojo} ${bean}) {
+		return ${bean}DAO.load(${bean});
+	}
+
+	public void insert(${pojo} ${bean}) {
+		${bean}DAO.insert(${bean});
+		messageContext.addMessage(InfoMessage.${pojoUpper}_INSERT_OK);
+	}
+
+	public void delete(${pojo} ${bean}) {
+		${bean}DAO.delete(${bean});
+		messageContext.addMessage(InfoMessage.${pojoUpper}_DELETE_OK);
+	}
+
+	public void update(${pojo} ${bean}) {
+		${bean}DAO.update(${bean});
+		messageContext.addMessage(InfoMessage.${pojoUpper}_UPDATE_OK);
+	}
+
+	public List<${pojo}> listAll() {
+		return ${bean}DAO.listAll();
+	}
+
+	public PagedResult<${pojo}> listAll(Page page) {
+		return ${bean}DAO.listAll(page);
+	}
+
+}
+#end

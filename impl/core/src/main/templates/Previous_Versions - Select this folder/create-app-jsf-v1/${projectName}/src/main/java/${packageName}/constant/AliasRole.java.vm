@@ -1,0 +1,8 @@
+package ${packageName}.constant;
+
+public interface AliasRole {
+
+	final String ROLE_GUEST = "role_guest";
+	final String ROLE_ADMIN = "role_admin";
+
+}

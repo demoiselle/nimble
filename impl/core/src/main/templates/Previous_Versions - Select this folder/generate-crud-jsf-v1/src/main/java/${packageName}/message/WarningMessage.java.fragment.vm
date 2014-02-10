@@ -1,0 +1,4 @@
+
+
+	${pojoUpper}_NOT_FOUND("${bean}_not_found"),
+	${pojoUpper}_CONFIRM_DELETE("${bean}_confirm_delete"),
