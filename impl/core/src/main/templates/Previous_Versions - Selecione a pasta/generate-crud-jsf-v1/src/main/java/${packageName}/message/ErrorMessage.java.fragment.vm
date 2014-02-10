@@ -1,4 +1,0 @@
-
-	${pojoUpper}_INSERT_NOK("${bean}_insert_nok"),
-	${pojoUpper}_UPDATE_NOK("${bean}_update_nok"),
-	${pojoUpper}_DELETE_NOK("${bean}_delete_nok"),

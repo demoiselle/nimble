@@ -1,6 +1,0 @@
-
-		<message-bundle>messages</message-bundle>
-		<locale-config>
-			<default-locale>pt_BR</default-locale>
-			<supported-locale>pt_BR</supported-locale>
-		</locale-config>

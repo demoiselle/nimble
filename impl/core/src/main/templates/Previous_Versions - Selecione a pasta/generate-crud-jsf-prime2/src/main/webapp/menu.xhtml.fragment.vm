@@ -1,5 +1,0 @@
-
-			<p:submenu label="#{messages['menu.${beanLower}']}">
-				<p:menuitem value="#{messages['menu.menuitem.new']}" url="/${beanLower}_edit.jsf"></p:menuitem>
-				<p:menuitem value="#{messages['menu.menuitem.list']}" url="/${beanLower}_list.jsf"></p:menuitem>
-			</p:submenu>

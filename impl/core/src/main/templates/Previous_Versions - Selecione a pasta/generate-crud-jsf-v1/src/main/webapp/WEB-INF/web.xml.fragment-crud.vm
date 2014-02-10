@@ -1,6 +1,0 @@
-
-	<!-- Demoiselle CRUD -->
-	<context-param>
-		<param-name>facelets.RESOURCE_RESOLVER</param-name>
-		<param-value>br.gov.component.demoiselle.crud.facelets.CrudResourceResolver</param-value>
-	</context-param>
