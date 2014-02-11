@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
+<chapter id="eclipsesamplemobile"  >
+	<abstract><para>Exemplo prático usando o ambiente de Desenvolvimento <foreignphrase>Eclipse IDE</foreignphrase> para geração de aplicação Web-Mobile com PrimeFaces</para></abstract>
+	<title>Exemplo de Web-Mobile (Primefaces) usando Eclipse IDE</title>	
+	 <para>Vamos considerar que a instalação e configuração já esteja de  acordo com as intruções contidas na 
+	 <xref linkend="eclipse_install"/>. Também é preciso que seja feita a parte de preparação do ambiente conforme o inicio da <xref linkend="ESample"/>	 
+	</para>	
+	<section id="nimble_eclipse_mobile">
+	<title> Gerando uma aplicação Web Mobile </title>
+	<abstract><formalpara>Atualmente muitos dos dispositivos de comunicação móveis (celulares, tablets, etc..) possuem acesso à internet, e é possível
+	acessar através de um navegador (browser) qualquer aplicação ou site. Porém, na maioria dos casos a tela não fica bem apresentável pois não foi desenhada para um dispositivo móvel.
+	Mas já existe soluções para isso, que são a bibliotecas para criar sites que se adaptam melhor neste tipo de dispositivo. Com base nisto o Demoiselle-Nimble possui um template (modelo)
+	para geração deste tipo de interface.
+	 </formalpara></abstract>
+	 <para>Os procedimentos iniciais, que é iniciar a ferramenta, são os mesmos do item anterior: <xref linkend="nimble_eclipse_tradicional"/> mudando a partir da escolha do template. 
+	 Conforme apresentado na tela abaixo: </para>
+	 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/SelectCRUDMobileTemplate.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/SelectCRUDMobileTemplate.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Escolhendo o template de CRUD para Mobile</phrase>
+				</textobject>
+				<caption>
+					<para>Escolhendo o template de CRUD para Mobile</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na tela seguinte, deverão ser informados os parâmetros para geração dos artefatos</para>
+		 <para>1. Output Folder*: Use o botão <emphasis>Browse...</emphasis> para selecionar o projeto dentro do diretório de Workspace do Eclipse</para>
+		 <para>2. Entity Name*:  Use o botão <emphasis>Click to select an entity class file...</emphasis> e procure no diretório (/src/main/java/br/org/frameworkdemoiselle/domain/)
+		 a classe Estudante</para>
+		 <para>3. Package Name*: Será preenchido automáticamente com <emphasis>br.org.frameworkdemoiselle</emphasis> </para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/GenerateJSFPrimefaces3CRUD.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/GenerateJSFPrimefaces3CRUD.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Informando os parâmetros para criação dos artefatos</phrase>
+				</textobject>
+				<caption>
+					<para>Informando os parâmetros para criação dos artefatos</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <caution>Os procedimentos seguintes devem ser observados atentamente</caution>
+		 <para>Ao clicar no botão <emphasis>Finish</emphasis> da tela anterior, algumas mensagens serão apresentadadas</para>
+		 <para>A primeira será perguntando sobre o arquivo index.html, como estamos gerando uma aplicação Mobile o template poderá sobrepor esse arquivo para implementar
+		 uma forma bem simplificada de identificar qual tipo de dispositivo está acessando a aplicação. Neste caso é só uma forma de gerar um exemplo, mas caso sua aplicação 
+		 possua uma forma mais elaborada, basta responder negativamente (clique no botão:<emphasis>No</emphasis>  ) ao pedido de sobrescrição mostrado na página abaixo, no caso deste exemplo vamos permitir
+		 que sobrescreva clicando no botão: <emphasis>Yes</emphasis></para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NovoIndex.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NovoIndex.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Sobrescrevendo o arquivo index.html</phrase>
+				</textobject>
+				<caption>
+					<para>Sobrescrevendo o arquivo index.html</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		<para>Neste exemplo, a sequência mostrará uma tela que pergunta para sobrescrever as classes java de Persistência (DAO), Negócio (BC) e Visão(MB). Pois já havíamos
+		criado essas classes no item anterior, caso esteja gerando apenas para mobile essa pergunta não aparecerá e as classes serão criadas. Note que são exatamente as mesmas
+		pois a única diferença é justamente a parte de visão que são as páginas.</para>
+		<para>No nosso caso, vamos ignorar isso clicando no botão <emphasis>No to All</emphasis> </para> 
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NovasClasses.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NovasClasses.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Sobrescrevendo as classes java</phrase>
+				</textobject>
+				<caption>
+					<para>Sobrescrevendo as classes java</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Ao final será apresentada a tela informando que o processamento foi executado</para>
+		  <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/TemplateProcessOK.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/TemplateProcessOK.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Processamento do Template OK</phrase>
+				</textobject>
+				<caption>
+					<para>Processamento do Template OK</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Com isso poderemos conferir no diretório /src/main/webapp/ os artefatos que foram criados:</para>
+		  <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ArtefatosMobile.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ArtefatosMobile.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Artefatos para web-mobile criados.</phrase>
+				</textobject>
+				<caption>
+					<para>Artefatos para web-mobile criados.</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Além o novo arquivo index.html, também podemos verificar que foi criado o arquivo mobile.html. E um novo diretório (/mobile) também foi incluído e conterá todas 
+		 páginas para a interface mobile.</para>
+	<para>Antes de testarmos a aplicação vamos vericar o arquivo POM.XML para certificarmos se está correto.</para>
+	<para>Clique no arquivo e selecione a aba <emphasis>Dependecy Hierachy</emphasis> </para>
+	<para>Veja se há a dependência para o Primefaces-Mobile</para>
+	<para>É importante verificar também a versão do Primefaces que deve ser no mínimo a 3.4</para>
+	<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/DependencyHierarchy.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/DependencyHierarchy.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Visão de Dependency Hierarchy no POM.XML</phrase>
+				</textobject>
+				<caption>
+					<para>Visão de Dependency Hierarchy no POM.XML</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		<para>Com isso a aplicação já está pronta para ser testada.</para>
+		<para>Republique novamente no servidor de aplicações e inicie o servidor.</para>
+		<para>Obviamente não haverá nenhuma diferença ao acessar do navegador (browser) web do seu computador, o ideal é publicar na internet e para isso há alguns serviços em
+		nuvem que fornecem ambiente gratuíto e compatível com o Demoiselle como o <ulink url="http://openshift.redhat.com/">Openshift</ulink> da RedHat. E depois testar em um tablet ou celular com navegador web.</para>
+		<para>Uma estratégia que adotamos foi usar o software <ulink url="https://www.virtualbox.org/">VirtualBox</ulink> e criar uma máquina virtual com  <ulink url="https://www.buildroid.org/">Android</ulink></para>
+		<para>Acessando de um navegador em dispositivo móvel a intefaces será assim:</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NimbleMobileNavigator.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NimbleMobileNavigator.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela de navegação - Mobile</phrase>
+				</textobject>
+				<caption>
+					<para>Tela de navegação - Mobile</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>		 
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NimbleMobileList.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NimbleMobileList.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela de listagem</phrase>
+				</textobject>
+				<caption>
+					<para>Tela de listagem</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/NimbleMobileEdit.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/NimbleMobileEdit.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Tela de Edição</phrase>
+				</textobject>
+				<caption>
+					<para>Tela de Edição</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+	</section>
+</chapter>

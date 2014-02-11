@@ -4,7 +4,7 @@
 <chapter id="eclipsesamplevaadin"  >
 	<abstract><para>Exemplo prático usando o ambiente de Desenvolvimento <foreignphrase>Eclipse IDE</foreignphrase> para gerar aplicação CRUD Vaadin</para></abstract>
 	<title>Exemplo de CRUD Vaadin usando Eclipse IDE</title>	
-		 <para>Vamos considerar que a instalação e configuração do Nimble já esteja de  acordo com as intruções contidas no capítulo 
+		 <para>Vamos considerar que a instalação e configuração do Nimble já esteja de  acordo com as intruções contidas na 
 	 <xref linkend="eclipse_install"/> ou preferenciamento que esteja utilizando o <ulink url="http://demoiselle.sourceforge.net/infra/">Demoiselle-Infra</ulink>
 	</para>
 	<section id="EVSample">

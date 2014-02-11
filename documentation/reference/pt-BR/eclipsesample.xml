@@ -2,15 +2,15 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
 <chapter id="eclipsesample"  >
-	<abstract><para>Exemplo prático usando o ambiente de Desenvolvimento <foreignphrase>Eclipse IDE</foreignphrase></para></abstract>
-	<title>Exemplo usando Eclipse IDE</title>	
+	<abstract><para>Exemplo prático usando o ambiente de Desenvolvimento <foreignphrase>Eclipse IDE</foreignphrase> para geração de aplicação JSF com Primefaces</para></abstract>
+	<title>Exemplo JSF/PrimeFaces usando Eclipse IDE</title>	
 	<para>O Demoiselle Nimble possui um plugin para Eclipse que já conta com uma boa integração. Então neste capítulo faremos uma desmonstração com o uso desta ferramenta. 
 	</para>
 	 <para>Vamos considerar que a instalação e configuração já esteja de  acordo com as intruções contidas no capítulo 
 	 <xref linkend="eclipse_install"/>	 
 	</para>
 	<section id="ESample">
-	<title>Prepararação</title>
+	<title>Prepararação do Ambiente</title>
 		<para> Antes de iniciar o uso do Demoiselle-Nimble, podemos criar um projeto usando um arquétipo do Demoiselle. Esse procedimento também pode ser feito diretamente no Eclipse ou 
 		ou Maven sem o uso do Nimble, mas a opção do Demoiselle-Nimble serve para facilitar.</para>
 		<para> Selecione o projeto e veja onde estão os acionadores do Plugin Demoiselle Nimble</para>
@@ -96,9 +96,47 @@
 		 <para>2. Package Name: br.org.frameworkdemoiselle</para>
 		 <para>3. Project Name: testeV2</para>
 		 <para>4. Version: 1.0.0</para>
-		 <para>Em seguinda clique no botão <emphasis>Finish</emphasis> e aguarde que o processo seja concluído pelo Eclipse. </para>
-		
-		<para>Verifique o arquivo /src/main/resources/persistence.xml e remova os comentários para escolher a estratégia de transação. Conforme exemplo mostrado abaixo:</para>
+		 <para>Em seguinda clique no botão <emphasis>Finish</emphasis> e aguarde que o processo seja concluído. </para>
+		 <para>Como comentado anteriormente, esta opção serve para qualquer ferramenta de Desenvolvimento, mas como vamos utilizar o Eclipse
+		 devemos importar o projeto Maven que foi criado para dentro do wokspace de trabalho.<?xml-stylesheet type="text/xsl" href=""?> </para>
+		<para>Outra opção é usar os arquétipos Maven do Demoiselle usando o próprio Eclipse para criar o projeto.</para>
+		<para>Para importar o projeto, devemos usar a opção File -> Import  e em seguida selecionar: Maven -> Existing Maven Project</para>
+		<para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ImportMavenProject.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ImportMavenProject.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Importando o projeto criado pelo Nimble para o Eclipse</phrase>
+				</textobject>
+				<caption>
+					<para>Importando o projeto criado pelo Nimble para o Eclipse</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ImportMavenProject2.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ImportMavenProject2.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Selecionando o diretório do projeto</phrase>
+				</textobject>
+				<caption>
+					<para>Selecionando o diretório do projeto</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na tela acima, selecione o diretório onde o projeto foi criado e depois clique no botão finish e aguarde o Eclipse 
+		 fazer a importação do projeto. </para>
+		<para>Abra o projeto e verifique o arquivo /src/main/resources/persistence.xml e remova os comentários para escolher a estratégia de transação. Conforme exemplo mostrado abaixo:</para>
 		<programlisting role="xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
@@ -138,7 +176,8 @@
 		 </para>
 		 <para>Crie neste pacote uma classe chamada <emphasis>Pessoa</emphasis>, que será uma classe abstrata apenas
 		 para que possamos testar com o conceito de herança, conforme o código abaixo</para>
-		 <para>
+		 
+	 <para>
 		       <programlisting role="java"><![CDATA[import java.util.Date;
 import javax.persistence.*;
 
@@ -206,9 +245,9 @@ public abstract class Pessoa {
 		this.genero = genero;
 	}
 }]]></programlisting>		 
-         </para>
-		 <para>Depois a classe <emphasis>Estudante</emphasis>, que extenderá Pessoa de acordo com o código abaixo :</para>
-		 <para>
+ </para>
+ <para>Depois a classe <emphasis>Estudante</emphasis>, que extenderá Pessoa de acordo com o código abaixo :</para>
+ <para>
         	      <programlisting role="java"><![CDATA[import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -236,7 +275,8 @@ public class Estudante extends Pessoa implements Serializable {
 		
 	
 	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "tb_estudante_endereco", joinColumns = @JoinColumn(name = "id_estudante"), inverseJoinColumns = @JoinColumn(name = "cod_endereco"))
+	@JoinTable(name = "tb_estudante_endereco", joinColumns = @JoinColumn(name = "id_estudante"), 
+	           inverseJoinColumns = @JoinColumn(name = "cod_endereco"))
 	private List<Endereco> enderecos;
 
 	public Estudante(){
@@ -251,8 +291,9 @@ public class Estudante extends Pessoa implements Serializable {
 	}
 		
 	
-	public Estudante(Date dataMatricula, Integer numeroMatricula, Turma turma,  BolsaEstudo bolsaEstudo, 
-			List<Endereco> enderecos, Long cpf, String nome, Date dataNascimento, Genero genero) {
+	public Estudante(Date dataMatricula, Integer numeroMatricula, Turma turma,
+					 BolsaEstudo bolsaEstudo, List<Endereco> enderecos, Long cpf, 
+					 String nome, Date dataNascimento, Genero genero) {
 		super(cpf, nome, dataNascimento, genero);
 		this.dataMatricula = dataMatricula;
 		this.setTurma(turma);
@@ -303,15 +344,19 @@ public class Estudante extends Pessoa implements Serializable {
 	}
 
 }]]></programlisting>
-		 </para>
+</para>
+
 <para>Teremos a classe de enumeração usada por "Pessoa":</para>
-		 <para>
-        	      <programlisting role="java"><![CDATA[public enum Genero {
+<para>
+      <programlisting role="java"><![CDATA[public enum Genero {
 	
 	MALE, FEMALE;
 }]]></programlisting>
+</para>
+
 <para>E as demais classes necessárias para o exemplo:</para>
-		 <para>
+<para> - BolaEstudo.java:</para>
+<para>
         	      <programlisting role="java"><![CDATA[import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -384,34 +429,163 @@ public class BolsaEstudo implements Serializable {
 
 }]]></programlisting>
 </para>
+
+<para> - Endereco.java:</para>
 <para>
-        	      <programlisting role="java"><![CDATA[import java.io.Serializable;
-import java.util.Date;
+    <programlisting role="java"><![CDATA[import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="TB_Estudante")
-public class Estudante extends Pessoa implements Serializable {
+@Table(name = "TB_Endereco")
+public class Endereco implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@Column(name = "cod_endereco")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long codigo;
+	
+	@Column
+	private String logradouro;
+	
+	@Column
+	private String cidade;
+	
+	@Column
+	private String estado;
+	
+	@Column
+	private String cep;
+	
+	@ManyToMany(mappedBy="enderecos")
+	private List<Estudante> estudantes;
+	
+	public Endereco (){
+		super();
+	}
+	public Endereco(String logradouro, String cidade,
+			String estado, String cep) {
+		super();
+		this.logradouro = logradouro;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.cep = cep;
+	}
+	public Endereco(String logradouro, String cidade,
+			String estado, String cep, List<Estudante> estudantes) {
+		super();
+		this.logradouro = logradouro;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.cep = cep;
+		this.estudantes = estudantes;
+	}
+	public Long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+	public String getLogradouro() {
+		return logradouro;
+	}
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}	public List<Estudante> getEstudantes() {
+		return estudantes;
+	}
+	public void setEstudantes(List<Estudante> estudantes) {
+		this.estudantes = estudantes;
+	}
 }]]></programlisting>
 </para>
+
+<para> - Turma.java:</para>
 <para>
-        	      <programlisting role="java"><![CDATA[import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
+    <programlisting role="java"><![CDATA[import java.io.Serializable;
+import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="TB_Estudante")
-public class Estudante extends Pessoa implements Serializable {
+@Table(name = "TB_Turma")
+public class Turma implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name = "id_turma")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
+
+	@Column(length = 255)
+	@NotNull
+	private String nomeTurma;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "turma_fk")
+	private List<Estudante> estudantes = new ArrayList<Estudante>();
+
+	public Turma() {
+		super();
+	}
+
+	public Turma(String nomeTurma) {
+		this.nomeTurma = nomeTurma;
+	}
+	
+	public Turma(String nomeTurma, List<Estudante> estudantes) {
+		this.nomeTurma = nomeTurma;
+		this.estudantes = estudantes;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNomeTurma() {
+		return nomeTurma;
+	}
+	public void setNomeTurma(String nomeTurma) {
+		this.nomeTurma = nomeTurma;
+	}
+	public List<Estudante> getEstudantes() {
+		return estudantes;
+	}
+	public void setEstudantes(List<Estudante> estudantes) {
+		this.estudantes = estudantes;
+	}
 }]]></programlisting>
 </para>
+
 		 <para> Isso é tudo que precisamos criar manualmente para começar o uso do Demoiselle-Nimble. 
 		 Caso tenha uma base de dados pronta, é possível utilizar um utilitário como o  <ulink url="http://hibernate.org/tools/">Hibernate Tools</ulink>
 		 para fazer a geração das classes mapeadas com JPA.
 		 </para>
+		 <para>A única exigência para geração de código com o Demoiselle-Nimble, é que as classes estejam com as anotações de JPA, conforme o exemplo acima.
+		 E a ferramenta atuará sobre as classes anotadas com @Entity.</para>
+		 
 </section>
 	<beginpage/>
 	<section id="nimble_eclipse_tradicional">
@@ -462,15 +636,15 @@ public class Estudante extends Pessoa implements Serializable {
 		</para>
 		<para>Com o projeto selecionado, use uma das opções acima para acionar a interface do Demoiselle Nimble, onde selecionaremos o Template
 		para geração de um CRUD (Create, Read, Update e Delete) que são as operações básicas de criar, ler, atualizar e apagar</para>
-		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo optamos pelo Primefaces 3, que é compatível com a versão 2.2.2 (ou superior) do Demoiselle
+		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo optamos pelo Primefaces 3, que é compatível com a versão 2.4.0 (ou superior) do Demoiselle
 		 conforme a figura abaixo:</para>
 		<para>
         	<mediaobject>
 		       	<imageobject role="fo">
-		               <imagedata fileref="images/SelectCRUDTemplate.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		               <imagedata fileref="images/SelectCRUDTemplateJSF.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="images/SelectCRUDTemplate.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/SelectCRUDTemplateJSF.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
 					<phrase>Escolhendo o template de CRUD</phrase>
@@ -483,7 +657,7 @@ public class Estudante extends Pessoa implements Serializable {
 		 <para>Na tela seguinte, deverão ser informados os parâmetros para geração dos artefatos</para>
 		 <para>1. Output Folder*: Use o botão <emphasis>Browse...</emphasis> para selecionar o projeto dentro do diretório de Workspace do Eclipse</para>
 		 <para>2. Entity Name*:  Use o botão <emphasis>Click to select an entity class file...</emphasis> e procure no diretório (/src/main/java/br/org/frameworkdemoiselle/domain/)
-		 a classe Estudante</para>
+		 a classe Estudante.java</para>
 		 <para>3. Package Name*: Será preenchido automáticamente com <emphasis>br.org.frameworkdemoiselle</emphasis> </para>
 		<para>
         	<mediaobject>
@@ -519,27 +693,148 @@ public class Estudante extends Pessoa implements Serializable {
         	</mediaobject>            		
 		 </para>
 		 <para>Confira os artefatos que foram gerados nos pacotes de negócio(business), persistência (persistence)
-		 e de visão (view)</para>
-		 <para>Na pasta /src/main/webapp também deverão ser geradas as páginas XHTML de edição e listagem</para>
+		 e de visão (view) e no pacote de conversores (converters) que é específico para o JSF</para>
+		 
 		<para>
         	<mediaobject>
 		       	<imageobject role="fo">
-		               <imagedata fileref="images/ArtifactsCreated.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		               <imagedata fileref="images/ArtifactsCreatedMain.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="images/ArtifactsCreated.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/ArtifactsCreatedMain.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
-					<phrase>Listagem dos artefatos criados</phrase>
+					<phrase>Listagem dos artefatos criados em /src/main/java/</phrase>
 				</textobject>
 				<caption>
-					<para>Listagem dos artefatos criados</para>
+					<para>Listagem dos artefatos criados em /src/main/java/</para>
 				</caption>		        	    
         	</mediaobject>            		
 		 </para>
-		 <para>Veja também nos arquivos: persistence.xml, messages.properties e menu.xhml, que novas
-		 informações foram incluídas.</para>
-		 <para>Para testar as funcionalidade criadas, adicione o projeto no servidor JBoss e inicie o mesmo.</para>
+		 <para>Na classe EstudanteEditMB é exibido um erro pois a classe Estudante possui relação com outras classes e ainda não criamos todos os artefatos para todas as classes de domínio,
+		 quando terminarmos não haverá mais esse erro. </para>
+		 <para>Veja também nos arquivos: persistence.xml e messages.properties, que novas informações foram incluídas.</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/PersistenceXml.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/PersistenceXml.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Arquivo persistence.xml</phrase>
+				</textobject>
+				<caption>
+					<para>Arquivo persistence.xml</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/MessagesProperties.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/MessagesProperties.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Arquivo messages.properties</phrase>
+				</textobject>
+				<caption>
+					<para>Arquivo messages.properties</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na pasta /src/test/java/ será gerada a classe de teste de unidade para a classe de Negócio (BC) com testes para os métodos de inclusão (Insert), exclusão (Delete) e  atualização (Update) de forma bastante simplificada. </para>
+		 <para>O arquivo persistence.xml também será atualizado.</para>		 
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ArtifactsCreatedTest.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ArtifactsCreatedTest.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Listagem dos artefatos criados em /src/test/</phrase>
+				</textobject>
+				<caption>
+					<para>Listagem dos artefatos criados em /src/test/</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na pasta /src/main/webapp (Deployed Resources) também deverão ser geradas as páginas XHTML de edição e listagem e menu.xhml</para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/DeployedResources.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/DeployedResources.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Listagem dos artefatos criados em /src/main/webapp/</phrase>
+				</textobject>
+				<caption>
+					<para>Listagem dos artefatos criados em /src/main/webapp/</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Repita os passos de geração para cada uma das outras classes de domínio que foram criadas na preparação do ambiente:
+		  </para>
+		  <itemizedlist mark='classes_dominio'>
+		  	 <listitem><para>BolsaEstudo.java</para></listitem>
+		  	 <listitem><para>Endereco.java</para></listitem>
+		  	 <listitem><para>Turma.java</para></listitem>
+		  </itemizedlist>
+		  
+		 <para>A partir da versão 1.2.0 do Demoiselle Nimble, é possível montar templates que identificam as anotações de relacionamentos do JPA,
+		 e assim podem ser definidos os componentes de tela os métodos de visão e negócio para tratar cada um deles. 
+		 O template para JSF padrão trata os relacionamentos da segunte forma:</para>
+		 <itemizedlist mark='relacionamentos'>
+		  	 <listitem><para>OneToOne: ComboBox</para></listitem>
+		  	 <listitem><para>OneToMany: ComboBox</para></listitem>
+		  	 <listitem><para>ManyToOne: DataTable </para></listitem>
+		  	 <listitem><para>ManyToMany: PickList</para></listitem>
+		  </itemizedlist>
+		 <para>Para testar as funcionalidade criadas, adicionaremos o projeto no servidor JBoss.</para>
+		 <para>Localize a aba  <emphasis>"Servers"</emphasis> e clique com o botão direito do mouse sobre o item: jboss-7.1 para acionar
+		 o menu. Em seguida selecione a opção <emphasis>"Add and Remove..."</emphasis></para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/AddDeploy.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/AddDeploy.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Deploy da aplicação no servidor JBoss.</phrase>
+				</textobject>
+				<caption>
+					<para>Deploy da aplicação no servidor JBoss.</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Na tela seguinte selecione o projeto clique primeiro no botão <emphasis>Add</emphasis> e depois <emphasis>Finish</emphasis> </para>
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/AddDeploy2.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/AddDeploy2.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Deploy da aplicação no servidor JBoss.</phrase>
+				</textobject>
+				<caption>
+					<para>Deploy da aplicação no servidor JBoss.</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 <para>Com isso podemos iniciar o servidor de aplicação.</para>
 		 <para>No exemplo a aplicação estará em http://localhost:8080/testeV2</para>
 		 <para>
         	<mediaobject>
@@ -556,206 +851,54 @@ public class Estudante extends Pessoa implements Serializable {
 					<para>Resultado na aplicação em funcionamento</para>
 				</caption>		        	    
         	</mediaobject>            		
-		 </para>		 
-	</section>
-	<beginpage/>
-	<section id="nimble_eclipse_mobile">
-	<title> Gerando uma aplicação Web Mobile </title>
-	<abstract><formalpara>Atualmente muitos dos dispositivos de comunicação móveis (celulares, tablets, etc..) possuem acesso à internet, e é possível
-	acessar através de um navegador (browser) qualquer aplicação ou site. Porém, na maioria dos casos a tela não fica bem apresentável pois não foi desenhada para um dispositivo móvel.
-	Mas já existe soluções para isso, que são a bibliotecas para criar sites que se adaptam melhor neste tipo de dispositivo. Com base nisto o Demoiselle-Nimble possui um template (modelo)
-	para geração deste tipo de interface.
-	 </formalpara></abstract>
-	 <para>Os procedimentos iniciais, que é iniciar a ferramenta, são os mesmos do item anterior: <xref linkend="nimble_eclipse_tradicional"/> mudando a partir da escolha do template. 
-	 Conforme apresentado na tela abaixo: </para>
-	 <para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/SelectCRUDMobileTemplate.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/SelectCRUDMobileTemplate.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Escolhendo o template de CRUD para Mobile</phrase>
-				</textobject>
-				<caption>
-					<para>Escolhendo o template de CRUD para Mobile</para>
-				</caption>		        	    
-        	</mediaobject>            		
 		 </para>
-		 <para>Na tela seguinte, deverão ser informados os parâmetros para geração dos artefatos</para>
-		 <para>1. Output Folder*: Use o botão <emphasis>Browse...</emphasis> para selecionar o projeto dentro do diretório de Workspace do Eclipse</para>
-		 <para>2. Entity Name*:  Use o botão <emphasis>Click to select an entity class file...</emphasis> e procure no diretório (/src/main/java/br/org/frameworkdemoiselle/domain/)
-		 a classe Estudante</para>
-		 <para>3. Package Name*: Será preenchido automáticamente com <emphasis>br.org.frameworkdemoiselle</emphasis> </para>
-		<para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/GenerateJSFPrimefaces3CRUD.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/GenerateJSFPrimefaces3CRUD.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Informando os parâmetros para criação dos artefatos</phrase>
-				</textobject>
-				<caption>
-					<para>Informando os parâmetros para criação dos artefatos</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
-		 <caution>Os procedimentos seguintes devem ser observados atentamente</caution>
-		 <para>Ao clicar no botão <emphasis>Finish</emphasis> da tela anterior, algumas mensagens serão apresentadadas</para>
-		 <para>A primeira será perguntando sobre o arquivo index.html, como estamos gerando uma aplicação Mobile o template poderá sobrepor esse arquivo para implementar
-		 uma forma bem simplificada de identificar qual tipo de dispositivo está acessando a aplicação. Neste caso é só uma forma de gerar um exemplo, mas caso sua aplicação 
-		 possua uma forma mais elaborada, basta responder negativamente (clique no botão:<emphasis>No</emphasis>  ) ao pedido de sobrescrição mostrado na página abaixo, no caso deste exemplo vamos permitir
-		 que sobrescreva clicando no botão: <emphasis>Yes</emphasis></para>
-		<para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/NovoIndex.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/NovoIndex.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Sobrescrevendo o arquivo index.html</phrase>
-				</textobject>
-				<caption>
-					<para>Sobrescrevendo o arquivo index.html</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
-		<para>Neste exemplo, a sequência mostrará uma tela que pergunta para sobrescrever as classes java de Persistência (DAO), Negócio (BC) e Visão(MB). Pois já havíamos
-		criado essas classes no item anterior, caso esteja gerando apenas para mobile essa pergunta não aparecerá e as classes serão criadas. Note que são exatamente as mesmas
-		pois a única diferença é justamente a parte de visão que são as páginas.</para>
-		<para>No nosso caso, vamos ignorar isso clicando no botão <emphasis>No to All</emphasis> </para> 
 		 <para>
         	<mediaobject>
 		       	<imageobject role="fo">
-		               <imagedata fileref="images/NovasClasses.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		               <imagedata fileref="images/RunningExample2.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="images/NovasClasses.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/RunningExample2.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
-					<phrase>Sobrescrevendo as classes java</phrase>
+					<phrase>Resultado na aplicação em funcionamento.</phrase>
 				</textobject>
 				<caption>
-					<para>Sobrescrevendo as classes java</para>
+					<para>Resultado na aplicação em funcionamento</para>
 				</caption>		        	    
         	</mediaobject>            		
 		 </para>
-		 <para>Ao final será apresentada a tela informando que o processamento foi executado</para>
-		  <para>
+		 <para>
         	<mediaobject>
 		       	<imageobject role="fo">
-		               <imagedata fileref="images/TemplateProcessOK.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		               <imagedata fileref="images/RunningExample3.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="images/TemplateProcessOK.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/RunningExample3.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
-					<phrase>Processamento do Template OK</phrase>
+					<phrase>Resultado na aplicação em funcionamento.</phrase>
 				</textobject>
 				<caption>
-					<para>Processamento do Template OK</para>
+					<para>Resultado na aplicação em funcionamento</para>
 				</caption>		        	    
         	</mediaobject>            		
 		 </para>
-		 <para>Com isso poderemos conferir no diretório /src/main/webapp/ os artefatos que foram criados:</para>
-		  <para>
+		 <para>
         	<mediaobject>
 		       	<imageobject role="fo">
-		               <imagedata fileref="images/ArtefatosMobile.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		               <imagedata fileref="images/RunningExample4.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="images/ArtefatosMobile.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/RunningExample4.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
-					<phrase>Artefatos para web-mobile criados.</phrase>
+					<phrase>Resultado na aplicação em funcionamento.</phrase>
 				</textobject>
 				<caption>
-					<para>Artefatos para web-mobile criados.</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
-		 <para>Além o novo arquivo index.html, também podemos verificar que foi criado o arquivo mobile.html. E um novo diretório (/mobile) também foi incluído e conterá todas 
-		 páginas para a interface mobile.</para>
-	<para>Antes de testarmos a aplicação vamos vericar o arquivo POM.XML para certificarmos se está correto.</para>
-	<para>Clique no arquivo e selecione a aba <emphasis>Dependecy Hierachy</emphasis> </para>
-	<para>Veja se há a dependência para o Primefaces-Mobile</para>
-	<para>É importante verificar também a versão do Primefaces que deve ser no mínimo a 3.4</para>
-	<para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/DependencyHierarchy.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/DependencyHierarchy.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Visão de Dependency Hierarchy no POM.XML</phrase>
-				</textobject>
-				<caption>
-					<para>Visão de Dependency Hierarchy no POM.XML</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
-		<para>Com isso a aplicação já está pronta para ser testada.</para>
-		<para>Republique novamente no servidor de aplicações e inicie o servidor.</para>
-		<para>Obviamente não haverá nenhuma diferença ao acessar do navegador (browser) web do seu computador, o ideal é publicar na internet e para isso há alguns serviços em
-		nuvem que fornecem ambiente gratuíto e compatível com o Demoiselle como o <ulink url="http://openshift.redhat.com/">Openshift</ulink> da RedHat. E depois testar em um tablet ou celular com navegador web.</para>
-		<para>Uma estratégia que adotamos foi usar o software <ulink url="https://www.virtualbox.org/">VirtualBox</ulink> e criar uma máquina virtual com  <ulink url="https://www.buildroid.org/">Android</ulink></para>
-		<para>Acessando de um navegador em dispositivo móvel a intefaces será assim:</para>
-		<para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/NimbleMobileNavigator.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/NimbleMobileNavigator.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Tela de navegação - Mobile</phrase>
-				</textobject>
-				<caption>
-					<para>Tela de navegação - Mobile</para>
+					<para>Resultado na aplicação em funcionamento</para>
 				</caption>		        	    
         	</mediaobject>            		
 		 </para>		 
-		 <para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/NimbleMobileList.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/NimbleMobileList.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Tela de listagem</phrase>
-				</textobject>
-				<caption>
-					<para>Tela de listagem</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
-		 <para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/NimbleMobileEdit.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/NimbleMobileEdit.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Tela de Edição</phrase>
-				</textobject>
-				<caption>
-					<para>Tela de Edição</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
-	</section>
+	</section>	
 </chapter>
