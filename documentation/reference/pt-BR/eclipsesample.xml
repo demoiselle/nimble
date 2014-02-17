@@ -6,14 +6,17 @@
 	<title>Exemplo JSF/PrimeFaces usando Eclipse IDE</title>	
 	<para>O Demoiselle Nimble possui um plugin para Eclipse que já conta com uma boa integração. Então neste capítulo faremos uma desmonstração com o uso desta ferramenta. 
 	</para>
-	 <para>Vamos considerar que a instalação e configuração já esteja de  acordo com as intruções contidas no capítulo 
-	 <xref linkend="eclipse_install"/>	 
+	 <para>Vamos considerar que a instalação e configuração já esteja de  acordo com as intruções contidas na 
+	 <xref linkend="eclipse_install"/>
 	</para>
 	<section id="ESample">
 	<title>Prepararação do Ambiente</title>
 		<para> Antes de iniciar o uso do Demoiselle-Nimble, podemos criar um projeto usando um arquétipo do Demoiselle. Esse procedimento também pode ser feito diretamente no Eclipse ou 
 		ou Maven sem o uso do Nimble, mas a opção do Demoiselle-Nimble serve para facilitar.</para>
-		<para> Selecione o projeto e veja onde estão os acionadores do Plugin Demoiselle Nimble</para>
+		<section id="ESample_Create_Proj">
+		<title>Criação do projeto base</title>
+		<para> Caso opte por criar o projeto Maven através do próprio Eclipse vá direto para : <xref linkend="ESample_Prepar_Proj"/> </para>
+		<para> Com o Eclise aberto, veja onde estão os acionadores do Plugin Demoiselle Nimble:</para>		
 		<para>
 			<itemizedlist>
 				<listitem>
@@ -97,9 +100,29 @@
 		 <para>3. Project Name: testeV2</para>
 		 <para>4. Version: 1.0.0</para>
 		 <para>Em seguinda clique no botão <emphasis>Finish</emphasis> e aguarde que o processo seja concluído. </para>
-		 <para>Como comentado anteriormente, esta opção serve para qualquer ferramenta de Desenvolvimento, mas como vamos utilizar o Eclipse
-		 devemos importar o projeto Maven que foi criado para dentro do wokspace de trabalho.<?xml-stylesheet type="text/xsl" href=""?> </para>
-		<para>Outra opção é usar os arquétipos Maven do Demoiselle usando o próprio Eclipse para criar o projeto.</para>
+		 <para>O projeto deverá aparecer na área de trabalho do Eclipse, mas como foi criado através do Nimble não está configurado como um 
+		 projeto Maven. Para que o Eclipse reconheça como projeto Maven é preciso configurá-lo.</para>
+		 <para>Para isso, selecione o projeto e clique com o botão direito do mouse para ativar o menu e selecionar as opções: Configure -> Convert to Manven Project</para>		 
+		 <para>
+        	<mediaobject>
+		       	<imageobject role="fo">
+		               <imagedata fileref="images/ConfigureMavenProject.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		        </imageobject>
+		        <imageobject role="html">
+		  	            <imagedata fileref="images/ConfigureMavenProject.png"  format="PNG" align="center"/>
+		        </imageobject>
+	       	    <textobject>
+					<phrase>Configurando projeto para Maven</phrase>
+				</textobject>
+				<caption>
+					<para>Configurando projeto para Maven</para>
+				</caption>		        	    
+        	</mediaobject>            		
+		 </para>
+		 
+		<para> Com isso já podemos partir para <xref linkend="ESample_Prepar_Proj"/>, mas podem haver caos (versões mais antigas do Eclipse) em que devemos importar o 
+		projeto Maven que foi criado para dentro do wokspace de trabalho. Se este for o caso veja os passos abaixo </para>
+		
 		<para>Para importar o projeto, devemos usar a opção File -> Import  e em seguida selecionar: Maven -> Existing Maven Project</para>
 		<para>
         	<mediaobject>
@@ -136,6 +159,10 @@
 		 </para>
 		 <para>Na tela acima, selecione o diretório onde o projeto foi criado e depois clique no botão finish e aguarde o Eclipse 
 		 fazer a importação do projeto. </para>
+		</section>
+		<section id="ESample_Prepar_Proj">
+		<title>Configurações e Classes de Domínio</title>
+		<para>Com um projeto Demoiselle JSF-JPA criado, vamos verificar algumas configurações e fazer a criação das classes de domínio necessárias para o uso do Demoiselle-Nimble </para>
 		<para>Abra o projeto e verifique o arquivo /src/main/resources/persistence.xml e remova os comentários para escolher a estratégia de transação. Conforme exemplo mostrado abaixo:</para>
 		<programlisting role="xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -157,7 +184,7 @@
 		<para>No arquivo /src/main/resources/messages.properties, encontre e mude a propriedade main.app.title para o titulo da sua aplicação, como no exemplo abaixo: </para>
 		 <para>main.app.title=TesteV2</para>		
 		
-		<para>Após criado o projeto, vamos localizar o pacote <emphasis>Domain</emphasis> conforme a figura abaixo: </para>
+		<para>Em seguida, vamos localizar o pacote <emphasis>Domain</emphasis> conforme a figura abaixo: </para>
 		<para>
         	<mediaobject>
 		       	<imageobject role="fo">
@@ -578,7 +605,7 @@ public class Turma implements Serializable {
 	}
 }]]></programlisting>
 </para>
-
+		</section>
 		 <para> Isso é tudo que precisamos criar manualmente para começar o uso do Demoiselle-Nimble. 
 		 Caso tenha uma base de dados pronta, é possível utilizar um utilitário como o  <ulink url="http://hibernate.org/tools/">Hibernate Tools</ulink>
 		 para fazer a geração das classes mapeadas com JPA.
