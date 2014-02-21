@@ -73,7 +73,7 @@ def stringDolar = '$'
 						  }
 						  else{ %>
 					<h:outputLabel value="#{messages['${beanLower}.label.${attrName}']}: " for="${attrName}" styleClass="text-input" />
-					<%		if (PU.hasAnnotationForField(tmpFile, attrName, 'Id' )) {%>					
+					<%		if (PU.hasAnnotationForField(tmpFile, attrName, 'GeneratedValue' )) {%>					
 					<h:outputText id="${attrName}" value="#{${beanLower}EditMB.bean.${attrName}}" />
 					<%		} else {
 								if (attrValue.equalsIgnoreCase('Date')) {	%>
@@ -117,7 +117,7 @@ def stringDolar = '$'
 								  %>
 						<p:column>
 							 <h:outputLabel value="#{messages['${attrClassOfValueLower}.label.${varAttrName}']}: " for="${varAttrName}" styleClass="text-input" />
-								<%	if (PU.hasAnnotationForField(varFileOneToMany, varAttrName, 'Id' )) { %>
+								<%	if (PU.hasAnnotationForField(varFileOneToMany, varAttrName, 'GeneratedValue' )) { %>
 						   <h:outputText id="${varAttrName}" value="#{${attrClassOfValueLower}.${varAttrName}}" />
 								 <% }  else {
 										   if (varAttrValue.equalsIgnoreCase('Date')) { %>

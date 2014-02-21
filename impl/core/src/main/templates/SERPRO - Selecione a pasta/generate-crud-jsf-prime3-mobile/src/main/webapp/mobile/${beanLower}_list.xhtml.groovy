@@ -1,7 +1,9 @@
 <% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil as RU
+import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil as PU
+import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil as SU
 def tmpFile = new File(beanPath+beanJavaName)
-def attrList = RU.getAttributesFromClassFile(tmpFile)
+def attrList = PU.getAttributesFromClassFile(tmpFile)
+def relationshipsAnnotations = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
 %>
 <f:view xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -33,15 +35,20 @@ def attrList = RU.getAttributesFromClassFile(tmpFile)
 						<p:dataList id="list" var="bean" value="#{${beanLower}ListMB.resultList}">
 						<%						
 						if (!attrList.isEmpty()) {
-							attrList.each() { attrName, attrValue -> def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);							
-							if (attrName.equalsIgnoreCase(idName)) {							
+							attrList.each() { attrName, attrValue -> 
+								def annotationsForAField = PU.getAnnotationsForField(tmpFile, attrName)
+								def hasRelationship = SU.hasOneInList(annotationsForAField, relationshipsAnnotations)
+								if (hasRelationship == null){
+									def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1);
+									if (PU.hasAnnotationForField(tmpFile, attrName, 'Id' )) {
 						%>
 							<h:outputText styleClass="ui-li-count" value="#{bean.${attrLow}}" />
-							<% } else { %>							
+								 <% }else{ %>							
 							<h:commandLink value="#{bean.${attrLow}}" action="#{${beanLower}ListMB.getNextView}">
 								<f:param name="id" value="#{bean.${idName}}" />
 							</h:commandLink>
-						<% }
+								<% 	}
+								}
 							}							
 						} else {
 						%>
