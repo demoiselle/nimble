@@ -72,7 +72,7 @@ def relationshipsFields = [:]
 								if (attrValue.equalsIgnoreCase('Date')) {	%>
 					<p:calendar id="${attrName}" value="#{${beanLower}EditMB.bean.${attrName}}"
 					   pattern="#{messages['label.date.pattern']}" navigator="true" showButtonPanel="true"
-					   locale="#{currentLocale}" title="#{messages['${beanLower}.alt.${attrName}']}" />
+					   locale="#{locales.currentLocale}" title="#{messages['${beanLower}.alt.${attrName}']}" />
 							 <% }else{
 									if (PU.hasAnnotationForField(tmpFile, attrName, 'Enumerated' )) {%>
 					<p:selectOneMenu id="${attrName}" effect="fade" value="#{${beanLower}EditMB.bean.${attrName}}">
@@ -117,7 +117,7 @@ def relationshipsFields = [:]
 			  				    	 if (varAttrValue.equalsIgnoreCase('Date')) { %>
 			           <p:calendar id="${varAttrName}" value="#{${attrClassOfValueLower}.${varAttrName}}"
 			  	          pattern="#{messages['label.date.pattern']}" navigator="true" showButtonPanel="true"
-				          locale="#{currentLocale}" title="#{messages['${attrClassOfValueLower}.alt.${varAttrName}']}" />
+				          locale="#{locales.currentLocale}" title="#{messages['${attrClassOfValueLower}.alt.${varAttrName}']}" />
 							        <% } else{
 							            	if (PU.hasAnnotationForField(varFileOneToMany, varAttrName, 'Enumerated' )) { %>
 					   <p:selectOneMenu id="${varAttrName}" value="#{${attrClassOfValueLower}.${varAttrName}}" effect="fade">
