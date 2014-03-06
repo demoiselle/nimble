@@ -29,7 +29,7 @@ Instalação
     Além disso, é preciso definir a variável de ambiente <<<JAVA_HOME>>> apontando para o caminho
     onde se localiza a JDK (ex: <<</usr/lib/jvm/java-6-openjdk/>>>).
     
-    Recomenda-se utilizar a versão 1.5 ou superior da JDK.
+    Recomenda-se utilizar a versão 1.6 ou superior da JDK.
     
     * Passo a passo
 
@@ -61,7 +61,7 @@ Instalação
   
   * {Instalação do Pluguin para Eclipse}
   
-  	* {{{http://demoiselle.sourceforge.net/docs/tools/nimble/1.1.1/html/eclipse.html#eclipse_install} Guia para Eclipse }}
+  	* {{{http://demoiselle.sourceforge.net/docs/tools/nimble/1.2.0/html/eclipse.html#eclipse_install} Guia para Eclipse }}
   	
   	  []
       
@@ -72,7 +72,17 @@ Instalação
   
   * {Instalação do Pluguin para NetBeans}
   
-  	* {{{http://demoiselle.sourceforge.net/docs/tools/nimble/1.1.1/html/netbeans.html#netbeans_install} Guia Para Netbeans }}
+  	* {{{http://demoiselle.sourceforge.net/docs/tools/nimble/1.2.0/html/netbeans.html#netbeans_install} Guia Para Netbeans }}
+  	
+  	  []
+      
+    []
+
+  []
+  
+  * {Documentação da API - Processador}
+  
+  	* {{{http://demoiselle.sourceforge.net/docs/tools/nimble/1.2.0/groovydoc} GroovyDoc }}
   	
   	  []
       

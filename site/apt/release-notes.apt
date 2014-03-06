@@ -3,6 +3,29 @@
 
 Notas de Versão
 
+* {v1.2.0}
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-3}[NB-3]}} - [New Feature] Geração de testes de unidade.
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-10}[NB-10]}} - [New Feature] Geração de artefatos para relacionamentos JPA.
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-15}[NB-15]}} - [Improvement] Mapear persitence.xml de testes.
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-18}[NB-18]}} - [Improvement] Adicionar ao template de Primefaces geração de conversores.
+	
+	* {{{http://demoiselle.atlassian.net/browse/NB-17}[NB-16]}} - [Improvement] Atualizar templates para versão 2.4.0 do Demoiselle
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-17}[NB-17]}} - [Bug] Melhorar tratamento de erros.
+	
+	* {{{http://demoiselle.atlassian.net/browse/NB-20}[NB-20]}} - [Bug] Correção em template Primefaces para locale no calendar.
+	
+	* {{{http://demoiselle.atlassian.net/browse/NB-19}[NB-19]}} - [Task] - Atualizar documentação para versão 1.2.0	
+	
+		
+
+		
+	
+
 * {v1.1.1}
 
 

@@ -15,8 +15,8 @@ Templates
   
   * Variáveis
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
-    
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
+    org.demoiselle
     * <<Project Name>>: o nome do projeto a ser criado (ex: <<<escola>>>)
     
     * <<Version>>: a versão do artefato a ser produzido (ex: <<<1.0.0-SNAPSHOT>>>)
@@ -27,15 +27,15 @@ Templates
 
 * {generate-crud-jsf-prime3}
 
-  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces 3) CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da
-  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>> e utiliza a biblioteca JSF2 PrimeFaces versão 3.x.
+  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces 3) CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da classe de
+  domínio especificada (anotada com @Entity). Basea-se no <<Framework Demoiselle 2.x>> e utiliza a biblioteca JSF2 PrimeFaces versão 3.x.
   
   
   * Variáveis
    
      * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
     * <<idType>>: tipo do propriedade anotada com @Id na entidade (ex: <<<Integer>>>)
    
@@ -47,15 +47,15 @@ Templates
   
  * {generate-crud-jsf-prime3-mobile}
 
-  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces3 Mobile) CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da
-  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>> e utilizando a biblioteca JSF2, especializada para WEB Mobile, PrimeFaces-Mobile versão 3.x
+  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces3 Mobile) CRUD:>> gera todos os artefatos envolvidos em um (Create, Read, Update and Delete) da classe de
+  domínio especificada (anotada com @Entity). Basea-se no <<Framework Demoiselle 2.x>> e utilizando a biblioteca JSF2, especializada para WEB Mobile, PrimeFaces-Mobile versão 3.x
   
   
   * Variáveis
    
      * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
     * <<idType>>: tipo do propriedade anotada com @Id na entidade (ex: <<<Integer>>>)
    
@@ -71,7 +71,7 @@ Templates
   
   * Variáveis
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
     * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
     
@@ -89,7 +89,7 @@ Templates
   
   * Variáveis
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
     * <<Project Name>>: o nome do projeto a ser criado (ex: <<<escola>>>)
     
@@ -106,7 +106,7 @@ Templates
   
   * Variáveis
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
     * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
     
@@ -126,7 +126,7 @@ Templates
   
   * Variáveis
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
     * <<Project Name>>: o nome do projeto a ser criado (ex: <<<escola>>>)
     
@@ -143,7 +143,7 @@ Templates
   
   * Variáveis
     
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<br.gov.frameworkdemoiselle.sample>>>)
+    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
     * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
     
