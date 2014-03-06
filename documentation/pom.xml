@@ -41,7 +41,7 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
 	<artifactId>demoiselle-mail-documentation-build</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.2.0</version>
 	<packaging>pom</packaging>
 
 	<name>Documentation Build Aggregator</name>
