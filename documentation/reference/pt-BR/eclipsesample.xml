@@ -13,6 +13,19 @@
 	<title>Prepararação do Ambiente</title>
 		<para> Antes de iniciar o uso do Demoiselle-Nimble, podemos criar um projeto usando um arquétipo do Demoiselle. Esse procedimento também pode ser feito diretamente no Eclipse ou 
 		ou Maven sem o uso do Nimble, mas a opção do Demoiselle-Nimble serve para facilitar.</para>
+		<para> Abaixo video de exemplo de criação de projeto com Plugin Maven do Eclipse.</para>
+	<para>
+		<!-- <mediaobject >
+			<videoobject >
+				<videodata valign="middle" align="center" scalefit="100%" fileref="videos/nimble_sample_create_proj_eclipse_leg.avi" scale="100%" width="100%" contentwidth="100%"/>
+			</videoobject>		
+			<textobject>
+				<para>Demonstração de criação de projeto através do Plugin Maven/Eclipse</para>
+			</textobject>
+		</mediaobject>  -->		
+		<ulink url="http://youtu.be/2jxzHqI1RCk"></ulink>		
+	</para>		
+		
 		<section id="ESample_Create_Proj">
 		<title>Criação do projeto base</title>
 		<para> Caso opte por criar o projeto Maven através do próprio Eclipse vá direto para : <xref linkend="ESample_Prepar_Proj"/> </para>
@@ -159,6 +172,22 @@
 		 </para>
 		 <para>Na tela acima, selecione o diretório onde o projeto foi criado e depois clique no botão finish e aguarde o Eclipse 
 		 fazer a importação do projeto. </para>
+		 
+		 <para> Abaixo o video de demonstração de criação de projeto com apoio do Demoiselle Nimble.</para>
+		<para>
+		<!-- 
+		<mediaobject >
+			<videoobject >
+				<videodata valign="middle" align="center" scalefit="100%" fileref="videos/nimble_create_proj_leg.avi" scale="100%" width="100%" contentwidth="100%"/>
+			</videoobject>		
+			<textobject>
+				<para>Demonstração de criação de projeto com apoio do Demoiselle Nimble</para>
+			</textobject>
+		</mediaobject>  -->		
+		<ulink url="http://youtu.be/witf3ZIhLlM"></ulink>		
+	</para>
+		 
+		 
 		</section>
 		<section id="ESample_Prepar_Proj">
 		<title>Configurações e Classes de Domínio</title>
@@ -212,7 +241,7 @@ import javax.persistence.*;
 public abstract class Pessoa {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
 	@Column
@@ -373,7 +402,7 @@ public class Estudante extends Pessoa implements Serializable {
 }]]></programlisting>
 </para>
 
-<para>Teremos a classe de enumeração usada por "Pessoa":</para>
+<para>Teremos a classe de enumeração Genero usada por "Pessoa":</para>
 <para>
       <programlisting role="java"><![CDATA[public enum Genero {
 	
@@ -382,7 +411,7 @@ public class Estudante extends Pessoa implements Serializable {
 </para>
 
 <para>E as demais classes necessárias para o exemplo:</para>
-<para> - BolaEstudo.java:</para>
+<para> - BolsaEstudo.java:</para>
 <para>
         	      <programlisting role="java"><![CDATA[import java.io.Serializable;
 import java.util.Date;
@@ -396,7 +425,7 @@ public class BolsaEstudo implements Serializable {
 
 	@Id
 	@Column(name = "id_bolsa")
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer numero;
 
 	@Column
@@ -613,6 +642,20 @@ public class Turma implements Serializable {
 		 <para>A única exigência para geração de código com o Demoiselle-Nimble, é que as classes estejam com as anotações de JPA, conforme o exemplo acima.
 		 E a ferramenta atuará sobre as classes anotadas com @Entity.</para>
 		 
+		<para> Abaixo o video de demonstração da preparação do ambiente.</para>
+		<para>
+		<!-- 
+		<mediaobject >
+			<videoobject >
+				<videodata valign="middle" align="center" scalefit="100%" fileref="videos/nimble_sample_prepar_leg.avi" scale="100%" width="100%" contentwidth="100%"/>
+			</videoobject>		
+			<textobject>
+				<para>demonstração da preparação do ambiente</para>
+			</textobject>
+		</mediaobject>  -->		
+		<ulink url="http://youtu.be/NdCP_7DIBjU"></ulink>		
+	</para>
+		 
 </section>
 	<beginpage/>
 	<section id="nimble_eclipse_tradicional">
@@ -816,6 +859,21 @@ public class Turma implements Serializable {
 		  	 <listitem><para>Turma.java</para></listitem>
 		  </itemizedlist>
 		  
+		  <para> Abaixo o video de demonstração da criação dos artefatos CRUD.</para>
+		<para>
+		<!-- 
+		<mediaobject>
+			<videoobject>
+				<videodata valign="middle" align="center" scalefit="100%" fileref="videos/nimble_crud_leg.avi" scale="100%" width="100%" contentwidth="100%"/>
+			</videoobject>		
+			<textobject>
+				<para>Demonstração da criação dos artefatos CRUD</para>
+			</textobject>
+		</mediaobject>  -->		
+		<ulink url="http://youtu.be/7YA5l7UsCzM"></ulink>		
+	</para>
+		  
+		  
 		 <para>A partir da versão 1.2.0 do Demoiselle Nimble, é possível montar templates que identificam as anotações de relacionamentos do JPA,
 		 e assim podem ser definidos os componentes de tela os métodos de visão e negócio para tratar cada um deles. 
 		 O template para JSF padrão trata os relacionamentos da segunte forma:</para>
@@ -926,6 +984,21 @@ public class Turma implements Serializable {
 					<para>Resultado na aplicação em funcionamento</para>
 				</caption>		        	    
         	</mediaobject>            		
-		 </para>		 
+		 </para>
+		 
+		 <para> Abaixo o video de demonstração da execução da aplicação criada pelo Demoiselle Nimble.</para>
+		<para>
+		<!--  <mediaobject>
+			<videoobject>
+				<videodata  valign="middle" align="center" scalefit="100%" fileref="videos/nimble_crud_demonstra_leg.avi" scale="100%" width="100%" contentwidth="100%"/>
+			</videoobject>		
+			<textobject>
+				<para>Demonstração da da criação dos artefatos CRUD</para>
+			</textobject>
+		</mediaobject>
+		 -->		
+		<ulink url="http://youtu.be/Dou9GbNtsNk"></ulink>		
+	</para>
+		 		 
 	</section>	
 </chapter>
