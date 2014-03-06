@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>demoiselle-nimble-reference</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.2.0</version>
 	<packaging>jdocbook</packaging>
 
 	<name>Demoiselle Nimble User Guide</name>
@@ -23,6 +23,24 @@
 			<plugin>
 				<groupId>org.jboss.maven.plugins</groupId>
 				<artifactId>maven-jdocbook-plugin</artifactId>
+				<executions>
+					<execution>
+            		<id>default-bundle</id>
+            		<phase>package</phase>
+            		<goals>
+              			<goal>bundle</goal>
+            		</goals>
+            		<configuration>             		
+              		<imageResource>
+                		<directory>/home/80621732915/git/nimble/documentation/reference/pt-BR</directory>
+                		<includes>
+                  			<include>videos/*.avi</include>
+                  			<include>images/*.png</include>
+                		</includes>
+              		</imageResource>              
+            </configuration>
+          </execution>
+        </executions>
 			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
