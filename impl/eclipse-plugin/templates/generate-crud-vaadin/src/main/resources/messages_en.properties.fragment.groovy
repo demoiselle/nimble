@@ -1,7 +1,7 @@
 
 menu.new.${bean} = ${pojo}
 <% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil as RU
+import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil as RU
 def attrList = RU.getClassAttributesFromFile(pojoFileName)
 if (!attrList.isEmpty()) {
 	attrList.each() { attrName, attrValue ->

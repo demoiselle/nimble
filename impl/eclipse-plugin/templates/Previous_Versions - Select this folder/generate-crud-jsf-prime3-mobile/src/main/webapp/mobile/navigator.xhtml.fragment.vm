@@ -1,0 +1,2 @@
+
+                    <p:button value="#{messages['menu.${beanLower}']}" icon="gear" href="./${beanLower}_list.jsf" />

@@ -3,7 +3,7 @@ menu.new.${bean} = ${pojo}
 <%
 
 
-import br.gov.frameworkdemoiselle.tools.nimble.util.ReflectionUtil as RU
+import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil as RU
 def tmpFile = new File(beanPath+beanJavaName)
 def attrList = RU.getAttributesFromClassFile(tmpFile)
 if (!attrList.isEmpty()) {
