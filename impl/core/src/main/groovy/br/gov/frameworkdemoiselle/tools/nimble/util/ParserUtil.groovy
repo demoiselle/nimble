@@ -78,8 +78,17 @@ class ParserUtil {
 
 		new ClassOrInterfaceDeclarationVisitor().visit(getCompilationUnit(paramFile), null);
 
+		String varClassName = ""
+		
 		for (extend in new ClassOrInterfaceDeclarationVisitor().getExtendClasses() ){
-			extendedClass.add extend.toString()
+			
+			 varClassName= extend.toString()
+			//remove parameter from class name. ex: Class<?>
+			if (varClassName.contains("<")){
+				varClassName = varClassName.substring(0, varClassName.indexOf('<')) 
+				}				
+			
+			extendedClass.add varClassName
 		}
 		return extendedClass
 	}
