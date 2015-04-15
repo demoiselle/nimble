@@ -170,8 +170,11 @@ class ChooseTemplateStep1 extends WizardPanel {
 		WizardContext context = WizardContext.getDefault()
 		
 		if (selectedRow != -1) {
-			switch ( selectedRow ) {
-				case [6,7]:
+			String templateVersion = templatesTable.getValueAt(selectedRow, 1);
+			templateVersion = templateVersion.trim() 
+			switch ( templateVersion ) {
+				// without version, means that is a template folder
+				case [""]:					
 					context.clear()
 					JOptionPane.showMessageDialog(this, "Please use Browse... Button to select a template folder",
 					title, JOptionPane.WARNING_MESSAGE)
