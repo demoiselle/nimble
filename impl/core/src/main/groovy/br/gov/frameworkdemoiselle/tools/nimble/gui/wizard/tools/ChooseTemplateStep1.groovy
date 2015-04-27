@@ -60,6 +60,7 @@ import br.gov.frameworkdemoiselle.tools.nimble.util.FileUtil
  *  
  *  
  * @author Serge Normando Rehem
+ * @author Emerson Sachio Saito
  *
  */
 class ChooseTemplateStep1 extends WizardPanel {

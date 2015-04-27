@@ -34,11 +34,11 @@ def stringDolar = '$'
 				<h:form>
 				<pm:buttonGroup orientation="horizontal" >
 					<h:commandButton value="#{messages['button.save']}" action="#{${beanLower}EditMB.insert}"
-						rendered="#{!${beanLower}EditMB.updateMode}" ajax="false" />
+						rendered="#{!${beanLower}EditMB.updateMode}" immediate="true" ajax="false" />
 					<h:commandButton value="#{messages['button.save']}" action="#{${beanLower}EditMB.update}"
-						rendered="#{${beanLower}EditMB.updateMode}" ajax="false"/>
+						rendered="#{${beanLower}EditMB.updateMode}" immediate="true" ajax="false" />
 					<h:commandButton value="#{messages['button.delete']}" action="#{${beanLower}EditMB.delete}"
-						rendered="#{${beanLower}EditMB.updateMode}" ajax="false" />					
+						rendered="#{${beanLower}EditMB.updateMode}" immediate="true" ajax="false" />					
 				</pm:buttonGroup>
 					<%
 					if (attrList.isEmpty()) {
@@ -79,7 +79,7 @@ def stringDolar = '$'
 								if (attrValue.equalsIgnoreCase('Date')) {	%>
 					<p:calendar id="${attrName}" value="#{${beanLower}EditMB.bean.${attrName}}"
 					   pattern="#{messages['label.date.pattern']}" navigator="true" showButtonPanel="true"
-					   locale="#{currentLocale}" title="#{messages['${beanLower}.alt.${attrName}']}" />
+					   locale="#{locales.currentLocale}" title="#{messages['${beanLower}.alt.${attrName}']}" />
 							 <% }else{
 									if (PU.hasAnnotationForField(tmpFile, attrName, 'Enumerated' )) {%>
 					<h:selectOneMenu id="${attrName}" value="#{${beanLower}EditMB.bean.${attrName}}">
@@ -105,7 +105,7 @@ def stringDolar = '$'
 								def varFileOneToMany = new File(beanPath+varBeanOnetoMany)
 								def varAttrListOneToMany = PU.getAttributesFromClassFile(varFileOneToMany) %>
 			<p:panel header="#{messages['${attrClassOfValueLower}.label']}" toggleable="true" toggleSpeed="500">
-				<h:panelGrid id="fields${attrClassOfValueLower}" columns="1">
+		 		<h:panelGrid id="fields${attrClassOfValueLower}" columns="1">
 				 <p:outputPanel>
 					<h:commandButton value="#{messages['button.new']}" action="#{${beanLower}EditMB.add${attrClassOfValue}}" update="list${attrClassOfValue}"/>
 					<p:dataTable id="list${attrClassOfValue}" var="${attrClassOfValueLower}" value="#{${beanLower}EditMB.${attrClassOfValueLower}List}" rowIndexVar="index">
@@ -123,14 +123,14 @@ def stringDolar = '$'
 										   if (varAttrValue.equalsIgnoreCase('Date')) { %>
 						   <p:calendar id="${varAttrName}" value="#{${attrClassOfValueLower}.${varAttrName}}"
 						   		pattern="#{messages['label.date.pattern']}" navigator="true" showButtonPanel="true"
-								locale="#{currentLocale}" title="#{messages['${attrClassOfValueLower}.alt.${varAttrName}']}" />
+								locale="#{locales.currentLocale}" title="#{messages['${attrClassOfValueLower}.alt.${varAttrName}']}" />
 										<% } else{
 												if (PU.hasAnnotationForField(varFileOneToMany, varAttrName, 'Enumerated' )) { %>
 						   <h:selectOneMenu id="${varAttrName}" value="#{${attrClassOfValueLower}.${varAttrName}}">
 							   <f:selectItems value="#{${attrClassOfValueLower}EditMB.${varAttrName}}" />
 						   </h:selectOneMenu>
 											   <% }else { %>
-						   <h:inputText id="${varAttrName}" value="#{${attrClassOfValueLower}.${varAttrName}}"  title="#{messages['${attrClassOfValueLower}.alt.${varAttrName}']}" />
+						   <h:inputText id="${varAttrName}" value="#{${attrClassOfValueLower}.${varAttrName}}" title="#{messages['${attrClassOfValueLower}.alt.${varAttrName}']}" />
 											   <% }
 										  }
 								  }%>
@@ -143,7 +143,7 @@ def stringDolar = '$'
 						   <h:commandButton value="#{messages['button.delete']}" action="#{${beanLower}EditMB.delete${attrClassOfValue}}"/>
 					   </p:column>
 					</p:dataTable>
-				  <p:outputPanel>
+				  </p:outputPanel>
 				</h:panelGrid>
 			</p:panel>	<%	break
 							case ["ManyToMany"]:

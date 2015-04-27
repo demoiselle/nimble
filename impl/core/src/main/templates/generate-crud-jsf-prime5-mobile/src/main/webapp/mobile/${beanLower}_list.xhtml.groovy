@@ -1,37 +1,34 @@
-<% 
+<%
 import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil as PU
 import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil as SU
 def tmpFile = new File(beanPath+beanJavaName)
 def attrList = PU.getAttributesFromClassFile(tmpFile)
 def relationshipsAnnotations = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
 %>
-<f:view xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:pm="http://primefaces.org/mobile"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/template/main_mobile.xhtml" contentType="text/html"
-	renderKitId="PRIMEFACES_MOBILE">
-	<pm:page title="Listagem de ${beanLower}">
-	
-			<!-- Main View -->
-			<pm:view id="main">
-			
-				<pm:header title="${beanLower}" swatch="b">
-					<f:facet name="right">
-						<p:button value="#{messages['button.new']}" icon="plus"
-										 href="#{${beanLower}ListMB.nextView}"
-										 actionListener="#{${beanLower}ListMB.clear}"/>
-					</f:facet>
-						<f:facet name="left">
-						<p:button value="#{messages['main.app.title']}" icon="home"
-										 href="./navigator.jsf"/>
-					</f:facet>
-				</pm:header>	
-				<pm:content>
-					<h:form>
-						<!-- Edite o data list para deixar apenas um coommandLink -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:pm="http://primefaces.org/mobile">
+  <h:body>
+   <ui:include src="/mobile/template/main_mobile.xhtml" />
+     <pm:page id="list_${beanLower}" title="Listagem de ${beanLower}">
+
+	  <pm:header title="${beanLower}" swatch="b">
+	    <p:tabMenu>
+	     <p:menuitem icon="ui-icon-plus"
+		      url="#{${beanLower}ListMB.nextView}" iconPos="top"
+		      value="#{messages['button.new']}"
+		      actionListener="#{${beanLower}ListMB.clear}" />
+         <p:menuitem icon="ui-icon-home" url="./navigator.jsf" iconPos="top"
+		    value="#{messages['main.app.title']}" />
+      </p:tabMenu>
+     </pm:header>
+	<pm:content>
+		<h:form>
+			<!-- Edite o data list para deixar apenas um coommandLink -->
 						<p:dataList id="list" var="bean" value="#{${beanLower}ListMB.resultList}">
 						<%						
 						if (!attrList.isEmpty()) {
@@ -62,7 +59,6 @@ def relationshipsAnnotations = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
 						
 					</h:form>
 				</pm:content>
-			</pm:view>
 		</pm:page>
-	
-</f:view>
+  </h:body>
+</html>

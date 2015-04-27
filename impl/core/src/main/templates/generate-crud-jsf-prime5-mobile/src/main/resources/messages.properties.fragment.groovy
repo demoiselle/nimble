@@ -13,16 +13,15 @@ ${beanLower}.update.ok=${pojo} atualizado: {0}
 
 ${beanLower}.delete.nok=erro ao excluir ${pojo}: {0}
 ${beanLower}.insert.nok=erro ao inserir ${pojo}: {0}
-${beanLower}.update.nok=erro ao atulizar ${pojo}: {0}
+${beanLower}.update.nok=erro ao atualizar ${pojo}: {0}
 
 ${beanLower}.list.table.title=Lista de ${pojo}s
 <%
 if (!attrList.isEmpty()) {
 	attrList.each() { attrName, attrValue ->
-    def attrLow = attrName.substring(0,1).toLowerCase()+attrName.substring(1); 
 %>
-${beanLower}.label.${attrLow}=${attrName}
-${beanLower}.alt.${attrLow}=${attrName}
+${beanLower}.label.${attrName}=${attrName}
+${beanLower}.alt.${attrName}=${attrName}
 <%
 	}
 } else {

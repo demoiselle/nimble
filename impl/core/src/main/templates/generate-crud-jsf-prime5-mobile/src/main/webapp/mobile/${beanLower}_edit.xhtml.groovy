@@ -8,18 +8,25 @@ def relationshipsFields = [:]
 def stringDolar = '$'
 
 %>
-<f:view xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pm="http://primefaces.org/mobile"
-	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/template/main_mobile.xhtml" contentType="text/html"
-	renderKitId="PRIMEFACES_MOBILE">
-	<pm:page title="Edição de ${beanLower}">
-	<!-- Main View -->
-		<pm:view id="main">
-			<pm:header title="Edição de ${beanLower}" swatch="b">
+	xmlns:pm="http://primefaces.org/mobile">
+<h:body>
+<ui:include src="/mobile/template/main_mobile.xhtml" />
+	<pm:page id="edit_${beanLower}" title="Edição de ${beanLower}">
+		<pm:header id="edit_${beanLower}" title="Edição de ${beanLower}" swatch="b">
+			<p:tabMenu>
+				<p:menuitem icon="ui-icon-back" url="#{patioEditMB.previousView}"
+					iconPos="top" value="#{messages['button.back']}" />
+				<p:menuitem icon="ui-icon-home" url="./navigator.jsf" iconPos="top"
+					value="#{messages['main.app.title']}" />
+			</p:tabMenu>
+		</pm:header>
+		<pm:header title="Edição de ${beanLower}" swatch="b">
 				<f:facet name="left">
 					<p:button style="width:10; height:30; border:1px solid #000;" 
 						value="#{messages['button.back']}" icon="back"
@@ -32,14 +39,22 @@ def stringDolar = '$'
 			</pm:header>
 			<pm:content>
 				<h:form>
-				<pm:buttonGroup orientation="horizontal" >
-					<h:commandButton value="#{messages['button.save']}" action="#{${beanLower}EditMB.insert}"
-						rendered="#{!${beanLower}EditMB.updateMode}" immediate="true" ajax="false" />
-					<h:commandButton value="#{messages['button.save']}" action="#{${beanLower}EditMB.update}"
-						rendered="#{${beanLower}EditMB.updateMode}" immediate="true" ajax="false" />
-					<h:commandButton value="#{messages['button.delete']}" action="#{${beanLower}EditMB.delete}"
-						rendered="#{${beanLower}EditMB.updateMode}" immediate="true" ajax="false" />					
-				</pm:buttonGroup>
+					<pm:field>
+						<p:commandButton value="#{messages['button.save']}"
+						icon="ui-icon-check" styleClass="ui-btn-inline"
+						action="#{${beanLower}EditMB.insert}"
+						rendered="#{!${beanLower}EditMB.updateMode}" ajax="false" />
+					</pm:field>
+					<pm:field>
+						<p:commandButton value="#{messages['button.save']}"
+							icon="ui-icon-check" styleClass="ui-btn-inline"
+							action="#{${beanLower}EditMB.update}"
+							rendered="#{${beanLower}EditMB.updateMode}" ajax="false" />
+						<p:commandButton value="#{messages['button.delete']}"
+							icon="ui-icon-delete" styleClass="ui-btn-inline"
+							action="#{${beanLower}EditMB.delete}"
+							rendered="#{${beanLower}EditMB.updateMode}" ajax="false" />
+					</pm:field>				
 					<%
 					if (attrList.isEmpty()) {
 					%>
@@ -143,7 +158,7 @@ def stringDolar = '$'
 						   <h:commandButton value="#{messages['button.delete']}" action="#{${beanLower}EditMB.delete${attrClassOfValue}}"/>
 					   </p:column>
 					</p:dataTable>
-				  <p:outputPanel>
+				  </p:outputPanel>
 				</h:panelGrid>
 			</p:panel>	<%	break
 							case ["ManyToMany"]:
@@ -156,6 +171,6 @@ def stringDolar = '$'
 				} %>															
 					</h:form>
 				</pm:content>
-			</pm:view>
 		</pm:page>	
-</f:view>
+	</h:body>
+</html>
