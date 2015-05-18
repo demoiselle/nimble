@@ -40,7 +40,7 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
-	<artifactId>demoiselle-mail-documentation-build</artifactId>
+	<artifactId>demoiselle-nimble-documentation-build</artifactId>
 	<version>1.2.0</version>
 	<packaging>pom</packaging>
 

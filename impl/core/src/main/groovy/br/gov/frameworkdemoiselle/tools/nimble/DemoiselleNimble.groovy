@@ -171,8 +171,13 @@ class DemoiselleNimble {
 	 */
 	Boolean applyTemplates(String templateSrcPath, String templateDestPath, Map vars) {
 
+		
+		templateDestPath = FileUtil.removeSep(templateDestPath)
+		def projectName = templateDestPath.substring(templateDestPath.lastIndexOf('/')+1)
 		templateSrcPath = FileUtil.addSep(templateSrcPath)
 		templateDestPath = FileUtil.addSep(templateDestPath)
+		
+		
 
 		initStatistics()
 		printDashes()
@@ -187,6 +192,7 @@ class DemoiselleNimble {
 			// Add source and destination to variables list
 			vars.put "templateSourcePath", templateSrcPath
 			vars.put "templateDestPath", templateDestPath
+			vars.put "projectName", projectName
 
 			// force variables 'typenization' according to its data types
 			config?.vars?.each { var ->
@@ -348,6 +354,7 @@ class DemoiselleNimble {
 			showStatistics()
 			return true
 		} catch (Exception ex) {
+			ex.printStackTrace()
 			return false
 		}
 		return false

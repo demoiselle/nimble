@@ -1,0 +1,21 @@
+package ${packageName}.business;
+
+
+import ${packageName}.entity.${pojo};
+import ${packageName}.persistence.${pojo}DAO;
+import br.gov.frameworkdemoiselle.lifecycle.Startup;
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+import br.gov.frameworkdemoiselle.template.DelegateCrud;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
+import java.util.List;
+
+
+@BusinessController
+public class ${pojo}BC extends DelegateCrud<${pojo}, ${idType}, ${pojo}DAO> {
+	private static final long serialVersionUID = 1L;
+
+	public List<${pojo}> find(String filter) {
+		return getDelegate().find(filter);
+	}
+
+}
