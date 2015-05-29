@@ -3,28 +3,20 @@
    <description name="Demoiselle Nimble Eclipse" url="http://demoiselle.sourceforge.net/nimble/updatesite/">
       Site de Atualização pra Demoiselle Nimble Eclipse Plugin
    </description>
-   <feature url="features/br.gov.framewordemoiselle.nimble.eclipse.feature_1.1.0.jar" id="br.gov.framewordemoiselle.nimble.eclipse.feature" version="1.1.0">
-      <category name="Demoiselle Nimble 1.1.0"/>
-   </feature>
-   <feature url="features/br.gov.framewordemoiselle.nimble.eclipse.feature_1.1.1.jar" id="br.gov.framewordemoiselle.nimble.eclipse.feature" version="1.1.1">
-      <category name="Demoiselle Nimble 1.1.1"/>
-   </feature>
    <feature url="features/br.gov.framewordemoiselle.nimble.eclipse.feature_1.2.0.jar" id="br.gov.framewordemoiselle.nimble.eclipse.feature" version="1.2.0">
       <category name="Demoiselle Nimble 1.2.0"/>
    </feature>
-   <category-def name="Demoiselle Nimble 1.1.0" label="Demoiselle Nimble 1.1.0">
-      <description>
-         Eclipse Plugin for Demoiselle Nimble Template Processor version 1.1.0
-      </description>
-   </category-def>
-   <category-def name="Demoiselle Nimble 1.1.1" label="Demoiselle Nimble 1.1.1">
-      <description>
-         Eclipse Plugin for Demoiselle Nimble Template Processor version 1.1.1
-      </description>
-   </category-def>
+   <feature url="features/br.gov.framewordemoiselle.nimble.eclipse.feature_1.2.1.jar" id="br.gov.framewordemoiselle.nimble.eclipse.feature" version="1.2.1">
+      <category name="Demoiselle Nimble 1.2.1"/>
+   </feature>
    <category-def name="Demoiselle Nimble 1.2.0" label="Demoiselle Nimble 1.2.0">
       <description>
          Eclipse Plugin for Demoiselle Nimble Template Processor version 1.2.0
+      </description>
+   </category-def>
+   <category-def name="Demoiselle Nimble 1.2.1" label="Demoiselle Nimble 1.2.1">
+      <description>
+         Eclipse Plugin for Demoiselle Nimble Template Processor version 1.2.1
       </description>
    </category-def>
 </site>

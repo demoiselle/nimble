@@ -40,14 +40,14 @@ public class ${pojo}EditMB extends AbstractEditPageBean<${pojo}, ${idType}> {
 	private DataModel<${attrClassOfValue}> ${attrClassFirstLower}List;
 	
 	public void add${attrClassOfValue}() {
-		getBean().get${attrNameFirstUp}().add(new ${attrClassOfValue}());
+		this.getBean().get${attrNameFirstUp}().add(new ${attrClassOfValue}());
 	}
 	public void delete${attrClassOfValue}() {
-	   getBean().get${attrNameFirstUp}().remove(get${attrClassOfValue}List().getRowData());
+	   this.getBean().get${attrNameFirstUp}().remove(get${attrClassOfValue}List().getRowData());
 	}
 	public DataModel<${attrClassOfValue}> get${attrClassOfValue}List() {
 	   if (${attrClassFirstLower}List == null) {
-		   ${attrClassFirstLower}List = new ListDataModel<${attrClassOfValue}>(getBean().get${attrNameFirstUp}());
+		   ${attrClassFirstLower}List = new ListDataModel<${attrClassOfValue}>(this.getBean().get${attrNameFirstUp}());
 	   }
 	   return ${attrClassFirstLower}List;
 	} <%		break
@@ -75,19 +75,18 @@ public class ${pojo}EditMB extends AbstractEditPageBean<${pojo}, ${idType}> {
 	}
 		
 	public void add${attrClassOfValue}List(List<${attrClassOfValue}> ${attrClassFirstLower}List) {
-		getBean().get${attrNameFirstUp}().addAll(${attrClassFirstLower}List);
+		this.getBean().get${attrNameFirstUp}().addAll(${attrClassFirstLower}List);
 	}
 
 	public void delete${attrClassOfValue}List(List<${attrClassOfValue}> ${attrClassFirstLower}List) {
-		getBean().get${attrNameFirstUp}().removeAll(${attrClassFirstLower}List);
+		this.getBean().get${attrNameFirstUp}().removeAll(${attrClassFirstLower}List);
 	}
 	
 	
 	public DualListModel<${attrClassOfValue}> get${attrClassOfValue}List() {
 		if (this.${attrClassFirstLower}List == null) {
-
 			List<${attrClassOfValue}> source = ${attrClassFirstLower}BC.findAll();
-			List<${attrClassOfValue}> target = getBean().get${attrNameFirstUp}();
+			List<${attrClassOfValue}> target = this.getBean().get${attrNameFirstUp}();
 
 			if (source == null) {
 				source = new ArrayList<${attrClassOfValue}>();
@@ -133,19 +132,19 @@ public class ${pojo}EditMB extends AbstractEditPageBean<${pojo}, ${idType}> {
 	@Override
 	@Transactional
 	public String insert() {
-		this.${beanLower}BC.insert(getBean());
+		this.${beanLower}BC.insert(this.getBean());
 		return getPreviousView();
 	}
 	
 	@Override
 	@Transactional
 	public String update() {
-		this.${beanLower}BC.update(getBean());
+		this.${beanLower}BC.update(this.getBean());
 		return getPreviousView();
 	}
 	
 	@Override
-	protected void handleLoad() {
-		setBean(this.${beanLower}BC.load(getId()));
-	}
+	protected ${pojo} handleLoad(${idType} id) {
+		return this.${beanLower}BC.load(id);
+	}	
 }

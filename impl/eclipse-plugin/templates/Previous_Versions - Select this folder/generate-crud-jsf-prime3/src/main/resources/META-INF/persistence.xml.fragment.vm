@@ -1,3 +1,2 @@
 
-		<class>${packageName}.domain.${pojo}</class>	
-	
+		<class>${packageName}.domain.${pojo}</class>
