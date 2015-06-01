@@ -30,7 +30,7 @@ def relationshipsAnnotations = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
 			</p:toolbar>
 			<p:dataTable id="list" var="bean" value="#{${beanLower}ListMB.resultList}">
 				<f:facet name="header">#{messages['${beanLower}.list.table.title']}</f:facet>
-				<p:column style="width:1%;">
+				<p:column style="width:2%;">
 					<h:selectBooleanCheckbox value="#{${beanLower}ListMB.selection[bean.${idName}]}"></h:selectBooleanCheckbox>
 				</p:column>
 				<%

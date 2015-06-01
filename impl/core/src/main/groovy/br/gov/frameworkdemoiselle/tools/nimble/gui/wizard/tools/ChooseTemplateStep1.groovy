@@ -80,7 +80,7 @@ class ChooseTemplateStep1 extends WizardPanel {
 	ChooseTemplateStep1() {
 		prefs = Preferences.userNodeForPackage(ChooseTemplateStep1.class)
 		
-		title = "Demoiselle Nimble"
+		title = "Demoiselle Nimble 1.2.1"
 		description = "Choose Template"
 		
 		JPanel panel = swing.panel(layout: new MigLayout('insets 10, fill', "[pref!][grow,fill][]"), constraints:'grow') {
