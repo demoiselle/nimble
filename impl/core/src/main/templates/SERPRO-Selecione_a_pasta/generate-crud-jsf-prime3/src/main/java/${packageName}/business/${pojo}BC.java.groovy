@@ -8,7 +8,7 @@ package ${packageName}.business;
 
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
-import ${packageName}.domain.*;
+import ${packageName}.entity.*;
 import java.util.*;
 import javax.faces.model.*;
 import ${packageName}.persistence.${pojo}DAO;

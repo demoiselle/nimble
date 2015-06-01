@@ -1,2 +1,2 @@
 
-		<class>${packageName}.domain.${pojo}</class>
+		<class>${packageName}.entity.${pojo}</class>

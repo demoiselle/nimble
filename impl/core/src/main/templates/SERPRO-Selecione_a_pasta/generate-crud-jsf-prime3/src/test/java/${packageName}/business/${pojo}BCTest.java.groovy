@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
-import ${packageName}.domain.${pojo};
+import ${packageName}.entity.${pojo};
 import ${packageName}.business.${pojo}BC;
 
 @RunWith(DemoiselleRunner.class)

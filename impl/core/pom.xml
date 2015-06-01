@@ -14,8 +14,8 @@
 	<url>http://demoiselle.sourceforge.net/tools/nimble/${project.version}/</url>
 
 	<organization>
-		<name>SERPRO</name>
-		<url>http://www.serpro.gov.br</url>
+		<url>http://www.demoiselle.org</url>
+		<name>Demoiselle</name>
 	</organization>
 
 	<properties>
@@ -356,4 +356,7 @@
 		</plugins>
 	</reporting>
 
+	<issueManagement>
+		<url>http://tracker.frameworkdemoiselle.gov.br</url>
+	</issueManagement>
 </project>

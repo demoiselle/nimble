@@ -1,0 +1,2 @@
+		<class>${packageName}.entity.${pojo}</class>
+	
