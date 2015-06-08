@@ -8,7 +8,7 @@
 	<section id="pacote">
 		<title>Via pacotes Debian GNU/Linux</title>
 			<para> Foi disponibilizado um pacote Debian chamado demoiselle-nimble para o 
-			Demoiselle Nimble no repositório do projeto Demoiselle Infra.
+			Demoiselle Nimble no repositório do projeto <ulink url="demoiselle.sourceforge.net/docs/infra/reference/"> Demoiselle Infra.</ulink>
 			Para instalá-lo nesta plataforma, basta executar o comando a seguir em um terminal do Linux:
 			</para>
 			<para><sidebar><cmdsynopsis><command># apt-get install demoiselle-nimble</command></cmdsynopsis></sidebar></para>

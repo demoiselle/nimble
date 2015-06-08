@@ -706,7 +706,7 @@ public class Turma implements Serializable {
 		</para>
 		<para>Com o projeto selecionado, use uma das opções acima para acionar a interface do Demoiselle Nimble, onde selecionaremos o Template
 		para geração de um CRUD (Create, Read, Update e Delete) que são as operações básicas de criar, ler, atualizar e apagar</para>
-		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo optamos pelo Primefaces 3, que é compatível com a versão 2.4.0 (ou superior) do Demoiselle
+		<para>Selecione o Template adequado ao arquétipo que foi criado, neste exemplo optamos pelo Primefaces 5, que é compatível com a versão 2.5.0 (ou superior) do Demoiselle
 		 conforme a figura abaixo:</para>
 		<para>
         	<mediaobject>

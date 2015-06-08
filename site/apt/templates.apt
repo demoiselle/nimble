@@ -25,10 +25,10 @@ Templates
 
   []
 
-* {generate-crud-jsf-prime3}
+* {generate-crud-jsf-prime5}
 
-  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces 3) CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da classe de
-  domínio especificada (anotada com @Entity). Basea-se no <<Framework Demoiselle 2.x>> e utiliza a biblioteca JSF2 PrimeFaces versão 3.x.
+  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces 5) CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da classe de
+  domínio especificada (anotada com @Entity). Basea-se no <<Framework Demoiselle 2.x>> e utiliza a biblioteca JSF2 PrimeFaces versão 5.x.
   
   
   * Variáveis
@@ -45,10 +45,10 @@ Templates
 
   []
   
- * {generate-crud-jsf-prime3-mobile}
+ * {generate-crud-jsf-prime5-mobile}
 
-  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces3 Mobile) CRUD:>> gera todos os artefatos envolvidos em um (Create, Read, Update and Delete) da classe de
-  domínio especificada (anotada com @Entity). Basea-se no <<Framework Demoiselle 2.x>> e utilizando a biblioteca JSF2, especializada para WEB Mobile, PrimeFaces-Mobile versão 3.x
+  O template <<Demoiselle v2 Generate JSF2 (PrimeFaces5 Mobile) CRUD:>> gera todos os artefatos envolvidos em um (Create, Read, Update and Delete) da classe de
+  domínio especificada (anotada com @Entity). Basea-se no <<Framework Demoiselle 2.x>> e utilizando a biblioteca JSF2, especializada para WEB Mobile, PrimeFaces-Mobile versão 5.x
   
   
   * Variáveis
@@ -64,25 +64,12 @@ Templates
     []
 
   []
-* {generate-crud-jsf-prime2}
+ 
 
-  O template <<Demoiselle v2 Generate JSF-PrimeFaces2 CRUD:>> gera todos os artefatos envolvidos em um CRUD da
-  entidade especificada. Basea-se no <<Framework Demoiselle 2.x>> e utiliza a biblioteca JSF2 PrimeFaces versão 2.x.
-  
-  * Variáveis
-    
-    * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
-    
-    * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
-    
-    []
+* {create-app-html5-rest}
 
-  []
-
-* {create-app-jsf-v1}
-
-  O template <<Demoiselle v1 Create JSF Application>> cria uma aplicação completa usando o
-  <<Framework Demoiselle 1.x>> com tecnologias e especificações JSF 1 e JPA 1.
+  O template <<Demoiselle v2 Create HTML5+REST Application>> cria uma aplicação completa usando o
+  <<Framework Demoiselle 2.x>> com tecnologias e especificações JPA 2 e HTML5+REST para camada de visão.
   
   Internamente é feito uso de um arquétipo do Maven, sendo que o <<Apache Maven>> precisa
   estar devidamente instalado na máquina.
@@ -90,7 +77,7 @@ Templates
   * Variáveis
     
     * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
-    
+    org.demoiselle
     * <<Project Name>>: o nome do projeto a ser criado (ex: <<<escola>>>)
     
     * <<Version>>: a versão do artefato a ser produzido (ex: <<<1.0.0-SNAPSHOT>>>)
@@ -99,23 +86,27 @@ Templates
 
   []
 
-* {generate-crud-jsf-v1}
+* {generate-crud-html5-rest}
 
-  O template <<Demoiselle v1 Generate JSF CRUD>> gera todos os artefatos envolvidos em um CRUD da
-  entidade especificada. Basea-se no <<Framework Demoiselle 1.x>>.
+  O template <<Demoiselle v2 Generate HTML5+REST CRUD:>> gera todos os artefatos envolvidos em um CRUD (Create, Read, Update and Delete) da classe de
+  domínio especificada (anotada com @Entity). Basea-se no <<Framework Demoiselle 2.x>> e utiliza a combinação HTML5+REST para camada de visão.
+  
   
   * Variáveis
+   
+     * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
     
     * <<Package Name>>: o nome do pacote raiz da aplicação (ex: <<<org.demoiselle.sample>>>)
     
-    * <<Entity Name>>: o nome da entidade a ser criada (ex: <<<Aluno>>>)
-    
-    * <<Use CRUD Component>>: define se o componente Demoiselle CRUD será usado (default: <<<yes>>>)
+    * <<idType>>: tipo do propriedade anotada com @Id na entidade (ex: <<<Integer>>>)
+   
+    * <<idName>>: nome da propriedade anotada com @Id na entidade (ex: <<<Identificador>>>)
     
     []
 
   []
 
+  
 * {create-app-vaadin}
 
   O template <<Demoiselle v2 Create Vaadin Application>> cria uma aplicação completa usando o

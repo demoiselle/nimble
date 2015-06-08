@@ -15,6 +15,14 @@ Guia Rápido
   * inclua o diretório <<</bin>>> da distribuição ao final da variável de ambiente <<<PATH>>>
   
   []
+  
+  Em um computador baseado em <<Linux>> faça deste jeito:
+
++---------------------------------------------------------------------------------------------+  
+export DEMOISELLE_HOME=~/demoiselle
+chmod +x $DEMOISELLE_HOME/bin/demoiselle
+export PATH=$PATH:$DEMOISELLE_HOME/bin
++---------------------------------------------------------------------------------------------+  
 
   Em um computador com <<Windows>> faça desta maneira:
 
@@ -23,13 +31,6 @@ set DEMOISELLE_HOME=C:\Demoiselle
 set PATH=%PATH%;%DEMOISELLE_HOME%\bin
 +---------------------------------------------------------------------------------------------+  
 
-  Em um computador baseado em <<Unix>> faça deste outro jeito:
-
-+---------------------------------------------------------------------------------------------+  
-export DEMOISELLE_HOME=~/demoiselle
-chmod +x $DEMOISELLE_HOME/bin/demoiselle
-export PATH=$PATH:$DEMOISELLE_HOME/bin
-+---------------------------------------------------------------------------------------------+  
 
   Agora você pode rodar o comando do <<Demoiselle Nimble>>, tal como a seguir:
 

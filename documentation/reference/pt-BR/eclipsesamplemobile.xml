@@ -131,26 +131,6 @@
 		 </para>
 		 <para>Além o novo arquivo index.html, também podemos verificar que foi criado o arquivo mobile.html. E um novo diretório (/mobile) também foi incluído e conterá todas 
 		 páginas para a interface mobile.</para>
-	<para>Antes de testarmos a aplicação vamos vericar o arquivo POM.XML para certificarmos se está correto.</para>
-	<para>Clique no arquivo e selecione a aba <emphasis>Dependecy Hierachy</emphasis> </para>
-	<para>Veja se há a dependência para o Primefaces-Mobile</para>
-	<para>É importante verificar também a versão do Primefaces que deve ser no mínimo a 3.4</para>
-	<para>
-        	<mediaobject>
-		       	<imageobject role="fo">
-		               <imagedata fileref="images/DependencyHierarchy.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
-		        </imageobject>
-		        <imageobject role="html">
-		  	            <imagedata fileref="images/DependencyHierarchy.png"  format="PNG" align="center"/>
-		        </imageobject>
-	       	    <textobject>
-					<phrase>Visão de Dependency Hierarchy no POM.XML</phrase>
-				</textobject>
-				<caption>
-					<para>Visão de Dependency Hierarchy no POM.XML</para>
-				</caption>		        	    
-        	</mediaobject>            		
-		 </para>
 		<para>Com isso a aplicação já está pronta para ser testada.</para>
 		<para>Republique novamente no servidor de aplicações e inicie o servidor.</para>
 		<para>Obviamente não haverá nenhuma diferença ao acessar do navegador (browser) web do seu computador, o ideal é publicar na internet e para isso há alguns serviços em

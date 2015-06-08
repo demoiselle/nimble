@@ -27,8 +27,8 @@
 	<body>
 	
 		<links>
-			<item name="Projeto" href="http://sf.net/projects/demoiselle" />
-			<item name="Portal" href="http://www.frameworkdemoiselle.org.br" />
+			<item name="Projeto" href="https://sourceforge.net/projects/demoiselle/" />
+			<item name="Portal" href="http://www.demoiselle.org" />
 		</links>
 
 		<menu name="${project.name}">

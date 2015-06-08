@@ -3,6 +3,24 @@
 
 Notas de Versão
 
+* {v1.2.1}
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-21}[NB-21]}} - [Bug] Identificação de Id protected
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-22}[NB-22]}} - [Improvement] Permitir adição de templates customizados ou desabilitar existentes
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-23}[NB-23]}} - [Bug] Erro ao gerar CRUD Vaadin
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-24}[NB-24]}} - [Improvement] Atualização do templates para versão 2.5.x do Demoiselle
+	
+	* {{{http://demoiselle.atlassian.net/browse/NB-25}[NB-25]}} - [Bug] Erro ao gerar crud à partir de entidades que estendam classe genérica
+
+	* {{{http://demoiselle.atlassian.net/browse/NB-26}[NB-26]}} - [Improvement] Criação de templates para CRUD: HTML5+Rest
+	
+	* {{{http://demoiselle.atlassian.net/browse/NB-29}[NB-29]}} - [Task] - Atualizar documentação para versão 1.2.1
+
+
+
 * {v1.2.0}
 
 	* {{{http://demoiselle.atlassian.net/browse/NB-3}[NB-3]}} - [New Feature] Geração de testes de unidade.
@@ -21,9 +39,7 @@ Notas de Versão
 	
 	* {{{http://demoiselle.atlassian.net/browse/NB-19}[NB-19]}} - [Task] - Atualizar documentação para versão 1.2.0	
 	
-		
-
-		
+				
 	
 
 * {v1.1.1}

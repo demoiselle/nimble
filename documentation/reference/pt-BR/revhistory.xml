@@ -4,17 +4,27 @@
 <revhistory>
 	
 	<revision>
+		<revnumber>1.2.1</revnumber>
+		<date>29/05/2015</date>
+		<authorinitials>ess</authorinitials>
+		<revremark> Atualizações do templates para Demoiselle 2.5, Primeface5 e novo template para HTML5+Rest 
+		<ulink url="http://migre.me/q8mms">Notas da versão.</ulink> </revremark>
+	</revision>
+	
+	<revision>
 		<revnumber>1.2.0</revnumber>
 		<date>21/02/2014</date>
 		<authorinitials>ess</authorinitials>
-		<revremark>Geração de artefatos para relacionamentos JPA, Geração de artefatos para testes de unidade, <ulink url="http://demoiselle.atlassian.net/secure/ReleaseNote.jspa?projectId=10102&amp;version=10300">Notas da versão.</ulink> </revremark>
+		<revremark>Geração de artefatos para relacionamentos JPA, Geração de artefatos para testes de unidade,
+		 <ulink url="http://migre.me/q8moO">Notas da versão.</ulink> </revremark>
 	</revision>
 	
 	<revision>
 		<revnumber>1.1.1</revnumber>
 		<date>21/06/2013</date>
 		<authorinitials>ess</authorinitials>
-		<revremark>Alteração de parser, problemas de encoding, exemplo com CRUD para Vaadin, <ulink url="http://demoiselle.atlassian.net/secure/ReleaseNote.jspa?projectId=10102&amp;version=11200"> Notas da versão.</ulink> </revremark>
+		<revremark>Alteração de parser, problemas de encoding, exemplo com CRUD para Vaadin, 
+		<ulink url="http://migre.me/q8mql"> Notas da versão.</ulink> </revremark>
 	</revision>
 
 	<revision>

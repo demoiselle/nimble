@@ -115,10 +115,10 @@
 				 </para>
 				 </section>
 				 <section id="createcrud">
-				 <title>Templates de Geração de <abbrev>CRUD</abbrev> para JSF e VAADIN com Demoiselle v2.x</title>
+				 <title>Templates de Geração de <abbrev>CRUD</abbrev> para JSF, HTML5+Rest  e VAADIN com Demoiselle v2.x</title>
 				 <para>Um <abbrev>CRUD</abbrev> acrônimo de Create, Retrieve, Update e Delete em língua Inglesa, são as operações básicas
 				 relacionadas ao uso de bancos de dados em aplicações, assim nestes Templates, os produtos gerados são as classes para 
-				 implementação destas operações, e também todos os artefatos de configuração e interface (páginas XHTML).</para>
+				 implementação destas operações, e também todos os artefatos de configuração e interface (como páginas XHTML no caso do JSF).</para>
 				 
 				  <para>
             		<mediaobject>
@@ -132,7 +132,7 @@
     						<phrase>Tela dos Templates de Geração de CRUD</phrase>
   						</textobject>
   						<caption>
-   							<para>Tela dos Templates de Geração de CRUD para Aplicações JSF e VAADIN com Demoiselle v2.x
+   							<para>Tela dos Templates de Geração de CRUD para Aplicações JSF, HTML5+Rest e VAADIN com Demoiselle v2.x
 							</para>
   						</caption>		        	    
 		        	</mediaobject>            		
