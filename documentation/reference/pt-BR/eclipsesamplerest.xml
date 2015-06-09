@@ -330,7 +330,7 @@ public class Contato implements Serializable{
 		               <imagedata fileref="images/SelectCRUDTemplateHtmlRest.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="images/SelectCRUDTemplateVaadin.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/SelectCRUDTemplateHtmlRest.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
 					<phrase>Escolhendo o template de CRUD</phrase>

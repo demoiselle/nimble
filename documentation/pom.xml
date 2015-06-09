@@ -41,7 +41,7 @@ ou escreva para a Fundação do Software Livre (FSF) Inc.,
 
 	<groupId>br.gov.frameworkdemoiselle.tools</groupId>
 	<artifactId>demoiselle-nimble-documentation-build</artifactId>
-	<version>1.2.0</version>
+	<version>1.2.1</version>
 	<packaging>pom</packaging>
 
 	<name>Documentation Build Aggregator</name>
