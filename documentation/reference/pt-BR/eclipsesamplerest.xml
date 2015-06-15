@@ -51,14 +51,14 @@
         	</screenshot>            		
 		 </para>
 		 <para>Na tela seguinte, considerando que esteja usando o Eclipse provido pela instalação do Demoiselle-Infra, com o catálogo <emphasis>Demoiselle</emphasis> selecionado
-		 escolha o arquétipo <emphasis>demoiselle-html-rest</emphasis> que irá criar um projeto Vaadin utilizando a extensão JPA.</para>
+		 escolha o arquétipo <emphasis>demoiselle-html-rest</emphasis> que irá criar um projeto Html+Rest utilizando a extensão JPA para camada de persistência.</para>
 		 <para>
         	<mediaobject>
 		       	<imageobject role="fo">
-		               <imagedata fileref="/images/create_html_rest_app.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
+		               <imagedata fileref="images/CreateHtmlRestApp.png"  format="PNG" align="center" scalefit="1" width="75%"/> 
 		        </imageobject>
 		        <imageobject role="html">
-		  	            <imagedata fileref="/images/create_html_rest_app.png"  format="PNG" align="center"/>
+		  	            <imagedata fileref="images/CreateHtmlRestApp.png"  format="PNG" align="center"/>
 		        </imageobject>
 	       	    <textobject>
 					<phrase>Escolhendo o arquétipo Demoiselle para HTML5+REST</phrase>
