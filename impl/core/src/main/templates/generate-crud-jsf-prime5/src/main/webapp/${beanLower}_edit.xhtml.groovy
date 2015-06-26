@@ -17,13 +17,13 @@ def relationshipsFields = [:]
 						rendered="#{!${beanLower}EditMB.updateMode}" ajax="false" />
 					<p:commandButton value="#{messages['button.save']}" action="#{${beanLower}EditMB.update}"
 						rendered="#{${beanLower}EditMB.updateMode}" ajax="false" />
-					<p:commandButton value="#{messages['button.delete']}" onclick="confirmation.show()"
+					<p:commandButton value="#{messages['button.delete']}" onclick="PF('confirmation').show()"
 						rendered="#{${beanLower}EditMB.updateMode}" type="button" immediate="true" ajax="false" />
 					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
 						header="#{messages['label.dialog.delete']}" severity="alert" widgetVar="confirmation">
 						<h:commandButton value="#{messages['button.dialog.yes']}" action="#{${beanLower}EditMB.delete}" immediate="true"
 							ajax="false" />
-						<h:commandButton value="#{messages['button.dialog.no']}" onclick="confirmation.hide()" type="button" />
+						<h:commandButton value="#{messages['button.dialog.no']}" onclick="PF('confirmation').hide();" type="button" />
 					</p:confirmDialog>
 				</p:toolbarGroup>
 			</p:toolbar>

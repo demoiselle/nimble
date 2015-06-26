@@ -16,7 +16,7 @@ def relationshipsAnnotations = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
 					<p:commandButton title="#{messages['button.new']}" icon="ui-icon-document" action="#{${beanLower}ListMB.getNextView}"
 						actionListener="#{${beanLower}ListMB.clear}" ajax="false" />
 
-					<p:commandButton title="#{messages['button.delete']}" icon="ui-icon-trash" onclick="confirmation.show()"
+					<p:commandButton title="#{messages['button.delete']}" icon="ui-icon-trash" onclick="PF('confirmation').show();"
 						type="button" immediate="true" ajax="false" />
 
 					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
@@ -24,7 +24,7 @@ def relationshipsAnnotations = ['ManyToMany','ManyToOne','OneToMany','OneToOne']
 
 						<h:commandButton value="#{messages['button.dialog.yes']}" action="#{${beanLower}ListMB.deleteSelection}"
 							actionListener="#{${beanLower}ListMB.clear}" />
-						<h:commandButton value="#{messages['button.dialog.no']}" onclick="confirmation.hide()" type="button" />
+						<h:commandButton value="#{messages['button.dialog.no']}" onclick="PF('confirmation').hide();" type="button" />
 					</p:confirmDialog>
 				</p:toolbarGroup>
 			</p:toolbar>
