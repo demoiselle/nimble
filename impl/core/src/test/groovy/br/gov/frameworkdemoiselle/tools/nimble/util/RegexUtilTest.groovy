@@ -5,34 +5,116 @@ import java.util.Date;
 
 
 public class RegexUtilTest extends GroovyTestCase {
-	def code = '''
-		class A {
-		
-			public String getA() {
-				return 'A'
-			}
-		
-			private Long getBLong() { return 1L	}
-		
-			static int getCint()
-			{
-				return 1L
-			}
-		
-			private static boolean getDBoolean()
-			{
-				return false
-			}
-		
-			private static boolean isEBoolean()
-			{
-				return true
-			}
-				
-			void toString() {
-			}
-		}
-		'''
+	
+	def codeA = '''
+		public class A {
+	
+	private String A;
+
+	private Long B;
+
+	private int C;
+
+	private boolean D;
+	
+	private boolean E;
+
+	public String getA() {
+		return A;
+	}
+
+	public void setA(String a) {
+		A = a;
+	}
+
+	public Long getB() {
+		return B;
+	}
+
+	public void setB(Long b) {
+		B = b;
+	}
+
+	public int getC() {
+		return C;
+	}
+
+	public void setC(int c) {
+		C = c;
+	}
+
+	public boolean isD() {
+		return D;
+	}
+
+	public void setD(boolean d) {
+		D = d;
+	}
+
+	public boolean isE() {
+		return E;
+	}
+
+	public void setE(boolean e) {
+		E = e;
+	}
+	}'''
+	
+	
+	def codeB = '''
+		public class B {
+	
+	private String A;
+
+	private Long B;
+
+	private int C;
+
+	private boolean D;
+	
+	private boolean E;
+
+	public String getA() {
+		return A;
+	}
+
+	public void setA(String a) {
+		A = a;
+	}
+
+	public Long getB() {
+		return B;
+	}
+
+	public void setB(Long b) {
+		B = b;
+	}
+
+	public int getC() {
+		return C;
+	}
+
+	public void setC(int c) {
+		C = c;
+	}
+
+	public boolean isD() {
+		return D;
+	}
+
+	public void setD(boolean d) {
+		D = d;
+	}
+
+	public boolean isE() {
+		return E;
+	}
+
+	public void setE(boolean e) {
+		E = e;
+	}
+	}'''
+	
 	def code1 = '''
 	@MappedSuperclass
 public abstract class Classe1 {
@@ -200,7 +282,11 @@ public class Entidade implements Serializable {
 }
 '''
 	
-	
+	void setUp(){
+		File tempDir = new File("./src/test/temp/")
+		if (tempDir.exists())
+			FileUtil.delTree(tempDir)
+	}
 	
 	void tearDown() {
 		File tempDir = new File("./src/test/temp/")
@@ -210,9 +296,9 @@ public class Entidade implements Serializable {
 	
 	void testGetClassAttributes() {
 		
-		def expected = ['A':'String','BLong':'Long','Cint':'int','DBoolean':'boolean','EBoolean':'boolean'] 
-		
-		assert expected == RegexUtil.getClassAttributes(code)
+		def expected0 = ['A':'String','B':'Long','C':'int','D':'boolean','E':'boolean']
+		RegexUtil.resetMap()
+		assert expected0 == RegexUtil.getClassAttributes(codeA) 
 	}
 
 	void testGetClassAttributesFromFile() {		
@@ -220,11 +306,12 @@ public class Entidade implements Serializable {
 		def tempDir = new File("./src/test/temp/")
 		if (tempDir.exists()) tempDir.deleteDir()
 		tempDir.mkdir()
-		def tmpFile = new File("./src/test/temp/class.txt")
-		tmpFile << code
+		def tmpFile = new File("./src/test/temp/B.java")
+		tmpFile << codeB
 		
-		def expected = ['A':'String','BLong':'Long','Cint':'int','DBoolean':'boolean', 'EBoolean':'boolean']
+		def expected = ['A':'String','B':'Long','C':'int','D':'boolean', 'E':'boolean']
 		
+		RegexUtil.resetMap()
 		assert expected == RegexUtil.getClassAttributesFromFile(tmpFile.path)
 	}
 	
@@ -235,6 +322,8 @@ public class Entidade implements Serializable {
 		def tempDir = new File("./src/test/temp/")
 		if (tempDir.exists()) tempDir.deleteDir()
 		tempDir.mkdir()
+		
+		
 		def tmpFile1 = new File("./src/test/temp/Classe1.java")
 		tmpFile1 << code1
 		
@@ -243,6 +332,7 @@ public class Entidade implements Serializable {
 		
 		def expected = ['DataMatricula':'Date','NumeroMatricula':'int','Id':'Long','Nome':'String','Cpf':'Long','DataNascimento':'Date']
 		
+		RegexUtil.resetMap()
 		assert expected == RegexUtil.getClassAttributesFromFile(tmpFile2.getName(),tmpFile2.getParent()+"/" )
 	}
 	

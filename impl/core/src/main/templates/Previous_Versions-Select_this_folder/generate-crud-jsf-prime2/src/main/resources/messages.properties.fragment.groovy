@@ -1,9 +1,12 @@
+<% 
+import br.gov.frameworkdemoiselle.tools.nimble.util.ParserUtil as PU
+def tmpFile = new File(beanPath+beanJavaName)
+def attrList = PU.getAttributesFromClassFile(tmpFile)
+%>
+
 menu.${beanLower}=${pojo}s
 ${beanLower}.label=${pojo}
-<% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil as RU
-def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
-%>
+
 ${beanLower}-delete-ok=${pojo} exclu\\u00EDdo: {0}
 ${beanLower}-insert-ok=${pojo} inserido: {0}
 ${beanLower}-update-ok=${pojo} atualizado: {0}

@@ -1,6 +1,9 @@
 <% 
-import br.gov.frameworkdemoiselle.tools.nimble.util.RegexUtil as RU
-def attrList = RU.getClassAttributesFromFile(beanJavaName, beanPath)
+import br.gov.frameworkdemoiselle.tools.nimble.util.StringUtil as SU
+def tmpFile = new File(beanPath+beanJavaName)
+def attrList = PU.getAttributesFromClassFile(tmpFile)
+
+
 %>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui" xmlns:h="http://java.sun.com/jsf/html"

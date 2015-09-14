@@ -305,7 +305,7 @@ class TemplateVariablesStep2 extends WizardPanel {
 			}
 			def mapNameTypeID = [:]
 			mapNameTypeID = FileUtil.getNameAndTypeId(entityFilePath+entityFileName)
-			if (mapNameTypeID.empty) {
+			if (mapNameTypeID.isEmpty()) {
 				for (cls in extendedClasses){
 					 mapNameTypeID = FileUtil.getNameAndTypeId (entityFilePath+cls+".java")
 				}
