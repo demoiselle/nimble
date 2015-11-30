@@ -15,7 +15,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-
 import ${packageName}.business.${pojo}BC;
 import ${packageName}.entity.${pojo};
 import br.gov.frameworkdemoiselle.BadRequestException;
@@ -24,8 +23,6 @@ import br.gov.frameworkdemoiselle.security.LoggedIn;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.Strings;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
-
-
 
 @Path("${beanLower}")
 public class ${pojo}REST {
@@ -43,7 +40,6 @@ public class ${pojo}REST {
 		} else {
 			result = bc.find(query);
 		}
-
 		return result;
 	}
 
@@ -52,11 +48,9 @@ public class ${pojo}REST {
 	@Produces("application/json")
 	public ${pojo} load(@PathParam("id") ${idType} id) throws Exception {
 		${pojo} result = bc.load(id);
-
 		if (result == null) {
 			throw new NotFoundException();
 		}
-
 		return result;
 	}
 
@@ -68,10 +62,8 @@ public class ${pojo}REST {
 	@Consumes("application/json")
 	public Response insert(${pojo} entity, @Context UriInfo uriInfo) throws Exception {
 		checkId(entity);
-
-		String id = bc.insert(entity).getId().toString();
+		String id = bc.insert(entity).get${idNameUpper}().toString();
 		URI location = uriInfo.getRequestUriBuilder().path(id).build();
-
 		return Response.created(location).entity(id).build();
 	}
 
@@ -85,8 +77,7 @@ public class ${pojo}REST {
 	public void update(@PathParam("id") ${idType} id, ${pojo} entity) throws Exception {
 		checkId(entity);
 		load(id);
-
-		entity.setId(id);
+		entity.set${idNameUpper}(id);
 		bc.update(entity);
 	}
 
@@ -107,7 +98,7 @@ public class ${pojo}REST {
 	}
 
 	private void checkId(${pojo} entity) throws Exception {
-		if (entity.getId() != null) {
+		if (entity.get${idNameUpper}() != null) {
 			throw new BadRequestException();
 		}
 	}
