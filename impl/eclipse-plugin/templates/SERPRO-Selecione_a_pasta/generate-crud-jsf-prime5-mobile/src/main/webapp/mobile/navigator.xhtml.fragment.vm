@@ -1,0 +1,2 @@
+
+                    <p:menuitem icon="ui-icon-newwin" url="./${beanLower}_list.jsf" iconPos="top" value="#{messages['menu.${beanLower}']}" />
