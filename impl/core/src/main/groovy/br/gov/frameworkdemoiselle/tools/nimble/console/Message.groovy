@@ -43,7 +43,7 @@ package br.gov.frameworkdemoiselle.tools.nimble.console
  */
 class Message {
 	
-	def title = "DEMOISELLE NIMBLE 1.2.1" 
+	def title = "DEMOISELLE NIMBLE 1.2.2" 
 	def processing = "Processing all templates and files..."
 	def skipped = "     ... SKIPPED! (destination file already exists)"
 	def skipped_conf = "     ... SKIPPED! (Conf file doesn't need to be copied)"
