@@ -3,6 +3,15 @@
    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" []>
 <revhistory>
 	
+	
+	<revision>
+		<revnumber>1.2.2</revnumber>
+		<date>/12/2015</date>
+		<authorinitials>ess</authorinitials>
+		<revremark> Correções de templates  
+		<ulink url="https://goo.gl/lLlGAc">Notas da versão.</ulink> </revremark>
+	</revision>
+	
 	<revision>
 		<revnumber>1.2.1</revnumber>
 		<date>29/05/2015</date>
